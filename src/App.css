@@ -7,8 +7,27 @@
   src: url("./fonts/fontsWOFF/whitneybold.woff") format("woff")
 }
 
-
 body {
   font-family: whitneylight;
-  font-weight: bold;
+}
+
+.custom-shape-divider-bottom-1643645332 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1643645332 svg {
+  position: relative;
+  display: block;
+  width: calc(148% + 1.3px);
+  height: 175px;
+}
+
+.custom-shape-divider-bottom-1643645332 .shape-fill {
+  fill: #240334;
 }

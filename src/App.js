@@ -12,7 +12,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
-
+        
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
