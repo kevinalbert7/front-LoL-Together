@@ -9,6 +9,7 @@
 
 body {
   font-family: whitneylight;
+  color: white;
 }
 
 .custom-shape-divider-bottom-1643645332 {
@@ -26,6 +27,8 @@ body {
   display: block;
   width: calc(148% + 1.3px);
   height: 175px;
+  box-shadow: 10px 5px 5px red;
+
 }
 
 .custom-shape-divider-bottom-1643645332 .shape-fill {
