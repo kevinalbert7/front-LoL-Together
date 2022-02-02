@@ -1,7 +1,7 @@
 import React from 'react'
 
 import backgroundImage from '../images/home-background.png'
-import homeWaveImage from '../images/home-wave.svg'
+import homeWaveImage from '../images/home-wave.png'
 
 import { RiUserLine, RiTeamLine } from 'react-icons/ri'
 
