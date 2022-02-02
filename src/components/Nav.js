@@ -92,7 +92,7 @@ const Nav = () => {
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link to="/">
+                    <Link to="/signup">
                       Inscription
                     </Link>
                   </MenuItem>

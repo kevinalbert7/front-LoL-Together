@@ -8,6 +8,7 @@ import { UserContextProvider } from './contexts/UserContext'
 
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Signup from "./pages/Signup"
 import NotFound from './pages/NotFound'
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

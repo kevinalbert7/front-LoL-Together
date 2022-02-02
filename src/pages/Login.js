@@ -85,7 +85,7 @@ const Login = () => {
         setErrorLogin("Le nom d'utilisateur/mot de passe est incorrect.")
     } else {
         const data = await response.json()
-        console.log(data)
+        // console.log(data)
         setUser(data)
         setErrorLogin("")
         navigate('/')
