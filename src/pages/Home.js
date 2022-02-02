@@ -12,7 +12,7 @@ import Logo from '../components/Logo'
 import Title from '../components/Title'
 import Footer from '../components/Footer'
 
-const Discover = styled.div`
+const Header = styled.div`
   background-image: url(${backgroundImage});
   height: 100vh;
   background-repeat: no-repeat;
@@ -22,13 +22,13 @@ const Discover = styled.div`
   flex-direction: column;
   justify-content: flex-end;
 `
-const HomeWave = styled.div`
+const Separator = styled.div`
   background-image: url(${homeWaveImage});
   background-repeat: no-repeat;
   background-size: cover;
   height: 280px;
 `
-const DiscoverDiv = styled.div`
+const SideDiv = styled.div`
   right: 10%;
   top: 10%;
   position: absolute;
@@ -60,15 +60,15 @@ const Home = () => {
   return (
     <>
       <Nav />
-      <Discover>
-        <DiscoverDiv>
+      <Header>
+        <SideDiv>
           <Logo />
           <p>Recrutez des jouers pour ton équipe, ou fais- toi recruter.</p>
           <p className='p2'>Parce que jouer ensemble c'est aussi passé de bons moments.</p>
           <Title text='Découvrir' size='72' />
-        </DiscoverDiv>
-        <HomeWave/>
-      </Discover>
+        </SideDiv>
+        <Separator/>
+      </Header>
       <Middle>
         <div className='container'>
           <div className='row'>

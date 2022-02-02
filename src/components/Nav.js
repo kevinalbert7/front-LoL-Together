@@ -1,14 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 import styled from 'styled-components'
+
+import { UserContext } from '../contexts/UserContext'
 
 const Menu = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  position: -webkit-sticky;
-  position: sticky;
 `
 const MenuBackground = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
@@ -31,9 +31,28 @@ const MenuItem = styled.div`
       color : purple;
     }
   }
+  button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+  }
 `
 
 const Nav = () => {
+  const navigate = useNavigate()
+  const { user, setUser } = useContext(UserContext)
+
+  const handleLogoutClick = () => {
+    fetch('http://localhost:5000/auth/logout', {
+      method: 'delete',
+      credentials: 'include'
+    })
+      .then(response => {
+        setUser("")
+        navigate('/')
+      })
+  }
+
   return (
       <MenuBackground>
         <Menu>
@@ -55,16 +74,30 @@ const Nav = () => {
               </MenuItem>
             </MenuLeft>
             <MenuRight>
-              <MenuItem>
-                <Link to="/">
-                  Connexion
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/">
-                  Inscription
-                </Link>
-              </MenuItem>
+              {user ? 
+                <MenuItem>
+                  <button 
+                    type="button" 
+                    className=""
+                    onClick={handleLogoutClick}
+                  >
+                    Déconnexion
+                  </button>
+                </MenuItem>
+              :
+                <>
+                  <MenuItem>
+                    <Link to="/login">
+                      Connexion
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to="/">
+                      Inscription
+                    </Link>
+                  </MenuItem>
+                </>
+              }
             </MenuRight>
         </Menu>
       </MenuBackground>

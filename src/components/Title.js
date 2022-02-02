@@ -6,6 +6,7 @@ const TitleDiv = styled.div`
   font-family: GrechenFuemen;
   font-style: normal;
   font-weight: normal;
+  text-align: center;
   font-size: ${props => props.size}px;
 `
 
