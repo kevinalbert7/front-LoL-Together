@@ -34,7 +34,7 @@ const Separator = styled.div`
 `
 const SideDiv = styled.div`
   left: 10%;
-  top: 20%;
+  top: 10%;
   position: absolute;
   font-size: 20px;
   width: 30%;
@@ -57,8 +57,8 @@ const Signup = () => {
     initialValues: {
       username: "Test",
       email: "Test@test.com",
-      password: "test",
-      passwordConfirmation: "test",
+      password: "testtest",
+      passwordConfirmation: "testtest",
       summoner_name: "test"
     },
     onSubmit: values => {
@@ -113,7 +113,7 @@ const Signup = () => {
       credentials: 'include',
       body: JSON.stringify({
         username: user.username,
-        password: user.password
+        password: values.password
       })
     })
 
