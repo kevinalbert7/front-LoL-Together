@@ -6,9 +6,12 @@
   font-family: "whitneybold";
   src: url("./fonts/fontsWOFF/whitneybold.woff") format("woff")
 }
-
+@font-face {
+  font-family: "GrechenFuemen";
+  src: url("./fonts/fontsWOFF/GrechenFuemen-Regular.woff") format("woff")
+}
 
 body {
   font-family: whitneylight;
-  font-weight: bold;
+  color: white;
 }

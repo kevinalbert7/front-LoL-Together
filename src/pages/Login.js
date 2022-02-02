@@ -1,11 +1,11 @@
 import React from 'react'
 
-const TitlePage = () => {
+const Login = () => {
   return (
     <div>
-      
+      <h1>Login</h1>
     </div>
   )
 }
 
-export default TitlePage
+export default Login
