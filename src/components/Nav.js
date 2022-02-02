@@ -5,15 +5,17 @@ import styled from 'styled-components'
 
 import { UserContext } from '../contexts/UserContext'
 
+const MenuBackground = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  top: 0;
+`
 const Menu = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px;
-`
-const MenuBackground = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
-  position: sticky;
-  top: 0;
 `
 const MenuLeft = styled.div`
   display: flex;  
@@ -75,15 +77,20 @@ const Nav = () => {
             </MenuLeft>
             <MenuRight>
               {user ? 
-                <MenuItem>
-                  <button 
-                    type="button" 
-                    className=""
-                    onClick={handleLogoutClick}
-                  >
-                    Déconnexion
-                  </button>
-                </MenuItem>
+                <>
+                  <MenuItem>
+                    Bonjour, {user.username}.
+                  </MenuItem>
+                  <MenuItem>
+                    <button 
+                      type="button" 
+                      className=""
+                      onClick={handleLogoutClick}
+                    >
+                      Déconnexion
+                    </button>
+                  </MenuItem>
+                </>
               :
                 <>
                   <MenuItem>

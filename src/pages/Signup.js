@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -12,6 +13,8 @@ import Logo from '../components/Logo'
 import Title from '../components/Title'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
+
+import { UserContext } from '../contexts/UserContext'
 
 const Header = styled.div`
   background-image: url(${backgroundImage});
@@ -46,6 +49,8 @@ const ErrorForm = styled.div`
 `
 
 const Signup = () => {
+  const navigate = useNavigate()
+  const { setUser } = useContext(UserContext)
   const [errorSignup, setErrorSignup] = useState(null)
 
   const formik = useFormik({
@@ -116,9 +121,8 @@ const Signup = () => {
       alert(loginResponse.statusText)
     } else {
       const data = await loginResponse.json()
-      // setUser(data)
-      console.log(data)
-      // navigate('/home')
+      setUser(data)
+      navigate('/')
     }
   }
 
