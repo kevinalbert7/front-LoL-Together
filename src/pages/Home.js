@@ -18,22 +18,15 @@ const Discover = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   positive: relative;
-    @media (max-width: 1024px) {
-      background-size: 100%;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 `
 const HomeWave = styled.div`
   background-image: url(${homeWaveImage});
-  position: absolute;
   background-repeat: no-repeat;
-  top: 575px;
-  min-width: 100%;
   background-size: cover;
   height: 280px;
-    @media (max-width: 1024px) {
-      background-size: 100%;
-      top: 580px;
-    }
 `
 const DiscoverDiv = styled.div`
   right: 10%;
