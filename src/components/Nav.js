@@ -13,7 +13,7 @@ const Menu = styled.div`
 const MenuBackground = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   position: sticky;
-
+  top: 0;
 `
 const MenuLeft = styled.div`
   display: flex;  

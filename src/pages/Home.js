@@ -1,8 +1,7 @@
 import React from 'react'
 
 import backgroundImage from '../images/home-background.png'
-
-import homeWave from '../images/home-wave.svg'
+import homeWaveImage from '../images/home-wave.svg'
 
 import { RiUserLine, RiTeamLine } from 'react-icons/ri'
 
@@ -24,13 +23,16 @@ const Discover = styled.div`
     }
 `
 const HomeWave = styled.div`
-  background-image: url(${homeWave});
+  background-image: url(${homeWaveImage});
   position: absolute;
-  top: 600px;
+  background-repeat: no-repeat;
+  top: 575px;
   min-width: 100%;
-  height: 270px;
+  background-size: cover;
+  height: 280px;
     @media (max-width: 1024px) {
       background-size: 100%;
+      top: 580px;
     }
 `
 const DiscoverDiv = styled.div`
@@ -59,14 +61,13 @@ const Description = styled.div`
 `
 const Step = styled.div`
   border: 1px solid white;
-
 `
 
 const Home = () => {  
   return (
     <>
+      <Nav />
       <Discover>
-        <Nav />
         <DiscoverDiv>
           <Logo />
           <p>Recrutez des jouers pour ton équipe, ou fais- toi recruter.</p>
