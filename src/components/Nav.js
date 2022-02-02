@@ -65,12 +65,12 @@ const Nav = () => {
                 </Link>
               </MenuItem>
               <MenuItem>
-                <Link to="/">
+                <Link to="/users">
                   Joueurs
                 </Link>
               </MenuItem>
               <MenuItem>
-                <Link to="/">
+                <Link to="/teams">
                   Equipes
                 </Link>
               </MenuItem>

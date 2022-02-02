@@ -13,7 +13,7 @@ import backgroundImage from '../images/profil-background.png'
 
 const Header = styled.div`
   background-image: url(${backgroundImage});
-  height: 50vh;
+  height: 65vh;
   background-repeat: no-repeat;
   background-size: cover;
   positive: relative;
