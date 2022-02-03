@@ -17,7 +17,7 @@ const UserContextProvider = props => {
             }
           })
         
-        const data = response.json()
+        const data = await response.json()
         if (!data.error) {
             setUser(data)
             // console.log(user);
