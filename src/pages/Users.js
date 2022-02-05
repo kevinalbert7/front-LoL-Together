@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import styled from 'styled-components'
+import { motion } from "framer-motion"
 
 import Nav from '../components/Nav'
 import Logo from '../components/Logo'
@@ -14,6 +15,7 @@ import blur from '../images/blur.png'
 import backgroundImage from '../images/users-background.png'
 
 import { UsersContext } from '../contexts/UsersContext'
+import { getUsers } from '../api/user'
 
 const Header = styled.div`
   background-image: url(${backgroundImage});
@@ -43,7 +45,7 @@ const LogoTitle = styled.div`
 `
 const Middle = styled.div`
   background-color: black;
-  padding: 5% 20%;
+  padding: 0 20%;
 `
 
 
@@ -52,15 +54,13 @@ const Users = () => {
   const { users, setUsers } = useContext(UsersContext)
 
   useEffect(() => {
-    getUsers()
+    fetchUsers()
   },[])
 
-  const getUsers = async () => {
+  const fetchUsers = async () => {
     
-    const response = await fetch(`http://localhost:5000/users/`, {
-      credentials: "include"
-    })
-    const data = await response.json()
+    const data = await getUsers()
+
     if (data.error) {
         navigate('/login')
       } else {
@@ -72,38 +72,55 @@ const Users = () => {
     return <h1>Chargement...</h1>
   }
   
+  
   // console.log("users", users)
   return (
     <>
       <Nav />
       <Header>
         <LogoTitle>
-          <Logo />
-          <Title text="Liste des joueurs" size='64'/>
+          <motion.div
+            style={{ x: 100 }} 
+            animate={{ x: 0 }}          
+          >
+            <Logo />
+            <Title text="Liste des joueurs" size='64'/>
+          </motion.div>
         </LogoTitle>
         <Separator />
       </Header>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
       <Middle>
         <div className='container'>
-          <div className='row'>
+          <div className='row my-3'>
             <UserFilter />
           </div>
-          <div className='row'>
-            {users.map(element => (
-              <UserCard
-                key={element._id}
-                username={element.username}
-                summoner_name={element.summoner_name}
-                discord={element.discord}
-                region={element.region}
-                languages={element.languages}
-                disponibilities={element.disponibilities}
-                roles={element.roles}
-              />
-            ))}
-          </div>
+          <motion.div
+            style={{ x: -100 }} 
+            animate={{ x: 0 }}          
+          >
+            <div className='row'>
+              {users.map(element => (
+                <UserCard
+                  key={element._id}
+                  username={element.username}
+                  summoner_name={element.summoner_name}
+                  discord={element.discord}
+                  region={element.region}
+                  languages={element.languages}
+                  disponibilities={element.disponibilities}
+                  roles={element.roles}
+                />
+                ))}
+            </div>
+          </motion.div>
         </div>
       </Middle>
+      </motion.div>
       <Footer />
     </>
   )
