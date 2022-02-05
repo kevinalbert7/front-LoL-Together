@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
 import { UserContextProvider } from './contexts/UserContext'
+import { UsersContextProvider } from "./contexts/UsersContext"
 
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -17,20 +18,22 @@ import NotFound from './pages/NotFound'
 
 const App = () => {
   return (
-    <UserContextProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/user/:id" element={<UserProfile />} />
-          <Route path="/team/:id" element={<TeamProfile />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/teams" element={<Teams />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </UserContextProvider>
+    <UsersContextProvider>
+      <UserContextProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/user/:id" element={<UserProfile />} />
+            <Route path="/team/:id" element={<TeamProfile />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/teams" element={<Teams />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </UserContextProvider>
+    </UsersContextProvider>
   )
 }
 
