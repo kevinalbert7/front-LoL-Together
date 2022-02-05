@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 import Nav from '../components/Nav'
-import Separator from '../components/Separator'
+// import Separator from '../components/Separator'
 import Title from '../components/Title'
 import Footer from '../components/Footer'
 import Logo from '../components/Logo'
@@ -29,22 +29,10 @@ const LogoContainer = styled.div`
   left: 100px;
   position: absolute;
 `
-// const Separator = styled.div`
-//   background-image: url(${blur});
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   height: 160px;
-//   position: absolute;
-// `
 const TitleContainer = styled.div`
   position: absolute;
   top: 150px;
 `
-// const Middle = styled.div`
-//   height: 1000px;
-//   background-color: black;
-//   padding: 5%;
-// `
 const Card =styled.div`
   display: flex;
   justify-content: center;
