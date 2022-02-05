@@ -80,7 +80,8 @@ const TeamProfile = () => {
   useEffect(() => {
     getProfile()
   },[id])
-
+  
+  
   const getProfile = async () =>{
     
     const response = await fetch(`http://localhost:5000/teams/${id}`, {
@@ -88,10 +89,14 @@ const TeamProfile = () => {
     })
     const data = await response.json()
     if (data.error) {
-        navigate('/login')
-      } else {
-        setTeamProfile(data)
-      }
+      navigate('/login')
+    } else {
+      setTeamProfile(data)
+    }
+  }
+  
+  if(!teamProfile) {
+    return <h1>Chargement...</h1>
   }
   
   console.log("team", teamProfile)
@@ -100,15 +105,15 @@ const TeamProfile = () => {
       <Nav />
       <Header>
         <TitleContainer>
-          <Title text="TEAM NAME" size='72'/>
+          <Title text={teamProfile.name} size='72'/>
         </TitleContainer>
         <Card>
-          <div className='logo'>LOGO</div>
+          <div className='logo'>logo</div>
           <div className='container'>
 
             <div className='row '>
               <div className='col gx-5 gy-5'>
-                <div class="p-3 border bg-light opacity-25">Region</div>
+                <div class="p-3 border bg-light opacity-25">{teamProfile.region}</div>
               </div>
               <div className='col gx-5 gy-5'>
                 <div class="p-3 border bg-light opacity-25">Grade</div>
