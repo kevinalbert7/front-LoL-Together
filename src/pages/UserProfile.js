@@ -34,7 +34,7 @@ const Middle = styled.div`
 
 const UserProfile = () => {
   const { id } = useParams()
-  const api_key = "RGAPI-185af702-858a-4302-b4d7-5a9dff310c98"
+  const api_key = "RGAPI-62f462d1-7eb9-4e62-a241-0e775aa372cb"
   const navigate = useNavigate()
   const [userProfile, setUserProfile] = useState(null)
   const [lolProfile, setLolProfile] = useState(null)
