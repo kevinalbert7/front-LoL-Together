@@ -79,8 +79,13 @@ const Users = () => {
       <Nav />
       <Header>
         <LogoTitle>
-          <Logo />
-          <Title text="Liste des joueurs" size='64'/>
+          <motion.div
+            style={{ x: 100 }} 
+            animate={{ x: 0 }}          
+          >
+            <Logo />
+            <Title text="Liste des joueurs" size='64'/>
+          </motion.div>
         </LogoTitle>
         <Separator />
       </Header>

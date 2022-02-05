@@ -104,48 +104,53 @@ const Login = () => {
       >
         <Header>
           <SideDiv>
-            <Logo />
-            <Title text="Connexion" size='72'/>
-            <ErrorForm>
-              {errorLogin && errorLogin}
-            </ErrorForm>
-            <form onSubmit={formik.handleSubmit}>
-              <div className="mb-3 ">
-                <label className="form-label">Nom d'utilisateur</label>
-                <input 
-                  type="text" 
-                  className="form-control shadow" 
-                  id="username"
-                  name="username"
-                  placeholder="Nom d'utilisateur"
-                  onChange={formik.handleChange}
-                  value={formik.values.username}
-                  error={formik.errors.username}
-                  />
-                <ErrorForm>
-                  {formik.errors.username}
-                </ErrorForm>
-              </div>
-              <div className="mb-5">
-                <label className="form-label">Mot de passe</label>
-                <input 
-                  type="password" 
-                  className="form-control shadow" 
-                  id="password"
-                  name="password"
-                  placeholder="Mot de passe"
-                  onChange={formik.handleChange}
-                  value={formik.values.password}
-                  error={formik.errors.password}
-                  />
-                <ErrorForm>
-                  {formik.errors.password}
-                </ErrorForm>
-              </div>
-              <div className='text-center'>
-                <Button text="Se connecter" />
-              </div>
-            </form>
+            <motion.div
+              style={{ x: -100 }} 
+              animate={{ x: 0 }} 
+            >
+              <Logo />
+              <Title text="Connexion" size='72'/>
+              <ErrorForm>
+                {errorLogin && errorLogin}
+              </ErrorForm>
+              <form onSubmit={formik.handleSubmit}>
+                <div className="mb-3 ">
+                  <label className="form-label">Nom d'utilisateur</label>
+                  <input 
+                    type="text" 
+                    className="form-control shadow" 
+                    id="username"
+                    name="username"
+                    placeholder="Nom d'utilisateur"
+                    onChange={formik.handleChange}
+                    value={formik.values.username}
+                    error={formik.errors.username}
+                    />
+                  <ErrorForm>
+                    {formik.errors.username}
+                  </ErrorForm>
+                </div>
+                <div className="mb-5">
+                  <label className="form-label">Mot de passe</label>
+                  <input 
+                    type="password" 
+                    className="form-control shadow" 
+                    id="password"
+                    name="password"
+                    placeholder="Mot de passe"
+                    onChange={formik.handleChange}
+                    value={formik.values.password}
+                    error={formik.errors.password}
+                    />
+                  <ErrorForm>
+                    {formik.errors.password}
+                  </ErrorForm>
+                </div>
+                <div className='text-center'>
+                  <Button text="Se connecter" />
+                </div>
+              </form>
+            </motion.div>
           </SideDiv>
           <Separator />
         </Header>
