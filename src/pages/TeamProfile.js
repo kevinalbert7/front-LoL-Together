@@ -108,15 +108,15 @@ const TeamProfile = () => {
           <Title text={teamProfile.name} size='72'/>
         </TitleContainer>
         <Card>
-          <div className='logo'>logo</div>
+          <div className='logo'>{teamProfile.logo}</div>
           <div className='container'>
 
             <div className='row '>
               <div className='col gx-5 gy-5'>
-                <div class="p-3 border bg-light opacity-25">{teamProfile.region}</div>
+                <div class="p-3 border bg-light opacity-25 inputTeam">{teamProfile.region}</div>
               </div>
               <div className='col gx-5 gy-5'>
-                <div class="p-3 border bg-light opacity-25">Grade</div>
+                <div class="p-3 border bg-light opacity-25">{teamProfile.languages}</div>
               </div>
             </div>
 
@@ -129,19 +129,19 @@ const TeamProfile = () => {
 
             <div className='row'>
               <div className='col gx-5 gy-5'>
-                <div class="p-3 border bg-light opacity-25">Disponibilities</div>
+                <div class="p-3 border bg-light opacity-25">{teamProfile.disponibilities}</div>
               </div>
               <div className='col gx-5 gy-5'>
-                <div class="p-3 border bg-light opacity-25">Members</div>
+                <div class="p-3 border bg-light opacity-25">{teamProfile.users}</div>
               </div>
             </div>
 
             <div className='row'>
               <div className='col gx-5 gy-5'>
-                <div class="p-3 border bg-light opacity-25">Description</div>
+                <div class="p-3 border bg-light opacity-25">{teamProfile.description}</div>
               </div>
-
             </div>
+
           </div>
           {/* <Leader>{teamProfile.leader_id}</Leader> */}
         </Card>        
