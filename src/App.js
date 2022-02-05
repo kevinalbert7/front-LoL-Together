@@ -1,6 +1,7 @@
 import React from "react"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, useLocation, useHistory } from "react-router-dom"
 
+import { AnimatePresence } from "framer-motion"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
@@ -17,23 +18,27 @@ import Teams from "./pages/Teams"
 import NotFound from './pages/NotFound'
 
 const App = () => {
+  const location = useLocation()
+  
   return (
     <UsersContextProvider>
-      <UserContextProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/user/:id" element={<UserProfile />} />
-            <Route path="/team/:id" element={<TeamProfile />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/teams" element={<Teams />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </UserContextProvider>
-    </UsersContextProvider>
+        <UserContextProvider>
+        <AnimatePresence exitBeforeEnter>
+          {/* <BrowserRouter> */}
+            <Routes location={location} key={location.pathname}>
+              <Route exact path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/user/:id" element={<UserProfile />} />
+              <Route path="/team/:id" element={<TeamProfile />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/teams" element={<Teams />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          {/* </BrowserRouter> */}
+    </AnimatePresence>
+        </UserContextProvider>
+      </UsersContextProvider>
   )
 }
 

@@ -7,6 +7,7 @@ import * as Yup from 'yup'
 import backgroundImage from '../images/login-background.png'
 import blur from '../images/blur.png'
 import styled from 'styled-components'
+import { motion } from "framer-motion"
 
 import Nav from '../components/Nav'
 import Logo from '../components/Logo'
@@ -96,53 +97,59 @@ const Login = () => {
   return (
     <>
       <Nav />
-      <Header>
-        <SideDiv>
-          <Logo />
-          <Title text="Connexion" size='72'/>
-          <ErrorForm>
-             {errorLogin && errorLogin}
-          </ErrorForm>
-          <form onSubmit={formik.handleSubmit}>
-            <div className="mb-3 ">
-              <label className="form-label">Nom d'utilisateur</label>
-              <input 
-                type="text" 
-                className="form-control shadow" 
-                id="username"
-                name="username"
-                placeholder="Nom d'utilisateur"
-                onChange={formik.handleChange}
-                value={formik.values.username}
-                error={formik.errors.username}
-              />
-              <ErrorForm>
-                {formik.errors.username}
-              </ErrorForm>
-            </div>
-            <div className="mb-5">
-              <label className="form-label">Mot de passe</label>
-              <input 
-                type="password" 
-                className="form-control shadow" 
-                id="password"
-                name="password"
-                placeholder="Mot de passe"
-                onChange={formik.handleChange}
-                value={formik.values.password}
-                error={formik.errors.password}
-              />
-              <ErrorForm>
-                {formik.errors.password}
-              </ErrorForm>
-            </div>
-            <div className='text-center'>
-              <Button text="Se connecter" />
-            </div>
-          </form>
-        </SideDiv>
-        <Separator />
-      </Header>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Header>
+          <SideDiv>
+            <Logo />
+            <Title text="Connexion" size='72'/>
+            <ErrorForm>
+              {errorLogin && errorLogin}
+            </ErrorForm>
+            <form onSubmit={formik.handleSubmit}>
+              <div className="mb-3 ">
+                <label className="form-label">Nom d'utilisateur</label>
+                <input 
+                  type="text" 
+                  className="form-control shadow" 
+                  id="username"
+                  name="username"
+                  placeholder="Nom d'utilisateur"
+                  onChange={formik.handleChange}
+                  value={formik.values.username}
+                  error={formik.errors.username}
+                  />
+                <ErrorForm>
+                  {formik.errors.username}
+                </ErrorForm>
+              </div>
+              <div className="mb-5">
+                <label className="form-label">Mot de passe</label>
+                <input 
+                  type="password" 
+                  className="form-control shadow" 
+                  id="password"
+                  name="password"
+                  placeholder="Mot de passe"
+                  onChange={formik.handleChange}
+                  value={formik.values.password}
+                  error={formik.errors.password}
+                  />
+                <ErrorForm>
+                  {formik.errors.password}
+                </ErrorForm>
+              </div>
+              <div className='text-center'>
+                <Button text="Se connecter" />
+              </div>
+            </form>
+          </SideDiv>
+          <Separator />
+        </Header>
+      </motion.div> 
       <Footer />
     </>
   )
