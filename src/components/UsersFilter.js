@@ -6,6 +6,8 @@ import styled from 'styled-components'
 import { UsersContext } from '../contexts/UsersContext'
 
 import { getRegion, getFilteredUsers, getLanguages } from '../api/filter'
+import { optionsDisponiblities } from '../api/filter'
+import { optionsRoles } from '../api/filter'
 
 const SelectStyled = styled.div`
   color: black;
@@ -17,6 +19,8 @@ const UsersFilter = () => {
   const [selectedRegion, setSelectedRegion] = useState([])
   const [optionsLanguages, setOptionsLanguages] = useState([])
   const [selectedLanguages, setSelectedLanguages] = useState([])
+  const [selectedDisponiblities, setSelectedDisponiblities] = useState([])
+  const [selectedRoles, setSelectedRoles] = useState([])
   
   useEffect( async () => {
     const dataRegion = await getRegion()
@@ -26,14 +30,14 @@ const UsersFilter = () => {
   },[])
   
   useEffect( async () => {
-    const data = await getFilteredUsers(selectedRegion, selectedLanguages)
+    const data = await getFilteredUsers(selectedRegion, selectedLanguages, selectedDisponiblities, selectedRoles)
     setUsers(data)
-  },[selectedRegion, selectedLanguages])
+  },[selectedRegion, selectedLanguages, selectedDisponiblities, selectedRoles])
 
-  console.log(selectedLanguages)
+  console.log(selectedDisponiblities)
   return (
     <>
-      <div className='col-4'>
+      <div className='col-3 my-2'>
         <p>Trier par region :</p>
         <SelectStyled>
           <MultiSelect
@@ -45,13 +49,37 @@ const UsersFilter = () => {
           />
         </SelectStyled>
       </div>
-      <div className='col-4'>
+      <div className='col-3 my-2'>
         <p>Trier par langue(s) parle(s) :</p>
         <SelectStyled>
           <MultiSelect
             options={optionsLanguages}
             value={selectedLanguages}
             onChange={setSelectedLanguages}
+            labelledBy="Select"
+            hasSelectAll={false}
+          />
+        </SelectStyled>
+      </div>
+      <div className='col-3 my-2'>
+        <p>Disponiblitiés :</p>
+        <SelectStyled>
+          <MultiSelect
+            options={optionsDisponiblities}
+            value={selectedDisponiblities}
+            onChange={setSelectedDisponiblities}
+            labelledBy="Select"
+            hasSelectAll={false}
+          />
+        </SelectStyled>
+      </div>
+      <div className='col-3 my-2'>
+        <p>Rôles :</p>
+        <SelectStyled>
+          <MultiSelect
+            options={optionsRoles}
+            value={selectedRoles}
+            onChange={setSelectedRoles}
             labelledBy="Select"
             hasSelectAll={false}
           />
