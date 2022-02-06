@@ -16,7 +16,6 @@ import TeamProfile from "./pages/TeamProfile"
 import Users from "./pages/Users"
 import Teams from "./pages/Teams"
 import NotFound from './pages/NotFound'
-import Test from './pages/Test'
 
 const App = () => {
   const location = useLocation()

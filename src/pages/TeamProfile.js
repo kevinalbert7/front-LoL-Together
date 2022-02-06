@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
+import moment from 'moment'
 
 import styled from 'styled-components'
 
 import Nav from '../components/Nav'
-// import Separator from '../components/Separator'
 import Title from '../components/Title'
 import Footer from '../components/Footer'
 import Logo from '../components/Logo'
+// import Separator from '../components/Separator'
 
 // import blur from '../images/blur.png'
 import backgroundImage from '../images/team-background.png'
+import { RiFontSize } from 'react-icons/ri'
 
 const Header = styled.div`
-  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 30%), url(${backgroundImage});
-  height: 150vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-end;
-  // background: linear-gradient(to top, #333, rgba(0, 0, 0, 0) 30%);
+height: 150vh;
+background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+display: flex;
+align-items: center;
+flex-direction: column;
+postion: absolute;
 `
 const LogoContainer = styled.div`
   top: 100px;
@@ -34,18 +35,18 @@ const TitleContainer = styled.div`
   top: 150px;
 `
 const Card =styled.div`
+  width: 75vw;
+  padding: 50px;
   display: flex;
   justify-content: center;
-  position: absolute;
-  top: 200px;
-  padding: 50px;
-  margin: 150px auto 0 ;
+  margin: 150px auto;
   background-color: rgba(255, 255, 255, 0.2);
   border: 4px solid rgba(0, 0, 0, 0.3);
   border-radius: 2%;
-  width: 75vw;
   color: black;
-  .logo {
+  position: absolute;
+  top: 200px;
+  .teamLogo {
     height: 100px;
     width: 200px;
     display: flex;
@@ -53,12 +54,49 @@ const Card =styled.div`
     align-items: center;
     border: 3px solid rgba(0, 0, 0, 0.3);
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.3);
     color: white;
     position: absolute;
     top: -50px;
   }
+  .contenu {
+    margin-bottom: 10px;
+  }
+  .title {
+    margin-bottom: 10px;
+  }
+  li {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  .annonces {
+    margin-top: 30px;
+    margin-left: 30px;
+    color: white;
+    font-size: 25px;
+  }
+  .teamDate {
+    margin-left: 30px;
+    font-size: 10px;
+    color: black;
+  }
 `
+
+// const TeamLogo = styled.div`
+//   height: 100px;
+//   width: 200px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border: 3px solid rgba(0, 0, 0, 0.3);
+//   border-radius: 50%;
+//   background-image: url("${props => props.teamLogo}");
+//   color: white;
+//   position: absolute;
+//   top: -50px;
+// `
 // const Leader = styled.div`
 //   display: flex;
 //   justify-content: center;
@@ -69,7 +107,6 @@ const Card =styled.div`
 //   position: absolute;
 //   border: 3px solid white;  
 // `
-
 
 
 const TeamProfile = () => {
@@ -103,82 +140,99 @@ const TeamProfile = () => {
   return (
     <>
       <Nav />
+
       <Header>
+
+        <LogoContainer>
+            <Logo/>
+        </LogoContainer>
+
         <TitleContainer>
           <Title text={teamProfile.name} size='72'/>
         </TitleContainer>
-        <Card>
-          <div className='logo'>{teamProfile.logo}</div>
-          <div className='container'>
 
+      </Header>
+
+        <Card>
+          <div className='teamLogo' style={{ backgroundImage: `url("${teamProfile.logo}")` }}/>
+
+          <div className='container'>
             <div className='row '>
               <div className='col gx-5 gy-5'>
-                <div class="p-3 border bg-light opacity-25 inputTeam">{teamProfile.region}</div>
+                <div className="p-3 border rounded bg-dark text-light title">Membres :
+                  <ul>
+                    {teamProfile.users.map(user => (
+                      <li>                     
+                        <a href={`http://localhost:3000/user/${id}`}>{user.username}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div> 
               </div>
               <div className='col gx-5 gy-5'>
-                <div class="p-3 border bg-light opacity-25">{teamProfile.languages}</div>
+                <div className="p-3 border rounded bg-dark text-light">Rank :
+                  <div className='contenu'>{teamProfile.rank}</div>
+                </div>
+              </div>
+            </div>
+
+
+            <div className='row'>
+              <div className='col gx-5 gy-5'>
+                <div className="p-3 border rounded bg-dark text-light">Région :
+                  <div className='contenu'>{teamProfile.region}</div>
+                </div>
+              </div>
+              <div className='col gx-5 gy-5'>
+                <div className="p-3 border rounded bg-dark text-light">Langues :
+                  {teamProfile.languages.map(language => (
+                    <p>{language}</p>
+                  ))}
+                </div>
               </div>
             </div>
 
             <div className='row'>
+              <div className='col gx-5 gy-5'>
+                <div className="p-3 border rounded bg-dark text-light">Disponibilités :
+                  <div className='contenu'>{teamProfile.rank}</div>
+                </div>
+              </div>
               <div className='col gx-5 gy-5'></div>
-              <div className='col gx-5 gy-5'>
-                <div class="p-3 border bg-light opacity-25">Role</div>
-              </div>
             </div>
 
             <div className='row'>
               <div className='col gx-5 gy-5'>
-                <div class="p-3 border bg-light opacity-25">{teamProfile.disponibilities}</div>
-              </div>
-              <div className='col gx-5 gy-5'>
-                <div class="p-3 border bg-light opacity-25">{teamProfile.users}</div>
-              </div>
-            </div>
-
-            <div className='row'>
-              <div className='col gx-5 gy-5'>
-                <div class="p-3 border bg-light opacity-25">{teamProfile.description}</div>
+                <div className="p-3 border rounded bg-dark text-light">Description :
+                  <div className='contenu'>{teamProfile.description}</div>
+                </div>
               </div>
             </div>
 
+            <div className='annonces'>Annonces :</div>
+            {teamProfile.announcements.map(announcement => (
+              <div className='row'>
+                <div className='col gx-5 gy-5'>
+                  <div className="p-3 border rounded bg-dark text-light contenu">
+                    <ul>
+                      <li>
+                        {announcement.text}
+                      </li>
+                    </ul>
+                    <div className='teamDate'>Postée le {moment(teamProfile.updatedAt).format('lll')}</div>
+                  </div>
+                </div>
+              </div>
+              ))}
           </div>
-          {/* <Leader>{teamProfile.leader_id}</Leader> */}
-        </Card>        
-        <LogoContainer>
-          <Logo/>
-        </LogoContainer>
-        {/* <Separator /> */}
-      </Header>
-      {/* <Middle> */}
-      {/* </Middle> */}
-        {/* <Description>{teamProfile.description}</Description>  */}
+
+        </Card>   
+
+      
+
         <Footer />
     </>
   )
 }
 
 export default TeamProfile
-
-
-
-
-
-
-
-{/* <Card className='container'>
-  <div className='row justify-content-md-center'>
-    <div class="col col-lg-2">
-    </div>
-    <div class="col-md-auto">
-      Leader
-    </div>
-    <div class="col col-lg-2">
-    </div>
-  </div>
-    <Region>Region</Region>
-    <Disponibilities>Disponibilities</Disponibilities>
-    <Grade>Grade</Grade>
-    <Roles>Roles</Roles>
-    <Members>Members</Members>
-</Card> */}
