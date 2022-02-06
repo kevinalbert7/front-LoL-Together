@@ -140,7 +140,7 @@ const UserProfile = () => {
                     {userProfile.username}
                   </Username>
                   <p className="card__name">{userProfile.summoner_name}</p>
-                  <p>{lolStats[1].tier} {lolStats[1].rank}</p>
+                  <p>{lolStats.length !== 0  && lolStats[1].tier} {lolStats.length !== 0 && lolStats[1].rank}</p>
                   {emblem ? 
                     <Emblem>
                       <img src={`${emblem}`} /> 
@@ -153,10 +153,10 @@ const UserProfile = () => {
                   <p>Lvl : {lolProfile.summonerLevel}</p>
                   <div className="grid-container">
                     <div className="grid-child-posts">
-                      {lolStats[1].wins} Wins
+                      {lolStats.length !== 0  && lolStats[1].wins} {lolStats.length !== 0  && "Wins"}
                     </div>
                     <div className="grid-child-followers">
-                      {lolStats[1].losses} Loses
+                      {lolStats.length !== 0  && lolStats[1].losses} {lolStats.length !== 0  && "Loses"}
                     </div>
                   </div>
                   <SocialIcons>

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import moment from "moment"
 import 'moment/locale/fr'
 
 import styled from 'styled-components'
+import MyVerticallyCenteredModal from './Modal'
 import { 
   MdOutlineAnnouncement, 
   MdOutlineDescription, 
@@ -11,7 +12,7 @@ import {
   MdOutlineEventAvailable, 
   MdLanguage 
 } from 'react-icons/md'
-import { RiUserLine, RiTeamLine, RiDiscordLine } from 'react-icons/ri'
+import { RiUserLine, RiTeamLine, RiDiscordLine, RiPencilLine } from 'react-icons/ri'
 import { FaLanguage } from 'react-icons/fa'
 
 const Announcements = styled.div`
@@ -30,10 +31,17 @@ const IconStyle = {
 
 const UserInfos = ({ userprofile }) => {
   let teamArray = []
+  const [modalParam, setModalParam] = useState(null)
+  const [modalShow, setModalShow] = useState(false)
 
   userprofile.teams.map(element => 
     teamArray = [ ...teamArray, element.name ]
   )
+
+  const handleModal = (param) => {
+    setModalShow(true)
+    setModalParam(param)
+  }
 
   console.log(userprofile)
   return ( 
@@ -45,8 +53,11 @@ const UserInfos = ({ userprofile }) => {
         <div className='col-2'>
           Informations
         </div>
-        <div className='col-9'>
+        <div className='col-8'>
           <UserInfosSeparator/>
+        </div>
+        <div className='col-1 cursor-pointer'>
+          <RiPencilLine onClick={() => handleModal("infos")}/> 
         </div>
       </div>
       <div className='col-4 my-1'>
@@ -75,8 +86,11 @@ const UserInfos = ({ userprofile }) => {
           <div className='col-2'>
             Description
           </div>
-          <div className='col-9'>
+          <div className='col-8'>
             <UserInfosSeparator/>
+          </div>
+          <div className='col-1 cursor-pointer'>
+            <RiPencilLine onClick={() => setModalShow(true)}/> 
           </div>
         </div>
         {userprofile.description}
@@ -89,8 +103,11 @@ const UserInfos = ({ userprofile }) => {
           <div className='col-2'>
             Annonces
           </div>
-          <div className='col-9'>
+          <div className='col-8'>
             <UserInfosSeparator/>
+          </div>
+          <div className='col-1 cursor-pointer'>
+            <RiPencilLine onClick={() => setModalShow(true)}/> 
           </div>
         </div>
         {userprofile.announcements.map((element, index, {length}) => (   
@@ -112,6 +129,11 @@ const UserInfos = ({ userprofile }) => {
             </div>
           )))}
       </Announcements>
+      <MyVerticallyCenteredModal
+        modalparam={modalParam}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </>
   )
 }

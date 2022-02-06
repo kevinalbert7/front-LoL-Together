@@ -89,7 +89,7 @@ const Login = () => {
         // console.log(data)
         setUser(data)
         setErrorLogin("")
-        navigate('/')
+        navigate(`/user/${data._id}`)
     }
   }
 

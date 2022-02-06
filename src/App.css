@@ -58,8 +58,14 @@ body {
   width: 4% !important;
 }
 .userinfos .col-2 {
-  width: 10% !important;
+  width: 12% !important;
 }
-.userinfos .col-9 {
-  width: 86% !important;
+.userinfos .col-8 {
+  width: 80% !important;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-pointer:hover {
+  color: #eb196e;
 }
