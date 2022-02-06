@@ -15,6 +15,7 @@ import Signup from "./pages/Signup"
 import UserProfile from "./pages/UserProfile"
 import TeamProfile from "./pages/TeamProfile"
 import Users from "./pages/Users"
+import TeamCreation from './pages/TeamCreation'
 import Teams from "./pages/Teams"
 import NotFound from './pages/NotFound'
 
@@ -33,6 +34,7 @@ const App = () => {
               <Route path="/user/:id" element={<UserProfile />} />
               <Route path="/team/:id" element={<TeamProfile />} />
               <Route path="/users" element={<Users />} />
+              <Route path="/teamCreation" element={<TeamCreation />} />
               <Route path="/teams" element={<Teams />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
