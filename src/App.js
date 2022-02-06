@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation, useHistory } from "react-rou
 import { AnimatePresence } from "framer-motion"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
+import 'animate.css'
 
 import { UserContextProvider } from './contexts/UserContext'
 import { UsersContextProvider } from "./contexts/UsersContext"

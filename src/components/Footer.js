@@ -8,7 +8,7 @@ import Title from './Title'
 
 const FooterBackground = styled.div`
   background-color: black;
-  padding: 3%;
+  margin: 3%;
 `
 const FooterBackgroundRow = styled.div`
   display: flex;

@@ -13,7 +13,7 @@ const TitleDiv = styled.div`
 const Title = (props) => {
   const { text, size } = props
   return (
-    <TitleDiv size={size} >
+    <TitleDiv size={size} className='animate__animated animate__bounceInRight' >
       {text}
     </TitleDiv>
   )

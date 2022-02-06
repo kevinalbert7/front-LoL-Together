@@ -14,7 +14,7 @@ const LogoDiv = styled.div`
 
 const Logo = () => {
   return (
-    <LogoDiv>
+    <LogoDiv className='animate__animated animate__backInDown'>
       <img src={`${logo}`} alt='LoL Together' />
     </LogoDiv>
   )

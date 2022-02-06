@@ -30,7 +30,7 @@ const MenuItem = styled.div`
     text-decoration: none;
     color: white;
     &:hover {
-      color : purple;
+      color : teal;
     }
   }
   button {
@@ -60,18 +60,18 @@ const Nav = () => {
         <Menu>
             <MenuLeft>
               <MenuItem>
-                <Link to="/">
-                  Accueil
+                <Link to="/" >
+                  <div className='underline'>Accueil</div>
                 </Link>
               </MenuItem>
               <MenuItem>
                 <Link to="/users">
-                  Joueurs
+                <div className='underline'>Joueurs</div>
                 </Link>
               </MenuItem>
               <MenuItem>
                 <Link to="/teams">
-                  Equipes
+                <div className='underline'>Equipes</div>
                 </Link>
               </MenuItem>
             </MenuLeft>
@@ -87,7 +87,7 @@ const Nav = () => {
                       className=""
                       onClick={handleLogoutClick}
                     >
-                      Déconnexion
+                      <div className='underline'>Déconnexion</div>
                     </button>
                   </MenuItem>
                 </>
@@ -95,12 +95,12 @@ const Nav = () => {
                 <>
                   <MenuItem>
                     <Link to="/login">
-                      Connexion
+                    <div className='underline'>Connexion</div>
                     </Link>
                   </MenuItem>
                   <MenuItem>
                     <Link to="/signup">
-                      Inscription
+                    <div className='underline'>Inscription</div>
                     </Link>
                   </MenuItem>
                 </>
