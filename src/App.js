@@ -16,6 +16,7 @@ import UserProfile from "./pages/UserProfile"
 import TeamProfile from "./pages/TeamProfile"
 import Users from "./pages/Users"
 import Teams from "./pages/Teams"
+import Policy from "./pages/Policy"
 import NotFound from './pages/NotFound'
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
               <Route path="/team/:id" element={<TeamProfile />} />
               <Route path="/users" element={<Users />} />
               <Route path="/teams" element={<Teams />} />
+              <Route path="/policy" element={<Policy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           {/* </BrowserRouter> */}

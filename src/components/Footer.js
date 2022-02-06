@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { RiTwitterLine, RiFacebookLine, RiInstagramLine, RiGithubLine } from 'react-icons/ri'
 
 import styled from 'styled-components'
@@ -26,10 +27,10 @@ const Footer = () => {
       <div className='d-flex align-items-center my-5 flex-column'>
         <Title text='Made by LoL Together Team' size='18' />
         <div className='d-flex justify-content-center my-3'>
-          <RiTwitterLine  color="white" size="3%"/>
-          <RiFacebookLine  color="white" size="3%"/>
-          <RiInstagramLine  color="white" size="3%"/>
-          <RiGithubLine  color="white" size="3%"/>
+          <RiTwitterLine color="1DA1F2" size="3%" style={{ marginRight: '7px'}}/>
+          <RiInstagramLine color="E4405F" size="3%"/>
+          <RiFacebookLine color="1877F2" size="3%"/>
+          <RiGithubLine color="white" size="3%"/>
         </div>
       </div>
     </FooterBackground>
