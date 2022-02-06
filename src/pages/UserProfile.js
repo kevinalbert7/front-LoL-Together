@@ -13,6 +13,7 @@ import { motion } from "framer-motion"
 import Nav from '../components/Nav'
 import Logo from '../components/Logo'
 import Title from '../components/Title'
+import UserInfos from '../components/UserInfos'
 import Footer from '../components/Footer'
 
 import blur from '../images/blur.png'
@@ -46,6 +47,7 @@ const Separator = styled.div`
 `
 const Emblem = styled.div`
   text-align : center;
+  margin : 0 0 5% 0;
   img {
    width: 30%;
   }
@@ -53,7 +55,6 @@ const Emblem = styled.div`
 const Middle = styled.div`
   background-color: black;
   padding: 0 5%;
-  min-height: 45em;
 `
 
 const UserProfile = () => {
@@ -88,9 +89,9 @@ const UserProfile = () => {
   }
 
 
-  console.log("userprofile", userProfile)
-  console.log("lolProfile", lolProfile)
-  console.log("lolStats", lolStats)
+  // console.log("userprofile", userProfile)
+  // console.log("lolProfile", lolProfile)
+  // console.log("lolStats", lolStats)
   return (
     <>
       <Nav />
@@ -106,7 +107,7 @@ const UserProfile = () => {
                 animate={{ x: 0 }}          
               >
                 <Logo />
-                <Title text={`${userProfile.username}`} size='64'/>
+                <Title text={`${userProfile.summoner_name}`} size='64'/>
               </motion.div>
             </LogoTitle>
           <Separator />
@@ -121,7 +122,7 @@ const UserProfile = () => {
                     alt="Person" 
                     className="card__image animate__animated animate__bounce" 
                   />
-                  <p className="card__name">{userProfile.username}</p>
+                  <p className="card__name">{userProfile.summoner_name}</p>
                   <p>{lolStats[1].tier} {lolStats[1].rank}</p>
                   {emblem ? 
                     <Emblem>
@@ -132,6 +133,7 @@ const UserProfile = () => {
                       Not Ranked
                     </div>
                   }
+                  <p>Lvl : {lolProfile.summonerLevel}</p>
                   <div className="grid-container">
                     <div className="grid-child-posts">
                       {lolStats[1].wins} Wins
@@ -146,12 +148,14 @@ const UserProfile = () => {
                     <li><a href="#"><i className="fa fa-linkedin"></i></a></li>
                     <li><a href="#"><i className="fa fa-codepen"></i></a></li>
                   </ul>
-                  <button className="btn draw-border">Follow</button>
-                  <button className="btn draw-border">Message</button>
+                  <button className="btn draw-border">Contacter</button>
+                  <button className="btn draw-border">Ajouter</button>
                 </div>
               </div>
               <div className='col-9'>
-                {userProfile.email}
+                <div className='row'>
+                  <UserInfos userprofile={userProfile}/>
+                </div>
               </div>
             </div>
           </div>
