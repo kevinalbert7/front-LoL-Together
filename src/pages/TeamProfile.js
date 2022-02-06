@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import moment from 'moment'
+import 'moment/locale/fr'
 
 import styled from 'styled-components'
 
@@ -86,8 +87,8 @@ const Card =styled.div`
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
-    font-size: 10px;
-    color: black;
+    font-size: 13px;
+    color: grey;
   }
 `
 
@@ -214,7 +215,7 @@ const TeamProfile = () => {
 
         </Card>   
 
-        {/* <Footer /> */}
+        <Footer />
 
     </>
   )
