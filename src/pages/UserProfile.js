@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { getUserByID } from '../api/user'
 import { getLolProfile, getLolStats } from '../api/lolinfos' 
 import { getEmblem } from '../api/emblem'
 
+import { UserContext } from '../contexts/UserContext'
 
 import '../UserProfile.css'
 import styled from 'styled-components'
@@ -73,6 +74,7 @@ const IconStyle = {
 
 const UserProfile = () => {
   const { id } = useParams()
+  const { user } = useContext(UserContext)
   const navigate = useNavigate()
   const [emblem, setEmblem] = useState(null)
   const [userProfile, setUserProfile] = useState(null)
@@ -81,7 +83,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     fetchUser()
-  },[id])
+  },[id, user])
 
   const fetchUser = async () =>{
 
@@ -94,8 +96,10 @@ const UserProfile = () => {
     const lolStats = await getLolStats(lolProfile.id)
     setLolStats(lolStats)
 
-    const userEmblem = getEmblem(lolStats[1].tier)
-    setEmblem(userEmblem) 
+    if (lolStats.length !== 0 ) { 
+      const userEmblem = getEmblem(lolStats[1].tier)
+      setEmblem(userEmblem) 
+    }
   }
 
   if(!userProfile || !lolProfile || !lolStats) {
