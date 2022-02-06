@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import moment from "moment"
 import 'moment/locale/fr'
@@ -57,7 +57,7 @@ const UserInfos = ({ userprofile }) => {
           <UserInfosSeparator/>
         </div>
         <div className='col-1 cursor-pointer'>
-          <RiPencilLine onClick={() => handleModal("infos")}/> 
+          <RiPencilLine onClick={() => handleModal("editprofile")}/> 
         </div>
       </div>
       <div className='col-4 my-1'>
@@ -70,7 +70,7 @@ const UserInfos = ({ userprofile }) => {
         <MdLanguage style={IconStyle}/> Region : {userprofile.region}
       </div>
       <div className='col-4 my-1'>
-        <RiUserLine style={IconStyle}/> Rôle(s) : {userprofile.roles}
+        <RiUserLine style={IconStyle}/> Rôle(s) : {userprofile.roles.join(', ')}
       </div>
       <div className='col-4 my-1'>
         <RiTeamLine style={IconStyle}/> Team(s) : {teamArray.join(', ')}
