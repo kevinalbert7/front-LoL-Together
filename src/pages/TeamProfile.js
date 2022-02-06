@@ -39,7 +39,8 @@ const Card =styled.div`
   padding: 50px;
   display: flex;
   justify-content: center;
-  margin: 150px auto;
+  margin: 150px;
+
   background-color: rgba(255, 255, 255, 0.2);
   border: 4px solid rgba(0, 0, 0, 0.3);
   border-radius: 2%;
@@ -64,7 +65,11 @@ const Card =styled.div`
   .title {
     margin-bottom: 10px;
   }
+  ul{
+    margin: 0;
+  }
   li {
+    margin: 0;
     list-style: none;
   }
   a {
@@ -78,35 +83,14 @@ const Card =styled.div`
     font-size: 25px;
   }
   .teamDate {
-    margin-left: 30px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
     font-size: 10px;
     color: black;
   }
 `
 
-// const TeamLogo = styled.div`
-//   height: 100px;
-//   width: 200px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   border: 3px solid rgba(0, 0, 0, 0.3);
-//   border-radius: 50%;
-//   background-image: url("${props => props.teamLogo}");
-//   color: white;
-//   position: absolute;
-//   top: -50px;
-// `
-// const Leader = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   top: 100px;
-// `
-// const TeamLogo = styled.div`
-//   height: 40px;
-//   position: absolute;
-//   border: 3px solid white;  
-// `
 
 
 const TeamProfile = () => {
@@ -159,7 +143,7 @@ const TeamProfile = () => {
           <div className='container'>
             <div className='row '>
               <div className='col gx-5 gy-5'>
-                <div className="p-3 border rounded bg-dark text-light title">Membres :
+                <div className="p-3 border rounded bg-dark text-light title"><p>Membres :</p>
                   <ul>
                     {teamProfile.users.map(user => (
                       <li>                     
@@ -170,8 +154,8 @@ const TeamProfile = () => {
                 </div> 
               </div>
               <div className='col gx-5 gy-5'>
-                <div className="p-3 border rounded bg-dark text-light">Rank :
-                  <div className='contenu'>{teamProfile.rank}</div>
+                <div className="p-3 border rounded bg-dark text-light"><p>Rank :</p>
+                  {teamProfile.rank}
                 </div>
               </div>
             </div>
@@ -179,23 +163,29 @@ const TeamProfile = () => {
 
             <div className='row'>
               <div className='col gx-5 gy-5'>
-                <div className="p-3 border rounded bg-dark text-light">Région :
-                  <div className='contenu'>{teamProfile.region}</div>
+                <div className="p-3 border rounded bg-dark text-light"><p>Région :</p>
+                  {teamProfile.region}
                 </div>
               </div>
               <div className='col gx-5 gy-5'>
-                <div className="p-3 border rounded bg-dark text-light">Langues :
-                  {teamProfile.languages.map(language => (
-                    <p>{language}</p>
-                  ))}
+                <div className="p-3 border rounded bg-dark text-light"><p>Langues :</p>
+                  <ul>
+                    {teamProfile.languages.map(language => (
+                      <li>{language}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
 
             <div className='row'>
               <div className='col gx-5 gy-5'>
-                <div className="p-3 border rounded bg-dark text-light">Disponibilités :
-                  <div className='contenu'>{teamProfile.rank}</div>
+                <div className="p-3 border rounded bg-dark text-light"><p>Disponibilités :</p>
+                  <ul>
+                    {teamProfile.disponibilities.map(disponibilitie => (
+                      <li>{disponibilitie}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
               <div className='col gx-5 gy-5'></div>
@@ -203,8 +193,8 @@ const TeamProfile = () => {
 
             <div className='row'>
               <div className='col gx-5 gy-5'>
-                <div className="p-3 border rounded bg-dark text-light">Description :
-                  <div className='contenu'>{teamProfile.description}</div>
+                <div className="p-3 border rounded bg-dark text-light"><p>Description :</p>
+                  {teamProfile.description}
                 </div>
               </div>
             </div>
@@ -214,11 +204,7 @@ const TeamProfile = () => {
               <div className='row'>
                 <div className='col gx-5 gy-5'>
                   <div className="p-3 border rounded bg-dark text-light contenu">
-                    <ul>
-                      <li>
-                        {announcement.text}
-                      </li>
-                    </ul>
+                    {announcement.text}
                     <div className='teamDate'>Postée le {moment(teamProfile.updatedAt).format('lll')}</div>
                   </div>
                 </div>
@@ -228,9 +214,8 @@ const TeamProfile = () => {
 
         </Card>   
 
-      
+        {/* <Footer /> */}
 
-        <Footer />
     </>
   )
 }
