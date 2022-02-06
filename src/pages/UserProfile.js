@@ -9,6 +9,7 @@ import { getEmblem } from '../api/emblem'
 import '../UserProfile.css'
 import styled from 'styled-components'
 import { motion } from "framer-motion"
+import { RiTwitterLine, RiFacebookLine, RiInstagramLine, RiGithubLine } from 'react-icons/ri'
 
 import Nav from '../components/Nav'
 import Logo from '../components/Logo'
@@ -52,10 +53,23 @@ const Emblem = styled.div`
    width: 30%;
   }
 `
+const SocialIcons = styled.div`
+  margin: 5%;
+  text-align: center;
+`
+const Username = styled.div`
+  font-size: 24px;
+  margin-top: 3%;
+  color: gray;
+`
 const Middle = styled.div`
   background-color: black;
   padding: 0 5%;
 `
+
+const IconStyle = {
+  color: "linear-gradient(45deg, #050b3b, teal)"
+}
 
 const UserProfile = () => {
   const { id } = useParams()
@@ -122,8 +136,11 @@ const UserProfile = () => {
                     alt="Person" 
                     className="card__image animate__animated animate__bounce" 
                   />
+                  <Username>
+                    {userProfile.username}
+                  </Username>
                   <p className="card__name">{userProfile.summoner_name}</p>
-                  <p>{lolStats[1].tier} {lolStats[1].rank}</p>
+                  <p>{lolStats.length !== 0  && lolStats[1].tier} {lolStats.length !== 0 && lolStats[1].rank}</p>
                   {emblem ? 
                     <Emblem>
                       <img src={`${emblem}`} /> 
@@ -136,20 +153,20 @@ const UserProfile = () => {
                   <p>Lvl : {lolProfile.summonerLevel}</p>
                   <div className="grid-container">
                     <div className="grid-child-posts">
-                      {lolStats[1].wins} Wins
+                      {lolStats.length !== 0  && lolStats[1].wins} {lolStats.length !== 0  && "Wins"}
                     </div>
                     <div className="grid-child-followers">
-                      {lolStats[1].losses} Loses
+                      {lolStats.length !== 0  && lolStats[1].losses} {lolStats.length !== 0  && "Loses"}
                     </div>
                   </div>
-                  <ul className="social-icons">
-                    <li><a href="#"><i className="fa fa-instagram"></i></a></li>
-                    <li><a href="#"><i className="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i className="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i className="fa fa-codepen"></i></a></li>
-                  </ul>
-                  <button className="btn draw-border">Contacter</button>
+                  <SocialIcons>
+                    <a href="#"><RiTwitterLine  style={IconStyle} size="15%"/></a>
+                    <a href="#"><RiFacebookLine  style={IconStyle} size="15%"/></a>
+                    <a href="#"><RiInstagramLine  style={IconStyle} size="15%"/></a>
+                    <a href="#"><RiGithubLine  style={IconStyle} size="15%"/></a>
+                  </SocialIcons>
                   <button className="btn draw-border">Ajouter</button>
+                  <button className="btn draw-border">Contacter</button>
                 </div>
               </div>
               <div className='col-9'>

@@ -39,6 +39,13 @@ const MenuItem = styled.div`
     color: white;
   }
 `
+const Bonjour = styled.div`
+  font-size : 42%;
+  letter-spacing: 1px;
+`
+const Account = styled.div`
+  font-size : 58%;
+`
 
 const Nav = () => {
   const navigate = useNavigate()
@@ -79,7 +86,14 @@ const Nav = () => {
               {user ? 
                 <>
                   <MenuItem>
-                    Bonjour, {user.username}.
+                    <Link to={`/user/${user._id}`}>
+                      <Bonjour>
+                        Bonjour, {user.username}.
+                      </Bonjour>
+                      <Account>
+                      <div className='underline'>Accéder à votre compte.</div>
+                      </Account>
+                    </Link>
                   </MenuItem>
                   <MenuItem>
                     <button 
