@@ -107,6 +107,7 @@ const Users = () => {
               {users.map(element => (
                 <UserCard
                   key={element._id}
+                  id={element._id}
                   username={element.username}
                   summoner_name={element.summoner_name}
                   discord={element.discord}

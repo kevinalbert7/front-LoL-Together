@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
+import { getUserByID } from '../api/user'
+import { getLolProfile, getLolStats } from '../api/lolinfos' 
+import { getEmblem } from '../api/emblem'
+
+
+import '../UserProfile.css'
 import styled from 'styled-components'
+import { motion } from "framer-motion"
 
 import Nav from '../components/Nav'
 import Logo from '../components/Logo'
@@ -21,66 +28,65 @@ const Header = styled.div`
   flex-direction: column;
   justify-content: flex-end;
 `
+const LogoTitle = styled.div`
+  left: 35%;
+  top: 20%;
+  position: absolute;
+  font-size: 20px;
+  width: 31%;
+  .p2 {
+    font-size: 15px;
+  }
+`
 const Separator = styled.div`
   background-image: url(${blur});
   background-repeat: no-repeat;
   background-size: cover;
   height: 160px;
 `
+const Emblem = styled.div`
+  text-align : center;
+  img {
+   width: 30%;
+  }
+`
 const Middle = styled.div`
   background-color: black;
-  padding: 5%;
+  padding: 0 5%;
+  min-height: 45em;
 `
 
 const UserProfile = () => {
   const { id } = useParams()
-  const api_key = "RGAPI-62f462d1-7eb9-4e62-a241-0e775aa372cb"
   const navigate = useNavigate()
+  const [emblem, setEmblem] = useState(null)
   const [userProfile, setUserProfile] = useState(null)
   const [lolProfile, setLolProfile] = useState(null)
   const [lolStats, setLolStats] = useState(null)
 
   useEffect(() => {
-    getProfile()
+    fetchUser()
   },[id])
 
-  const getProfile = async () =>{
-    //recuperer le profil de mongo
-    const response = await fetch(`http://localhost:5000/users/${id}`, {
-      credentials: "include"
-    })
-    const data = await response.json()
-    if (data.error) {
-        navigate('/login')
-      } else {
-        setUserProfile(data)
-    }
+  const fetchUser = async () =>{
 
-    //recuperer le profil de lol
-    const LoL_Response = await fetch(`https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${data.summoner_name}?api_key=${api_key}`, {
-    })
-    const LoL_data = await LoL_Response.json()
-    if (LoL_data.error) {
-        navigate('/login')
-      } else {
-        setLolProfile(LoL_data)
-    }
+    const user = await getUserByID(id)
+    setUserProfile(user)
 
-    //recuperer les stats de lol
-    const LoL_Stats_Response = await fetch(`https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${LoL_data.id}?api_key=${api_key}`, {
-    })
-    const LoL_Stats_data = await LoL_Stats_Response.json()
-    if (LoL_Stats_data.error) {
-        navigate('/login')
-      } else {
-        setLolStats(LoL_Stats_data)
-    }
+    const lolProfile = await getLolProfile(user.summoner_name)
+    setLolProfile(lolProfile)
 
+    const lolStats = await getLolStats(lolProfile.id)
+    setLolStats(lolStats)
+
+    const userEmblem = getEmblem(lolStats[1].tier)
+    setEmblem(userEmblem) 
   }
 
   if(!userProfile || !lolProfile || !lolStats) {
     return <h1>Chargement...</h1>
   }
+
 
   console.log("userprofile", userProfile)
   console.log("lolProfile", lolProfile)
@@ -88,29 +94,70 @@ const UserProfile = () => {
   return (
     <>
       <Nav />
-      <Header>
-        {/* <Logo /> */}
-        {/* <Title text="zef" size='72'/> */}
-        <Separator />
-      </Header>
-      <Middle>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-2'>
-              <img 
-                src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${lolProfile.profileIconId}.png`} 
-                alt='profileIcon'
-                className='img-fluid'
-              />
-              {lolStats.map(element => element.tier)}
-            </div>
-            <div className='col-10'>
-              {userProfile.email}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Header>
+          <LogoTitle>
+              <motion.div
+                style={{ x: 100 }} 
+                animate={{ x: 0 }}          
+              >
+                <Logo />
+                <Title text={`${userProfile.username}`} size='64'/>
+              </motion.div>
+            </LogoTitle>
+          <Separator />
+        </Header>
+        <Middle>
+          <div className='container'>
+            <div className='row'>
+              <div className='col-3'>
+                <div className="cardProfile">
+                  <img 
+                    src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${lolProfile.profileIconId}.png`} 
+                    alt="Person" 
+                    className="card__image animate__animated animate__bounce" 
+                  />
+                  <p className="card__name">{userProfile.username}</p>
+                  <p>{lolStats[1].tier} {lolStats[1].rank}</p>
+                  {emblem ? 
+                    <Emblem>
+                      <img src={`${emblem}`} /> 
+                    </Emblem>
+                  :
+                    <div className='mx-5 fw-bold'>
+                      Not Ranked
+                    </div>
+                  }
+                  <div className="grid-container">
+                    <div className="grid-child-posts">
+                      {lolStats[1].wins} Wins
+                    </div>
+                    <div className="grid-child-followers">
+                      {lolStats[1].losses} Loses
+                    </div>
+                  </div>
+                  <ul className="social-icons">
+                    <li><a href="#"><i className="fa fa-instagram"></i></a></li>
+                    <li><a href="#"><i className="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i className="fa fa-linkedin"></i></a></li>
+                    <li><a href="#"><i className="fa fa-codepen"></i></a></li>
+                  </ul>
+                  <button className="btn draw-border">Follow</button>
+                  <button className="btn draw-border">Message</button>
+                </div>
+              </div>
+              <div className='col-9'>
+                {userProfile.email}
+              </div>
             </div>
           </div>
-        </div>
-      </Middle>
-      <Footer />
+        </Middle>
+        <Footer />
+      </motion.div>
     </>
   )
 }
