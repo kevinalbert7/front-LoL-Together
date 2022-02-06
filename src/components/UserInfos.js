@@ -57,7 +57,7 @@ const UserInfos = ({ userprofile }) => {
           <UserInfosSeparator/>
         </div>
         <div className='col-1 cursor-pointer'>
-          <RiPencilLine onClick={() => handleModal("editprofile")}/> 
+          <RiPencilLine onClick={() => handleModal("editProfile")}/> 
         </div>
       </div>
       <div className='col-4 my-1'>
@@ -90,7 +90,7 @@ const UserInfos = ({ userprofile }) => {
             <UserInfosSeparator/>
           </div>
           <div className='col-1 cursor-pointer'>
-            <RiPencilLine onClick={() => setModalShow(true)}/> 
+            <RiPencilLine onClick={() => handleModal("editDescription")}/> 
           </div>
         </div>
         {userprofile.description}

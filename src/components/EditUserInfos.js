@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { MultiSelect } from "react-multi-select-component"
 import Modal from 'react-bootstrap/Modal'
-import Button from "react-bootstrap/esm/Button"
 import Select from 'react-select'
 
 import { UserContext } from '../contexts/UserContext'
@@ -137,7 +136,7 @@ const EditUserInfos = ({ onHide }) => {
         </div>
       </div>
       <Modal.Footer>
-        <Button onClick={() => handleModifyInfos()}>Valider</Button>
+        <button className="btn draw-border" onClick={() => handleModifyInfos()}>Valider</button>
       </Modal.Footer>
     </div>
   )

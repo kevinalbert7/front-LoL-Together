@@ -3,7 +3,8 @@ import Modal from 'react-bootstrap/Modal'
 
 import styled from 'styled-components'
 
-import EditInfos from './EditUserInfos'
+import EditUserInfos from './EditUserInfos'
+import EditDescription from './EditDescription'
 
 const ModalStyle = styled.div`
   color: black;
@@ -12,8 +13,6 @@ const ModalStyle = styled.div`
 const MyVerticallyCenteredModal = (props) => {
   const { modalparam, onHide } = props
 
-
-  
   return (
     <Modal
       {...props}
@@ -21,14 +20,15 @@ const MyVerticallyCenteredModal = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <ModalStyle>
+      <ModalStyle >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             Modifier vos informations
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {modalparam === "editprofile" && <EditInfos onHide={onHide} />}
+          {modalparam === "editProfile" && <EditUserInfos onHide={onHide} />}
+          {modalparam === "editDescription" && <EditDescription onHide={onHide} />}
         </Modal.Body>
 
       </ModalStyle>
