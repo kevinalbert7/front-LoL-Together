@@ -8,6 +8,7 @@ import Emblem_Master from '../images/ranked-emblems/Emblem_Master.png'
 import Emblem_Platinum from '../images/ranked-emblems/Emblem_Platinum.png'
 import Emblem_Silver from '../images/ranked-emblems/Emblem_Silver.png'
 
+
 const getEmblem = (tier) => {
   if (tier === "BRONZE") {
     return Emblem_Bronze

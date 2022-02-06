@@ -1,36 +1,95 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
+import moment from 'moment'
+import 'moment/locale/fr'
 
 import styled from 'styled-components'
 
 import Nav from '../components/Nav'
-import Logo from '../components/Logo'
 import Title from '../components/Title'
 import Footer from '../components/Footer'
+import Logo from '../components/Logo'
 
-import blur from '../images/blur.png'
 import backgroundImage from '../images/team-background.png'
 
 const Header = styled.div`
-  background-image: url(${backgroundImage});
-  height: 65vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  positive: relative;
+height: 150vh;
+background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+display: flex;
+align-items: center;
+flex-direction: column;
+postion: absolute;
+`
+const LogoContainer = styled.div`
+  top: 100px;
+  left: 100px;
+  position: absolute;
+`
+const TitleContainer = styled.div`
+  position: absolute;
+  top: 150px;
+`
+const Card =styled.div`
+  width: 75vw;
+  padding: 50px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  margin: 150px;
+
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 4px solid rgba(0, 0, 0, 0.3);
+  border-radius: 2%;
+  color: black;
+  position: absolute;
+  top: 200px;
+  .teamLogo {
+    height: 100px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    color: white;
+    position: absolute;
+    top: -50px;
+  }
+  .contenu {
+    margin-bottom: 10px;
+  }
+  .title {
+    margin-bottom: 10px;
+  }
+  ul{
+    margin: 0;
+  }
+  li {
+    margin: 0;
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  .annonces {
+    margin-top: 30px;
+    margin-left: 30px;
+    color: white;
+    font-size: 25px;
+  }
+  .teamDate {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    font-size: 13px;
+    color: grey;
+  }
 `
-const Separator = styled.div`
-  background-image: url(${blur});
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 160px;
-`
-const Middle = styled.div`
-  background-color: black;
-  padding: 5%;
-`
+
+
 
 const TeamProfile = () => {
   const { id } = useParams()
@@ -40,7 +99,8 @@ const TeamProfile = () => {
   useEffect(() => {
     getProfile()
   },[id])
-
+  
+  
   const getProfile = async () =>{
     
     const response = await fetch(`http://localhost:5000/teams/${id}`, {
@@ -48,27 +108,112 @@ const TeamProfile = () => {
     })
     const data = await response.json()
     if (data.error) {
-        navigate('/login')
-      } else {
-        setTeamProfile(data)
+      navigate('/login')
+    } else {
+      setTeamProfile(data)
     }
+  }
+  
+  if(!teamProfile) {
+    return <h1>Chargement...</h1>
   }
   
   console.log("team", teamProfile)
   return (
     <>
       <Nav />
+
       <Header>
-        {/* <Logo /> */}
-        {/* <Title text="zef" size='72'/> */}
-        <Separator />
+
+        <LogoContainer>
+            <Logo/>
+        </LogoContainer>
+
+        <TitleContainer>
+          <Title text={teamProfile.name} size='72'/>
+        </TitleContainer>
+
       </Header>
-      <Middle>
-        <div className='container'>
-          Test
-        </div>
-      </Middle>
-      <Footer />
+
+        <Card>
+          <div className='teamLogo' style={{ backgroundImage: `url("${teamProfile.logo}")` }}/>
+
+          <div className='container'>
+            <div className='row '>
+              <div className='col gx-5 gy-5'>
+                <div className="p-3 border rounded bg-dark text-light title"><p>Membres :</p>
+                  <ul>
+                    {teamProfile.users.map(user => (
+                      <li>                     
+                        <a href={`http://localhost:3000/user/${id}`}>{user.username}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div> 
+              </div>
+              <div className='col gx-5 gy-5'>
+                <div className="p-3 border rounded bg-dark text-light"><p>Rank :</p>
+                  {teamProfile.rank}
+                </div>
+              </div>
+            </div>
+
+
+            <div className='row'>
+              <div className='col gx-5 gy-5'>
+                <div className="p-3 border rounded bg-dark text-light"><p>Région :</p>
+                  {teamProfile.region}
+                </div>
+              </div>
+              <div className='col gx-5 gy-5'>
+                <div className="p-3 border rounded bg-dark text-light"><p>Langues :</p>
+                  <ul>
+                    {teamProfile.languages.map(language => (
+                      <li>{language}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className='row'>
+              <div className='col gx-5 gy-5'>
+                <div className="p-3 border rounded bg-dark text-light"><p>Disponibilités :</p>
+                  <ul>
+                    {teamProfile.disponibilities.map(disponibilitie => (
+                      <li>{disponibilitie}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className='col gx-5 gy-5'></div>
+            </div>
+
+            <div className='row'>
+              <div className='col gx-5 gy-5'>
+                <div className="p-3 border rounded bg-dark text-light"><p>Description :</p>
+                  {teamProfile.description}
+                </div>
+              </div>
+            </div>
+
+            <div className='annonces'>Annonces :</div>
+            {teamProfile.announcements.map(announcement => (
+              <div className='row'>
+                <div className='col gx-5 gy-5'>
+                  <div className="p-3 border rounded bg-dark text-light contenu">
+                    {announcement.text}
+                    <div className='teamDate'>Postée le {moment(teamProfile.updatedAt).format('lll')}</div>
+                  </div>
+                </div>
+              </div>
+              ))}
+          </div>
+
+        </Card>   
+
+        <Footer />
+
     </>
   )
 }
