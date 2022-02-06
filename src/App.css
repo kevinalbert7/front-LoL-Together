@@ -47,3 +47,19 @@ body {
     width: 100%;
   }
 }
+
+.borderBottom {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.253);
+}
+.userinfos {
+  color: #ffe593;
+}
+.userinfos .col-1 {
+  width: 4% !important;
+}
+.userinfos .col-2 {
+  width: 10% !important;
+}
+.userinfos .col-9 {
+  width: 86% !important;
+}
