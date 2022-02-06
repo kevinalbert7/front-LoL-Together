@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 
+import { UserContext } from '../contexts/UserContext'
 import { ProfileContext } from '../contexts/ProfileContent'
 
 import moment from "moment"
@@ -33,6 +35,8 @@ const IconStyle = {
 
 const UserInfos = () => {
   let teamArray = []
+  const { id } = useParams()
+  const { user } = useContext(UserContext)
   const { profile, setProfile } = useContext(ProfileContext)
   const [modalParam, setModalParam] = useState(null)
   const [modalShow, setModalShow] = useState(false)
@@ -46,7 +50,7 @@ const UserInfos = () => {
     setModalParam(param)
   }
 
-  console.log(profile)
+  // console.log(teamArray)
   return ( 
     <>
       <div className='row d-flex py-2 align-items-center userinfos'>
@@ -109,9 +113,11 @@ const UserInfos = () => {
           <div className='col-8'>
             <UserInfosSeparator/>
           </div>
-          <div className='col-1 cursor-pointer'>
-            <RiPencilLine onClick={() => setModalShow(true)}/> 
-          </div>
+          {user._id === id && 
+            <div className='col-1 cursor-pointer'>
+              <RiPencilLine onClick={() => handleModal("createAnnoucement")}/> 
+            </div>
+          }
         </div>
         {profile.announcements.map((element, index, {length}) => (   
           length - 1 !== index ? (
