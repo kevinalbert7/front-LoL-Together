@@ -9,11 +9,8 @@ import Nav from '../components/Nav'
 import Title from '../components/Title'
 import Footer from '../components/Footer'
 import Logo from '../components/Logo'
-// import Separator from '../components/Separator'
 
-// import blur from '../images/blur.png'
 import backgroundImage from '../images/team-background.png'
-import { RiFontSize } from 'react-icons/ri'
 
 const Header = styled.div`
 height: 150vh;

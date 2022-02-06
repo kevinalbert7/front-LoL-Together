@@ -13,7 +13,7 @@ const Emblem = styled.div`
   }
 `
 
-const UserCard = ({ username, summoner_name, discord, region, languages, disponibilities, roles }) => {
+const UserCard = ({ id, username, summoner_name, discord, region, languages, disponibilities, roles }) => {
   const [notRanked, setNotRanked] = useState(null)
   const [emblem, setEmblem] = useState(null)
   const [lolProfile, setLolProfile] = useState(null)
@@ -28,7 +28,7 @@ const UserCard = ({ username, summoner_name, discord, region, languages, disponi
       const lolProfile = await getLolProfile(summoner_name)    
       setLolProfile(lolProfile)
       const lolStats = await getLolStats(lolProfile.id)
-      const emblem = getEmblem(lolStats[0].tier)
+      const emblem = getEmblem(lolStats[1].tier)
       
       setEmblem(emblem)   
     } catch (error) {
@@ -73,7 +73,7 @@ const UserCard = ({ username, summoner_name, discord, region, languages, disponi
             <li className="list-group-item">Discord : <span className='fw-bold'>{discord}</span></li>
           </ul>
           <div className="card-body text-end">
-            <a href="#" className="card-link ">Voir plus</a>
+            <a href={`http://localhost:3000/user/${id}`} className="text-dark card-link text-decoration-none underline">Voir plus...</a>
           </div>
         </div>
       </motion.div>
