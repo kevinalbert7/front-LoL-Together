@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import Modal from 'react-bootstrap/Modal'
 
 import { UserContext } from '../contexts/UserContext'
+import { ProfileContext } from '../contexts/ProfileContent'
 
 const EditDescription = ({ onHide }) => {
   const { user, setUser } = useContext(UserContext)
-  const [newDesciption, setNewDescription] = useState(user.description)
+  const { profile, setProfile } = useContext(ProfileContext)
+  const [newDesciption, setNewDescription] = useState(profile.description)
 
   const handleTextarea = (e) => {
     setNewDescription(e.target.value)
@@ -17,7 +19,7 @@ const EditDescription = ({ onHide }) => {
   }
   
   const editInfos = async () => {
-    const editInfos = await fetch(`http://localhost:5000/users/${user._id}`, {
+    const editInfos = await fetch(`http://localhost:5000/users/${profile._id}`, {
       method: 'put',
       headers: {
         'Content-type': 'application/json'
@@ -28,7 +30,7 @@ const EditDescription = ({ onHide }) => {
       })
     })
     const profileEdited = await editInfos.json()
-    setUser(profileEdited); // mise à jour des valeurs de l'user
+    setProfile(profileEdited); // mise à jour des valeurs de l'user
   }
   
   console.log(newDesciption)
@@ -41,7 +43,7 @@ const EditDescription = ({ onHide }) => {
           placeholder="Leave a comment here" 
           id="floatingTextarea2" 
           style={{height:"200px"}}
-          defaultValue={user.description}
+          defaultValue={profile.description}
           onChange={handleTextarea}
         />
         <label htmlFor="floatingTextarea2">Description</label>

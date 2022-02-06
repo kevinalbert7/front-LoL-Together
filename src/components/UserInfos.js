@@ -1,4 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
+
+import { ProfileContext } from '../contexts/ProfileContent'
 
 import moment from "moment"
 import 'moment/locale/fr'
@@ -29,12 +31,13 @@ const IconStyle = {
   color : "teal"
 } 
 
-const UserInfos = ({ userprofile }) => {
+const UserInfos = () => {
   let teamArray = []
+  const { profile, setProfile } = useContext(ProfileContext)
   const [modalParam, setModalParam] = useState(null)
   const [modalShow, setModalShow] = useState(false)
 
-  userprofile.teams.map(element => 
+  profile.teams.map(element => 
     teamArray = [ ...teamArray, element.name ]
   )
 
@@ -43,7 +46,7 @@ const UserInfos = ({ userprofile }) => {
     setModalParam(param)
   }
 
-  console.log(userprofile)
+  console.log(profile)
   return ( 
     <>
       <div className='row d-flex py-2 align-items-center userinfos'>
@@ -61,22 +64,22 @@ const UserInfos = ({ userprofile }) => {
         </div>
       </div>
       <div className='col-4 my-1'>
-        <MdOutlineEventAvailable style={IconStyle}/> Disponibilités : {userprofile.disponibilities.join(', ')}
+        <MdOutlineEventAvailable style={IconStyle}/> Disponibilités : {profile.disponibilities.join(', ')}
       </div>
       <div className='col-4 my-1'>
-        <FaLanguage style={IconStyle}/> Langue(s) parlé(s) : {userprofile.languages.join(', ')}
+        <FaLanguage style={IconStyle}/> Langue(s) parlé(s) : {profile.languages.join(', ')}
       </div>
       <div className='col-4 my-1'>
-        <MdLanguage style={IconStyle}/> Region : {userprofile.region}
+        <MdLanguage style={IconStyle}/> Region : {profile.region}
       </div>
       <div className='col-4 my-1'>
-        <RiUserLine style={IconStyle}/> Rôle(s) : {userprofile.roles.join(', ')}
+        <RiUserLine style={IconStyle}/> Rôle(s) : {profile.roles.join(', ')}
       </div>
       <div className='col-4 my-1'>
         <RiTeamLine style={IconStyle}/> Team(s) : {teamArray.join(', ')}
       </div>
       <div className='col-4 my-1'>
-        <RiDiscordLine style={IconStyle}/> Discord : {userprofile.discord ? "Oui" : "Indisponible"}
+        <RiDiscordLine style={IconStyle}/> Discord : {profile.discord ? "Oui" : "Indisponible"}
       </div>
       <div className='col-12 my-2 py-1 '>
         <div className='row d-flex py-2 align-items-center userinfos'>
@@ -93,7 +96,7 @@ const UserInfos = ({ userprofile }) => {
             <RiPencilLine onClick={() => handleModal("editDescription")}/> 
           </div>
         </div>
-        {userprofile.description}
+        {profile.description}
       </div>
       <Announcements>
         <div className='row d-flex align-items-center userinfos'>
@@ -110,7 +113,7 @@ const UserInfos = ({ userprofile }) => {
             <RiPencilLine onClick={() => setModalShow(true)}/> 
           </div>
         </div>
-        {userprofile.announcements.map((element, index, {length}) => (   
+        {profile.announcements.map((element, index, {length}) => (   
           length - 1 !== index ? (
             <div
               key={element._id} 
