@@ -1,40 +1,40 @@
+import React from 'react'
 import Modal from 'react-bootstrap/Modal'
-import Button from "react-bootstrap/esm/Button"
 
 import styled from 'styled-components'
+
+import EditUserInfos from './EditUserInfos'
+import EditDescription from './EditDescription'
+import CreateAnnouncement from './CreateAnnouncement'
 
 const ModalStyle = styled.div`
   color: black;
 `
 
 const MyVerticallyCenteredModal = (props) => {
-  const { modalparam } = props
+  const { modalparam, onHide } = props
 
-  console.log(modalparam)
   return (
     <Modal
       {...props}
-      size="lg"
+      size="xl"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <ModalStyle>
+      <ModalStyle >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+            {modalparam === "editProfile" &&  "Modifier vos informations" }
+            {modalparam === "editDescription" && "Modifier votre description" }
+            {modalparam === "createAnnoucement" && "Poster une annonce" }
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.
-          </p>
+          {modalparam === "editProfile" && <EditUserInfos onHide={onHide} />}
+          {modalparam === "editDescription" && <EditDescription onHide={onHide} />}
+          {modalparam === "createAnnoucement" && <CreateAnnouncement onHide={onHide} />}
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
+
       </ModalStyle>
     </Modal>
   );

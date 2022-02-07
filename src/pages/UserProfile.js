@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { getUserByID } from '../api/user'
 import { getLolProfile, getLolStats } from '../api/lolinfos' 
 import { getEmblem } from '../api/emblem'
 
+import { UserContext } from '../contexts/UserContext'
+import { ProfileContext } from '../contexts/ProfileContent'
 
 import '../UserProfile.css'
 import styled from 'styled-components'
@@ -73,37 +75,41 @@ const IconStyle = {
 
 const UserProfile = () => {
   const { id } = useParams()
+  const { user } = useContext(UserContext)
+  const { profile, setProfile } = useContext(ProfileContext)
   const navigate = useNavigate()
   const [emblem, setEmblem] = useState(null)
-  const [userProfile, setUserProfile] = useState(null)
+  // const [userProfile, setUserProfile] = useState(null)
   const [lolProfile, setLolProfile] = useState(null)
   const [lolStats, setLolStats] = useState(null)
 
   useEffect(() => {
     fetchUser()
-  },[id])
+  },[id, user])
 
   const fetchUser = async () =>{
 
-    const user = await getUserByID(id)
-    setUserProfile(user)
+    const profile = await getUserByID(id)
+    setProfile(profile)
 
-    const lolProfile = await getLolProfile(user.summoner_name)
+    const lolProfile = await getLolProfile(profile.summoner_name)
     setLolProfile(lolProfile)
 
     const lolStats = await getLolStats(lolProfile.id)
     setLolStats(lolStats)
 
-    const userEmblem = getEmblem(lolStats[1].tier)
-    setEmblem(userEmblem) 
+    if (lolStats.length !== 0 ) { 
+      const userEmblem = getEmblem(lolStats[1].tier)
+      setEmblem(userEmblem) 
+    }
   }
 
-  if(!userProfile || !lolProfile || !lolStats) {
+  if(!profile || !lolProfile || !lolStats) {
     return <h1>Chargement...</h1>
   }
 
 
-  // console.log("userprofile", userProfile)
+  // console.log("userprofile", profile)
   // console.log("lolProfile", lolProfile)
   // console.log("lolStats", lolStats)
   return (
@@ -121,7 +127,7 @@ const UserProfile = () => {
                 animate={{ x: 0 }}          
               >
                 <Logo />
-                <Title text={`${userProfile.summoner_name}`} size='64'/>
+                <Title text={`${profile.summoner_name}`} size='64'/>
               </motion.div>
             </LogoTitle>
           <Separator />
@@ -137,9 +143,9 @@ const UserProfile = () => {
                     className="card__image animate__animated animate__bounce" 
                   />
                   <Username>
-                    {userProfile.username}
+                    {profile.username}
                   </Username>
-                  <p className="card__name">{userProfile.summoner_name}</p>
+                  <p className="card__name">{profile.summoner_name}</p>
                   <p>{lolStats.length !== 0  && lolStats[1].tier} {lolStats.length !== 0 && lolStats[1].rank}</p>
                   {emblem ? 
                     <Emblem>
@@ -171,7 +177,7 @@ const UserProfile = () => {
               </div>
               <div className='col-9'>
                 <div className='row'>
-                  <UserInfos userprofile={userProfile}/>
+                  <UserInfos />
                 </div>
               </div>
             </div>

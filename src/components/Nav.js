@@ -7,10 +7,10 @@ import { UserContext } from '../contexts/UserContext'
 
 const MenuBackground = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
   position: fixed;
   width: 100%;
   top: 0;
+  z-index: 10;
 `
 const Menu = styled.div`
   display: flex;

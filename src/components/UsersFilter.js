@@ -34,7 +34,7 @@ const UsersFilter = () => {
     setUsers(data)
   },[selectedRegion, selectedLanguages, selectedDisponiblities, selectedRoles])
 
-  console.log(selectedDisponiblities)
+  // console.log(selectedDisponiblities)
   return (
     <>
       <div className='col-3 my-2'>

@@ -1,4 +1,4 @@
-const api_key = "RGAPI-9e65a537-d151-468b-9442-7a7c75a1c319"
+const api_key = "RGAPI-374b0f82-4c5e-4e62-b03b-9df30bb9ed63"
 
 const getLolProfile = async (summoner_name) => {
   const LoL_Response = await fetch(`https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner_name}?api_key=${api_key}`, {
