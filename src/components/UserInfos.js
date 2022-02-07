@@ -62,7 +62,7 @@ const UserInfos = () => {
     return <h1>Chargement...</h1>
   }
 
-  console.log(announcement)
+  // console.log(announcement)
   return ( 
     <>
       <div className='row d-flex py-2 align-items-center userinfos'>
