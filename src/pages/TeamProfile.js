@@ -122,100 +122,98 @@ const TeamProfile = () => {
   return (
     <>
       <Nav />
-
-      <Header>
-
-        <LogoContainer>
-            <Logo/>
-        </LogoContainer>
-
-        <TitleContainer>
-          <Title text={teamProfile.name} size='72'/>
-        </TitleContainer>
-
-      </Header>
-
-        <Card>
-          <div className='teamLogo' style={{ backgroundImage: `url("${teamProfile.logo}")` }}/>
-
-          <div className='container'>
-            <div className='row '>
-              <div className='col gx-5 gy-5'>
-                <div className="p-3 border rounded bg-dark text-light title"><p>Membres :</p>
-                  <ul>
-                    {teamProfile.users.map(user => (
-                      <li>                     
-                        <a href={`http://localhost:3000/user/${id}`}>{user.username}</a>
-                      </li>
-                    ))}
-                  </ul>
-                </div> 
-              </div>
-              <div className='col gx-5 gy-5'>
-                <div className="p-3 border rounded bg-dark text-light"><p>Rank :</p>
-                  {teamProfile.rank}
-                </div>
-              </div>
-            </div>
+      
 
 
-            <div className='row'>
-              <div className='col gx-5 gy-5'>
-                <div className="p-3 border rounded bg-dark text-light"><p>Région :</p>
-                  {teamProfile.region}
-                </div>
-              </div>
-              <div className='col gx-5 gy-5'>
-                <div className="p-3 border rounded bg-dark text-light"><p>Langues :</p>
-                  <ul>
-                    {teamProfile.languages.map(language => (
-                      <li>{language}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className='row'>
-              <div className='col gx-5 gy-5'>
-                <div className="p-3 border rounded bg-dark text-light"><p>Disponibilités :</p>
-                  <ul>
-                    {teamProfile.disponibilities.map(disponibilitie => (
-                      <li>{disponibilitie}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className='col gx-5 gy-5'></div>
-            </div>
-
-            <div className='row'>
-              <div className='col gx-5 gy-5'>
-                <div className="p-3 border rounded bg-dark text-light"><p>Description :</p>
-                  {teamProfile.description}
-                </div>
-              </div>
-            </div>
-
-            <div className='annonces'>Annonces :</div>
-            {teamProfile.announcements.map(announcement => (
-              <div className='row'>
-                <div className='col gx-5 gy-5'>
-                  <div className="p-3 border rounded bg-dark text-light contenu">
-                    {announcement.text}
-                    <div className='teamDate'>Postée le {moment(teamProfile.updatedAt).format('lll')}</div>
-                  </div>
-                </div>
-              </div>
-              ))}
-          </div>
-
-        </Card>   
-
-        <Footer />
+      <Footer />
 
     </>
   )
 }
 
 export default TeamProfile
+
+      // <LogoContainer>
+      //     <Logo/>
+      // </LogoContainer>
+
+      // <TitleContainer>
+      //   <Title text={teamProfile.name} size='72'/>
+      // </TitleContainer>
+
+{/* <Card>
+<div className='teamLogo' style={{ backgroundImage: `url("${teamProfile.logo}")` }}/>
+
+<div className='container'>
+  <div className='row '>
+    <div className='col gx-5 gy-5'>
+      <div className="p-3 border rounded bg-dark text-light title"><p>Membres :</p>
+        <ul>
+          {teamProfile.users.map(user => (
+            <li>                     
+              <a href={`http://localhost:3000/user/${id}`}>{user.username}</a>
+            </li>
+          ))}
+        </ul>
+      </div> 
+    </div>
+    <div className='col gx-5 gy-5'>
+      <div className="p-3 border rounded bg-dark text-light"><p>Rank :</p>
+        {teamProfile.rank}
+      </div>
+    </div>
+  </div>
+
+
+  <div className='row'>
+    <div className='col gx-5 gy-5'>
+      <div className="p-3 border rounded bg-dark text-light"><p>Région :</p>
+        {teamProfile.region}
+      </div>
+    </div>
+    <div className='col gx-5 gy-5'>
+      <div className="p-3 border rounded bg-dark text-light"><p>Langues :</p>
+        <ul>
+          {teamProfile.languages.map(language => (
+            <li>{language}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div className='row'>
+    <div className='col gx-5 gy-5'>
+      <div className="p-3 border rounded bg-dark text-light"><p>Disponibilités :</p>
+        <ul>
+          {teamProfile.disponibilities.map(disponibilitie => (
+            <li>{disponibilitie}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div className='col gx-5 gy-5'></div>
+  </div>
+
+  <div className='row'>
+    <div className='col gx-5 gy-5'>
+      <div className="p-3 border rounded bg-dark text-light"><p>Description :</p>
+        {teamProfile.description}
+      </div>
+    </div>
+  </div>
+
+  <div className='annonces'>Annonces :</div>
+  {teamProfile.announcements.map(announcement => (
+    <div className='row'>
+      <div className='col gx-5 gy-5'>
+        <div className="p-3 border rounded bg-dark text-light contenu">
+          {announcement.text}
+          <div className='teamDate'>Postée le {moment(teamProfile.updatedAt).format('lll')}</div>
+        </div>
+      </div>
+    </div>
+    ))}
+</div>
+
+</Card>    */}
