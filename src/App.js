@@ -9,6 +9,7 @@ import 'animate.css'
 import { UserContextProvider } from './contexts/UserContext'
 import { UsersContextProvider } from "./contexts/UsersContext"
 import { ProfileContextProvider } from "./contexts/ProfileContent"
+import { AnnouncementContextProvider } from "./contexts/AnnouncementContext"
 
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -23,26 +24,28 @@ const App = () => {
   const location = useLocation()
   
   return (
-    <ProfileContextProvider>
-      <UsersContextProvider>
-          <UserContextProvider>
-            <AnimatePresence exitBeforeEnter>
-              {/* <BrowserRouter> */}
-                <Routes location={location} key={location.pathname}>
-                  <Route exact path="/" element={<Home />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/signup" element={<Signup />} />
-                  <Route path="/user/:id" element={<UserProfile />} />
-                  <Route path="/team/:id" element={<TeamProfile />} />
-                  <Route path="/users" element={<Users />} />
-                  <Route path="/teams" element={<Teams />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              {/* </BrowserRouter> */}
-            </AnimatePresence>
-          </UserContextProvider>
-      </UsersContextProvider>
-    </ProfileContextProvider>
+    <AnnouncementContextProvider>
+      <ProfileContextProvider>
+        <UsersContextProvider>
+            <UserContextProvider>
+              <AnimatePresence exitBeforeEnter>
+                {/* <BrowserRouter> */}
+                  <Routes location={location} key={location.pathname}>
+                    <Route exact path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/user/:id" element={<UserProfile />} />
+                    <Route path="/team/:id" element={<TeamProfile />} />
+                    <Route path="/users" element={<Users />} />
+                    <Route path="/teams" element={<Teams />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                {/* </BrowserRouter> */}
+              </AnimatePresence>
+            </UserContextProvider>
+        </UsersContextProvider>
+      </ProfileContextProvider>
+    </AnnouncementContextProvider>
   )
 }
 
