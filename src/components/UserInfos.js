@@ -34,23 +34,18 @@ const IconStyle = {
 } 
 
 const UserInfos = () => {
-  let teamArray = []
   const { id } = useParams()
   const { user } = useContext(UserContext)
-  const { profile, setProfile } = useContext(ProfileContext)
+  const { profile } = useContext(ProfileContext)
   const [modalParam, setModalParam] = useState(null)
   const [modalShow, setModalShow] = useState(false)
-
-  profile.teams.map(element => 
-    teamArray = [ ...teamArray, element.name ]
-  )
 
   const handleModal = (param) => {
     setModalShow(true)
     setModalParam(param)
   }
 
-  // console.log(teamArray)
+  // console.log(profile)
   return ( 
     <>
       <div className='row d-flex py-2 align-items-center userinfos'>
@@ -80,7 +75,19 @@ const UserInfos = () => {
         <RiUserLine style={IconStyle}/> Rôle(s) : {profile.roles.join(', ')}
       </div>
       <div className='col-4 my-1'>
-        <RiTeamLine style={IconStyle}/> Team(s) : {teamArray.join(', ')}
+        <RiTeamLine style={IconStyle}/> Team(s) : {
+          profile.teams.map((element, index, {length} ) => {           
+            return length - 1 !== index ? 
+            <Link 
+              key={index}
+              to={`/team/${element._id}`}>{element.name},
+            </Link>
+            : 
+            <Link 
+              key={index}
+              to="/">{element.name}
+            </Link>
+        })}
       </div>
       <div className='col-4 my-1'>
         <RiDiscordLine style={IconStyle}/> Discord : {profile.discord ? "Oui" : "Indisponible"}
