@@ -66,10 +66,10 @@ const UserCard = ({ id, username, summoner_name, discord, region, languages, dis
           </div>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">Nom d'invocateur : <span className='fw-bold'>{summoner_name}</span></li>
-            <li className="list-group-item">Roles : <span className='fw-bold text-uppercase'>{roles.join(", ")}</span></li>
+            <li className="list-group-item">Rôles : <span className='fw-bold text-uppercase'>{roles.join(", ")}</span></li>
             <li className="list-group-item">Disponibilités : <span className='fw-bold text-capitalize'>{disponibilities.join(", ")}</span></li>
-            <li className="list-group-item">Region : <span className='fw-bold'>{region}</span></li>
-            <li className="list-group-item">Langue(s) parlé(s) : <span className='fw-bold text-capitalize'>{languages.join(", ")}</span></li>
+            <li className="list-group-item">Région : <span className='fw-bold'>{region}</span></li>
+            <li className="list-group-item">Langue(s) parlée(s) : <span className='fw-bold text-capitalize'>{languages.join(", ")}</span></li>
             <li className="list-group-item">Discord : <span className='fw-bold'>{discord}</span></li>
           </ul>
           <div className="card-body text-end">

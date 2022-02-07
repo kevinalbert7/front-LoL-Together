@@ -38,7 +38,7 @@ const UsersFilter = () => {
   return (
     <>
       <div className='col-3 my-2'>
-        <p>Trier par region :</p>
+        <p>Trier par région :</p>
         <SelectStyled>
           <MultiSelect
             options={optionsRegion}
@@ -50,7 +50,7 @@ const UsersFilter = () => {
         </SelectStyled>
       </div>
       <div className='col-3 my-2'>
-        <p>Trier par langue(s) parle(s) :</p>
+        <p>Trier par langue(s) parlée(s) :</p>
         <SelectStyled>
           <MultiSelect
             options={optionsLanguages}
@@ -62,7 +62,7 @@ const UsersFilter = () => {
         </SelectStyled>
       </div>
       <div className='col-3 my-2'>
-        <p>Disponiblitiés :</p>
+        <p>Trier selon les disponibilités :</p>
         <SelectStyled>
           <MultiSelect
             options={optionsDisponiblities}
@@ -74,7 +74,7 @@ const UsersFilter = () => {
         </SelectStyled>
       </div>
       <div className='col-3 my-2'>
-        <p>Rôles :</p>
+        <p>Trier par rôles :</p>
         <SelectStyled>
           <MultiSelect
             options={optionsRoles}

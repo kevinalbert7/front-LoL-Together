@@ -1,8 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import { UserContext } from '../contexts/UserContext'
 import { ProfileContext } from '../contexts/ProfileContent'
+import { AnnouncementContext } from '../contexts/AnnouncementContext'
+
+import { getAnnouncementById } from '../api/announcement'
 
 import moment from "moment"
 import 'moment/locale/fr'
@@ -37,15 +40,29 @@ const UserInfos = () => {
   const { id } = useParams()
   const { user } = useContext(UserContext)
   const { profile } = useContext(ProfileContext)
+  const { announcement, setAnnouncement } = useContext(AnnouncementContext)
   const [modalParam, setModalParam] = useState(null)
   const [modalShow, setModalShow] = useState(false)
 
+  useEffect(() => {
+    fetchAnnouncement()
+  },[])
+  
+  const fetchAnnouncement = async () => {
+    const response = await getAnnouncementById(id)
+    setAnnouncement(response)
+  }
+  
   const handleModal = (param) => {
     setModalShow(true)
     setModalParam(param)
   }
 
-  // console.log(profile)
+  if(!announcement) {
+    return <h1>Chargement...</h1>
+  }
+
+  // console.log(announcement)
   return ( 
     <>
       <div className='row d-flex py-2 align-items-center userinfos'>
@@ -126,7 +143,7 @@ const UserInfos = () => {
             </div>
           }
         </div>
-        {profile.announcements.map((element, index, {length}) => (   
+        {announcement.map((element, index, {length}) => (   
           length - 1 !== index ? (
             <div
               key={element._id} 

@@ -2,12 +2,14 @@ import React, { useState, useContext } from 'react'
 import Modal from 'react-bootstrap/Modal'
 
 import { UserContext } from '../contexts/UserContext'
+import { AnnouncementContext } from '../contexts/AnnouncementContext'
 
-import { getUserByID } from '../api/user'
+import { getAnnouncementById } from '../api/announcement'
 
 const CreateAnnouncement = ({ onHide }) => {
   const { user, setUser } = useContext(UserContext)
   const [newAnnouncement, setNewAnnouncement] = useState(null)
+  const { setAnnouncement } = useContext(AnnouncementContext)
 
   const handleTextarea = (e) => {
     setNewAnnouncement(e.target.value)
@@ -19,7 +21,7 @@ const CreateAnnouncement = ({ onHide }) => {
   }
 
   const createAnnouncement = async () => {
-    const response = await fetch(`http://localhost:5000/announcements`, {
+    await fetch(`http://localhost:5000/announcements`, {
       method: 'post',
       headers: {
         'Content-type': 'application/json'
@@ -30,9 +32,8 @@ const CreateAnnouncement = ({ onHide }) => {
         text : newAnnouncement
       })
     })
-    const data = await response.json()
-    const updatedUser = await getUserByID(data.user)
-    setUser(updatedUser)
+    const updatedAnnouncement = await getAnnouncementById(user._id)
+    setAnnouncement(updatedAnnouncement)
   }
 
   // console.log(newAnnouncement)
