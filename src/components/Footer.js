@@ -19,6 +19,7 @@ ul {
   display: flex;
   align-items: center;
   margin-top: 15px;
+  margin-right: 30px;
 }
 ul li {
     display: block;
