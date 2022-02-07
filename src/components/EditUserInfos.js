@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal'
 import Select from 'react-select'
 
 import { UserContext } from '../contexts/UserContext'
+import { ProfileContext } from '../contexts/ProfileContent'
 
 import { 
   getRegion, 
@@ -24,6 +25,7 @@ const SelectStyled = styled.div`
 
 const EditUserInfos = ({ onHide }) => {
   const { user, setUser } = useContext(UserContext)
+  const { profile, setProfile } = useContext(ProfileContext)
   const [optionsRegion, setOptionsRegion] = useState([])
   const [selectedRegion, setSelectedRegion] = useState([])
   const [optionsLanguages, setOptionsLanguages] = useState([])
@@ -34,16 +36,16 @@ const EditUserInfos = ({ onHide }) => {
 
 
   useEffect( async () => {
-    setSelectedRegion([{ label: user.region, value: user.region }])
+    setSelectedRegion([{ label: profile.region, value: profile.region }])
     const dataRegion = await getRegion()
     setOptionsRegion(dataRegion)
     const dataLanguages = await getLanguages()
     setOptionsLanguages(dataLanguages)
-    const userLanguages = getSelectedInfos(user.languages)
+    const userLanguages = getSelectedInfos(profile.languages)
     setSelectedLanguages(userLanguages)
-    const userDisponibilities = getSelectedInfos(user.disponibilities)
+    const userDisponibilities = getSelectedInfos(profile.disponibilities)
     setSelectedDisponiblities(userDisponibilities)
-    const userRoles = getSelectedInfos(user.roles)
+    const userRoles = getSelectedInfos(profile.roles)
     setSelectedRoles(userRoles)
   },[])
   
@@ -63,7 +65,7 @@ const EditUserInfos = ({ onHide }) => {
   }
 
   const editInfos = async values => {
-    const editInfos = await fetch(`http://localhost:5000/users/${user._id}`, {
+    const editInfos = await fetch(`http://localhost:5000/users/${profile._id}`, {
       method: 'put',
       headers: {
         'Content-type': 'application/json'
@@ -74,7 +76,7 @@ const EditUserInfos = ({ onHide }) => {
       })
     })
     const profileEdited = await editInfos.json()
-    setUser(profileEdited); // mise à jour des valeurs de l'user
+    setProfile(profileEdited); // mise à jour des valeurs de l'user
   }
 
   // console.log(selectedLanguages)
