@@ -75,7 +75,7 @@ const UserInfos = () => {
         <div className='col-8'>
           <UserInfosSeparator/>
         </div>
-        {user._id === id && user && 
+        {user && user._id === id &&
           <div className='col-1 cursor-pointer'>
             <RiPencilLine onClick={() => handleModal("editProfile")}/> 
           </div>
@@ -122,7 +122,7 @@ const UserInfos = () => {
           <div className='col-8'>
             <UserInfosSeparator/>
           </div>
-          {user._id === id && user && 
+          {user && user._id === id && 
             <div className='col-1 cursor-pointer'>
               <RiPencilLine onClick={() => handleModal("editDescription")}/> 
             </div>
@@ -141,7 +141,7 @@ const UserInfos = () => {
           <div className='col-8'>
             <UserInfosSeparator/>
           </div>
-          {user._id === id && user && 
+          {user && user._id === id && 
             <div className='col-1 cursor-pointer'>
               <RiPencilLine onClick={() => handleModal("createAnnoucement")}/> 
             </div>
