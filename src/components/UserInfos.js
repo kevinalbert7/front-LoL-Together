@@ -75,9 +75,11 @@ const UserInfos = () => {
         <div className='col-8'>
           <UserInfosSeparator/>
         </div>
-        <div className='col-1 cursor-pointer'>
-          <RiPencilLine onClick={() => handleModal("editProfile")}/> 
-        </div>
+        {user._id === id && user && 
+          <div className='col-1 cursor-pointer'>
+            <RiPencilLine onClick={() => handleModal("editProfile")}/> 
+          </div>
+        }
       </div>
       <div className='col-4 my-1'>
         <MdOutlineEventAvailable style={IconStyle}/> Disponibilités : {profile.disponibilities.join(', ')}
@@ -120,9 +122,11 @@ const UserInfos = () => {
           <div className='col-8'>
             <UserInfosSeparator/>
           </div>
-          <div className='col-1 cursor-pointer'>
-            <RiPencilLine onClick={() => handleModal("editDescription")}/> 
-          </div>
+          {user._id === id && user && 
+            <div className='col-1 cursor-pointer'>
+              <RiPencilLine onClick={() => handleModal("editDescription")}/> 
+            </div>
+          } 
         </div>
         {profile.description}
       </div>
@@ -137,7 +141,7 @@ const UserInfos = () => {
           <div className='col-8'>
             <UserInfosSeparator/>
           </div>
-          {user._id === id && 
+          {user._id === id && user && 
             <div className='col-1 cursor-pointer'>
               <RiPencilLine onClick={() => handleModal("createAnnoucement")}/> 
             </div>
