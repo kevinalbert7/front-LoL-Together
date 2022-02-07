@@ -102,7 +102,7 @@ const UserInfos = () => {
             : 
             <Link 
               key={index}
-              to="/">{element.name}
+              to={`/team/${element._id}`}>{element.name}
             </Link>
         })}
       </div>
