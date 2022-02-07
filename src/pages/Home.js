@@ -73,8 +73,8 @@ const Home = () => {
                 animate={{ x: 0 }}          
               >
               <Logo />
-              <p>Recrutez des jouers pour ton équipe, ou fais- toi recruter.</p>
-              <p className='p2'>Parce que jouer ensemble c'est aussi passé de bons moments.</p>
+              <p>Recrutes des jouers pour ton équipe, ou fais-toi recruter.</p>
+              <p className='p2'>Parce que jouer ensemble c'est aussi passer de bons moments.</p>
               <Title text='Découvrir' size='72' />
             </motion.div>
           </SideDiv>

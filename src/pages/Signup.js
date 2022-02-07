@@ -51,6 +51,7 @@ const ErrorForm = styled.div`
 
 const Signup = () => {
   const navigate = useNavigate()
+  const [selectedRegion, setSelectedRegion] = useState([])
   const { setUser } = useContext(UserContext)
   const [errorSignup, setErrorSignup] = useState(null)
 

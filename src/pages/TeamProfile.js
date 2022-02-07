@@ -56,6 +56,10 @@ const Card =styled.div`
     color: white;
     position: absolute;
     top: -50px;
+    background: #000;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
   }
   .contenu {
     margin-bottom: 10px;
@@ -88,8 +92,6 @@ const Card =styled.div`
     color: grey;
   }
 `
-
-
 
 const TeamProfile = () => {
   const { id } = useParams()
@@ -136,7 +138,7 @@ const TeamProfile = () => {
       </Header>
 
         <Card>
-          <div className='teamLogo' style={{ backgroundImage: `url("${teamProfile.logo}")` }}/>
+          <div className='teamLogo' style={{ backgroundImage: `url("${teamProfile.logo}")` , backgroundSize: '50%' }}/>
 
           <div className='container'>
             <div className='row '>
