@@ -10,6 +10,7 @@ import ScrollToTop from './components/ScrollToTop'
 
 import { UserContextProvider } from './contexts/UserContext'
 import { UsersContextProvider } from "./contexts/UsersContext"
+import { DeletedContextProvider } from "./contexts/DeletedContext"
 import { ProfileContextProvider } from "./contexts/ProfileContent"
 import { AnnouncementContextProvider } from "./contexts/AnnouncementContext"
 
@@ -29,28 +30,30 @@ const App = () => {
   
   return (
     <ScrollToTop>
-      <AnnouncementContextProvider>
-        <ProfileContextProvider>
-          <UsersContextProvider>
-              <UserContextProvider>
-                <AnimatePresence exitBeforeEnter>
-                  <Routes location={location} key={location.pathname}>
-                    <Route exact path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/user/:id" element={<UserProfile />} />
-                    <Route path="/team/:id" element={<TeamProfile />} />
-                    <Route path="/users" element={<Users />} />
-                    <Route path="/announcements" element={<Announcements />} />
-                    <Route path="/teams" element={<Teams />} />
-                    <Route path="/policy" element={<Policy />} />
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </AnimatePresence>
-              </UserContextProvider>
-          </UsersContextProvider>
-        </ProfileContextProvider>
-      </AnnouncementContextProvider>
+      <DeletedContextProvider>
+        <AnnouncementContextProvider>
+          <ProfileContextProvider>
+            <UsersContextProvider>
+                <UserContextProvider>
+                  <AnimatePresence exitBeforeEnter>
+                    <Routes location={location} key={location.pathname}>
+                      <Route exact path="/" element={<Home />} />
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/signup" element={<Signup />} />
+                      <Route path="/user/:id" element={<UserProfile />} />
+                      <Route path="/team/:id" element={<TeamProfile />} />
+                      <Route path="/users" element={<Users />} />
+                      <Route path="/announcements" element={<Announcements />} />
+                      <Route path="/teams" element={<Teams />} />
+                      <Route path="/policy" element={<Policy />} />
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </AnimatePresence>
+                </UserContextProvider>
+            </UsersContextProvider>
+          </ProfileContextProvider>
+        </AnnouncementContextProvider>
+      </DeletedContextProvider>
     </ScrollToTop>
   )
 }
