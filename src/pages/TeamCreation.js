@@ -88,8 +88,8 @@ const TeamCreation = () => {
         // console.log("hhhh", dataRegion)
         // const userLanguages = getSelectedInfos(profile.languages)
         // setSelectedLanguages(userLanguages)
-        // const userDisponibilities = getSelectedInfos(profile.disponibilities)
-        // setSelectedDisponiblities(userDisponibilities)
+        const userDisponibilities = getSelectedInfos(profile.disponibilities)
+        setSelectedDisponiblities(userDisponibilities)
     },[])
 
     const formik = useFormik({
@@ -129,11 +129,10 @@ const TeamCreation = () => {
         navigate('/team')
     }
 
-    // console.log(formik.values)
-    // console.log(selectedLanguages)
-    console.log(selectedRegion)
-    // console.log(selectedDisponiblities)
-    // console.log("languages :", optionsLanguages)
+    console.log("value :",formik.values)
+    console.log("languages :",selectedLanguages)
+    console.log("région:",selectedRegion)
+    console.log("dispo:",selectedDisponiblities)
 
   return (
     <>
@@ -170,7 +169,7 @@ const TeamCreation = () => {
                         <SelectStyled>
                             <Select
                                 className="form-control shadow"
-                                // value={selectedRegion}
+                                value={selectedRegion}
                                 options={optionsRegions} 
                                 onChange={setSelectedRegion}
                             />
@@ -188,7 +187,7 @@ const TeamCreation = () => {
                                 <MultiSelect
                                 className="form-control shadow"
                                 options={optionsLanguages}
-                                // value={selectedLanguages}
+                                value={selectedLanguages}
                                 onChange={setSelectedLanguages}
                                 labelledBy="Select"
                                 hasSelectAll={false}
@@ -200,7 +199,7 @@ const TeamCreation = () => {
                             <MultiSelect
                                 className="form-control shadow"
                                 options={optionsDisponiblities}
-                                // value={selectedDisponiblities}
+                                value={selectedDisponiblities}
                                 onChange={setSelectedDisponiblities}
                                 labelledBy="Select"
                                 hasSelectAll={false}
