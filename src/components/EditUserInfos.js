@@ -37,8 +37,8 @@ const EditUserInfos = ({ onHide }) => {
 
   useEffect( async () => {
     setSelectedRegion([{ label: profile.region, value: profile.region }])
-    const dataRegion = await getRegion()
-    setOptionsRegion(dataRegion)
+    // const dataRegion = await getRegion()
+    // setOptionsRegion(dataRegion)
     const dataLanguages = await getLanguages()
     setOptionsLanguages(dataLanguages)
     const userLanguages = getSelectedInfos(profile.languages)
