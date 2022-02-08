@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import 'animate.css'
 
+import ScrollToTop from './components/ScrollToTop'
+
 import { UserContextProvider } from './contexts/UserContext'
 import { UsersContextProvider } from "./contexts/UsersContext"
 import { ProfileContextProvider } from "./contexts/ProfileContent"
@@ -13,23 +15,25 @@ import { AnnouncementContextProvider } from "./contexts/AnnouncementContext"
 
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Announcements from "./pages/Announcements"
 import Signup from "./pages/Signup"
 import UserProfile from "./pages/UserProfile"
 import TeamProfile from "./pages/TeamProfile"
 import Users from "./pages/Users"
 import Teams from "./pages/Teams"
+import Policy from "./pages/Policy"
 import NotFound from './pages/NotFound'
 
 const App = () => {
   const location = useLocation()
   
   return (
-    <AnnouncementContextProvider>
-      <ProfileContextProvider>
-        <UsersContextProvider>
-            <UserContextProvider>
-              <AnimatePresence exitBeforeEnter>
-                {/* <BrowserRouter> */}
+    <ScrollToTop>
+      <AnnouncementContextProvider>
+        <ProfileContextProvider>
+          <UsersContextProvider>
+              <UserContextProvider>
+                <AnimatePresence exitBeforeEnter>
                   <Routes location={location} key={location.pathname}>
                     <Route exact path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
@@ -37,15 +41,17 @@ const App = () => {
                     <Route path="/user/:id" element={<UserProfile />} />
                     <Route path="/team/:id" element={<TeamProfile />} />
                     <Route path="/users" element={<Users />} />
+                    <Route path="/announcements" element={<Announcements />} />
                     <Route path="/teams" element={<Teams />} />
+                    <Route path="/policy" element={<Policy />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
-                {/* </BrowserRouter> */}
-              </AnimatePresence>
-            </UserContextProvider>
-        </UsersContextProvider>
-      </ProfileContextProvider>
-    </AnnouncementContextProvider>
+                </AnimatePresence>
+              </UserContextProvider>
+          </UsersContextProvider>
+        </ProfileContextProvider>
+      </AnnouncementContextProvider>
+    </ScrollToTop>
   )
 }
 

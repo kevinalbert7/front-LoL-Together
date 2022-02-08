@@ -13,11 +13,11 @@ import Logo from '../components/Logo'
 import backgroundImage from '../images/team-background.png'
 
 const Header = styled.div`
-height: 150vh;
+height: 50vh;
 background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
 background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
+// background-size: cover;
+// background-position: center;
 display: flex;
 align-items: center;
 flex-direction: column;
@@ -37,13 +37,12 @@ const Card =styled.div`
   padding: 50px;
   display: flex;
   justify-content: center;
-  margin: 150px;
-
+  margin: auto;
   background-color: rgba(255, 255, 255, 0.2);
   border: 4px solid rgba(0, 0, 0, 0.3);
   border-radius: 2%;
   color: black;
-  position: absolute;
+  // position: absolute;
   top: 200px;
   .teamLogo {
     height: 100px;
@@ -51,11 +50,15 @@ const Card =styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     color: white;
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-color: black;
     position: absolute;
-    top: -50px;
+    top: 264px;
   }
   .contenu {
     margin-bottom: 10px;
@@ -89,8 +92,6 @@ const Card =styled.div`
   }
 `
 
-
-
 const TeamProfile = () => {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -118,7 +119,7 @@ const TeamProfile = () => {
     return <h1>Chargement...</h1>
   }
   
-  console.log("team", teamProfile)
+  // console.log("team", teamProfile)
   return (
     <>
       <Nav />
@@ -143,8 +144,8 @@ const TeamProfile = () => {
               <div className='col gx-5 gy-5'>
                 <div className="p-3 border rounded bg-dark text-light title"><p>Membres :</p>
                   <ul>
-                    {teamProfile.users.map(user => (
-                      <li>                     
+                    {teamProfile.users.map((user, index) => (
+                      <li key={index}>                     
                         <a href={`http://localhost:3000/user/${id}`}>{user.username}</a>
                       </li>
                     ))}
@@ -168,8 +169,10 @@ const TeamProfile = () => {
               <div className='col gx-5 gy-5'>
                 <div className="p-3 border rounded bg-dark text-light"><p>Langues :</p>
                   <ul>
-                    {teamProfile.languages.map(language => (
-                      <li>{language}</li>
+                    {teamProfile.users.map((user, index) => (
+                      <li key={index}>   
+                        {user.language}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -180,8 +183,10 @@ const TeamProfile = () => {
               <div className='col gx-5 gy-5'>
                 <div className="p-3 border rounded bg-dark text-light"><p>Disponibilités :</p>
                   <ul>
-                    {teamProfile.disponibilities.map(disponibilitie => (
-                      <li>{disponibilitie}</li>
+                    {teamProfile.users.map((user, index) => (
+                      <li key={index}>   
+                        {user.disponibilitie}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -198,8 +203,11 @@ const TeamProfile = () => {
             </div>
 
             <div className='annonces'>Annonces :</div>
-            {teamProfile.announcements.map(announcement => (
-              <div className='row'>
+            {teamProfile.announcements.map((announcement, index) => (
+              <div 
+              key={index}
+                className='row'
+              >
                 <div className='col gx-5 gy-5'>
                   <div className="p-3 border rounded bg-dark text-light contenu">
                     {announcement.text}

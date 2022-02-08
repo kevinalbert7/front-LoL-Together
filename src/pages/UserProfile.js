@@ -16,8 +16,8 @@ import { RiTwitterLine, RiFacebookLine, RiInstagramLine, RiGithubLine } from 're
 import Nav from '../components/Nav'
 import Logo from '../components/Logo'
 import Title from '../components/Title'
-import UserInfos from '../components/UserInfos'
 import Footer from '../components/Footer'
+import UserInfos from '../components/UserInfos'
 
 import blur from '../images/blur.png'
 import backgroundImage from '../images/profil-background.png'
@@ -87,7 +87,7 @@ const UserProfile = () => {
     fetchUser()
   },[id, user])
 
-  const fetchUser = async () =>{
+  const fetchUser = async () => {
 
     const profile = await getUserByID(id)
     setProfile(profile)

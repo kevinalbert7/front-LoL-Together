@@ -9,7 +9,7 @@ import Title from '../components/Title'
 import Footer from '../components/Footer'
 
 import blur from '../images/blur.png'
-import backgroundImage from '../images/teams-background.png'
+import backgroundImage from '../images/policy-background.png'
 
 const Header = styled.div`
   background-image: url(${backgroundImage});

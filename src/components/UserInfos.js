@@ -62,7 +62,7 @@ const UserInfos = () => {
     return <h1>Chargement...</h1>
   }
 
-  console.log(announcement)
+  // console.log(announcement)
   return ( 
     <>
       <div className='row d-flex py-2 align-items-center userinfos'>
@@ -75,9 +75,11 @@ const UserInfos = () => {
         <div className='col-8'>
           <UserInfosSeparator/>
         </div>
-        <div className='col-1 cursor-pointer'>
-          <RiPencilLine onClick={() => handleModal("editProfile")}/> 
-        </div>
+        {user && user._id === id &&
+          <div className='col-1 cursor-pointer'>
+            <RiPencilLine onClick={() => handleModal("editProfile")}/> 
+          </div>
+        }
       </div>
       <div className='col-4 my-1'>
         <MdOutlineEventAvailable style={IconStyle}/> Disponibilités : {profile.disponibilities.join(', ')}
@@ -102,7 +104,7 @@ const UserInfos = () => {
             : 
             <Link 
               key={index}
-              to="/">{element.name}
+              to={`/team/${element._id}`}>{element.name}
             </Link>
         })}
       </div>
@@ -120,9 +122,11 @@ const UserInfos = () => {
           <div className='col-8'>
             <UserInfosSeparator/>
           </div>
-          <div className='col-1 cursor-pointer'>
-            <RiPencilLine onClick={() => handleModal("editDescription")}/> 
-          </div>
+          {user && user._id === id && 
+            <div className='col-1 cursor-pointer'>
+              <RiPencilLine onClick={() => handleModal("editDescription")}/> 
+            </div>
+          } 
         </div>
         {profile.description}
       </div>
@@ -137,7 +141,7 @@ const UserInfos = () => {
           <div className='col-8'>
             <UserInfosSeparator/>
           </div>
-          {user._id === id && 
+          {user && user._id === id && 
             <div className='col-1 cursor-pointer'>
               <RiPencilLine onClick={() => handleModal("createAnnoucement")}/> 
             </div>
