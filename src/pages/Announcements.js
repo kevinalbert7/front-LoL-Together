@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
+import '../UserProfile.css'
 import styled from 'styled-components'
 import { motion } from "framer-motion"
 
@@ -57,6 +59,13 @@ const UserInfosSeparator = styled.div`
 const DateTime = styled.div`
   font-size: 13px;
   color: gray;
+`
+const SummonerName = styled.div`
+  font-family: GrechenFuemen;
+  font-size: 25px;
+  a {
+    text-decoration: none;
+  }
 `
 
 const Announcements = () => {
@@ -116,14 +125,24 @@ const Announcements = () => {
                         <UserInfosSeparator/>
                       </div>
                     </div>
-                    <div className='row align-items-center'> 
+                    <div className='row'> 
                       <div className="col-2 my-1 py-2 ">
                         {element.user && 
-                        <img 
-                          src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${element.user.summoner_infos.profileIconId}.png`} 
-                          alt="Person" 
-                          className="img-fluid rounded-circle animate__animated animate__bounce" 
-                        />}
+                         <Link to={`/user/${element.user._id}`} className='my-1 underline'>
+                           <img 
+                             src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${element.user.summoner_infos.profileIconId}.png`} 
+                             alt="Person" 
+                             className="img-fluid rounded-circle animate__animated animate__bounce" 
+                           />
+                         </Link>
+                        }
+                        {element.user && 
+                          <div className='text-center'>
+                            <SummonerName>
+                              <Link to={`/user/${element.user._id}`} className='my-1 underline'>{element.user.summoner_name}</Link>
+                            </SummonerName>
+                          </div>
+                        }
                         {element.team && "team"}
                       </div>
                       <div

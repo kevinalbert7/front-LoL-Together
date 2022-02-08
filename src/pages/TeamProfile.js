@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
+
 import moment from 'moment'
 import 'moment/locale/fr'
 
@@ -16,7 +17,7 @@ const Header = styled.div`
 height: 50vh;
 background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
 background-repeat: no-repeat;
-// background-size: cover;
+background-size: cover;
 // background-position: center;
 display: flex;
 align-items: center;
