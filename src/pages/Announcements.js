@@ -70,7 +70,7 @@ const Announcements = () => {
 
   const fetchAnnouncements = async () => {
     const response = await getAnnouncements()
-    const userProfileIcon = await getUserProfileIcon(response)
+    const userProfileIcon = getUserProfileIcon(response)
 
     
     setAnnouncements (response)
@@ -80,7 +80,7 @@ const Announcements = () => {
     return <h1>Chargement...</h1>
   }
 
-  console.log(announcements)
+  // console.log(announcements)
   // console.log(lolProfile)
   return (
     <>

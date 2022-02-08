@@ -16,11 +16,11 @@ const getLolStats = async (summoner_id) => {
   return lolStats
 }
 
-const getUserProfileIcon = async (response) => {
+const getUserProfileIcon = (response) => {
   const userImage = []
-
+  console.log(response)
   response.map(lolProfile => {
-    console.log(lolProfile.user)
+    lolProfile.user && console.log( lolProfile.user.summoner_infos.profileIconId)
   })
 }
 
