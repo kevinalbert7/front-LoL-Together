@@ -44,6 +44,7 @@ const App = () => {
                     <Route path="/users" element={<Users />} />
                     <Route path="/announcements" element={<Announcements />} />
                     <Route path="/teams" element={<Teams />} />
+                    <Route path="/teamcreation" element={<TeamCreation />} />
                     <Route path="/policy" element={<Policy />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>

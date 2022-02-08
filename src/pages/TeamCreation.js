@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 import { motion } from "framer-motion"
 import styled from 'styled-components'
+import { ProfileContext } from '../contexts/ProfileContent'
 
 import { 
     getRegion, 
@@ -61,6 +62,7 @@ const SelectStyled = styled.div`
 `
 
 const TeamCreation = () => {
+    const { profile, setProfile } = useContext(ProfileContext)
     const [optionsRegion, setOptionsRegion] = useState([])
     const [selectedRegion, setSelectedRegion] = useState([])
     const [optionsLanguages, setOptionsLanguages] = useState([{}])
@@ -68,17 +70,15 @@ const TeamCreation = () => {
     const [selectedDisponiblities, setSelectedDisponiblities] = useState([])
 
     useEffect( async () => {
-        // setSelectedRegion([{ label: user.region, value: user.region }])
-        // const dataRegion = await getRegion()
-        // setOptionsRegion(dataRegion)
+        setSelectedRegion([{ label: profile.region, value: profile.region }])
+        const dataRegion = await getRegion()
+        setOptionsRegion(dataRegion)
         const dataLanguages = await getLanguages()
         setOptionsLanguages(dataLanguages)
-        const userLanguages = getSelectedInfos(user.languages)
+        const userLanguages = getSelectedInfos(profile.languages)
         setSelectedLanguages(userLanguages)
-        // const userDisponibilities = getSelectedInfos(user.disponibilities)
-        // setSelectedDisponiblities(userDisponibilities)
-        // const userRoles = getSelectedInfos(user.roles)
-        // setSelectedRoles(userRoles)
+        const userDisponibilities = getSelectedInfos(profile.disponibilities)
+        setSelectedDisponiblities(userDisponibilities)
     },[])
 
     const formik = useFormik({
@@ -184,7 +184,7 @@ const TeamCreation = () => {
 
             <Button style={{ border: '1px solid white' }}type="submit" text="Inscription"/>
         </form>
-
+        
     </InputContainer>
     </Header>
     </motion.div>
