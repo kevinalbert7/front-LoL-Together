@@ -3,10 +3,11 @@ import { MultiSelect } from "react-multi-select-component"
 import Select from 'react-select'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { useNavigate } from 'react-router-dom'
+import { BrowserRouter, useNavigate } from 'react-router-dom'
 import { motion } from "framer-motion"
 import styled from 'styled-components'
 import { ProfileContext } from '../contexts/ProfileContent'
+import { Link } from 'react-router-dom'
 
 import { 
     getRegion, 
@@ -30,26 +31,30 @@ import Button from '../components/Button'
 const Header = styled.div`
     background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
     height: 115vh;
+    padding: 200x;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: 150px 200px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
 `
 const SideDiv = styled.div`
-    margin-top: 150px;
-    margin-left: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     font-size: 20px;
+    margin-bottom: 100px;
     width: 30%;
     .p2 {
         font-size: 15px;
     }
 `
 const InputContainer = styled.div`
-    margin-right: 200px;
-    margin-top: 170px;
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    width: 250px;
+    width: 300px;
     font-size: 20px;
     font-weight: 800;
     input {
@@ -60,8 +65,14 @@ const SelectStyled = styled.div`
     height: 60px;
     width: 300px;
 `
+// const Button2 = styled.button`
+//     padding: 25px 80px;
+//     text-color: black;
+// `
+
 
 const TeamCreation = () => {
+    const navigate = useNavigate()
     const { profile, setProfile } = useContext(ProfileContext)
     const [optionsRegion, setOptionsRegion] = useState([])
     const [selectedRegion, setSelectedRegion] = useState([])
@@ -86,26 +97,42 @@ const TeamCreation = () => {
         name: "",
         },
         onSubmit: values => {
-        console.log(values)
-        }
-    })
-
-    fetch('http://localhost:5000/teams', {
-        method: 'post',
-        headers: {
-        'Content-type': 'application/json'
+        signup(values)
         },
-        credentials: 'include',
-        body: JSON.stringify({
-        // name: values.name,
+        validateOnChange: false,
+        validationSchema: Yup.object({
+          name: Yup.string()
+            .required("Un nom de team est requis"),
+
         })
     })
+
+    const signup = async values => {
+        const signupResponse = await fetch('http://localhost:5000/teams', {
+            method: 'post',
+            headers: {
+            'Content-type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                name: values.name
+            })
+        })
+
+        const team = await signupResponse.json()
+
+        if (team.error) {
+            alert(team.error)
+            return
+        }
+
+        navigate('/team')
+    }
 
     console.log(formik.values)
     console.log(selectedLanguages)
     console.log(selectedRegion)
     console.log(selectedDisponiblities)
-
 
   return (
     <>
@@ -115,78 +142,79 @@ const TeamCreation = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
     >
-    <Header>
-        {/* <TitleContainer>
-        </TitleContainer> */}
-    <SideDiv>
-            <motion.div
-            style={{ x: -100 }} 
-            animate={{ x: 0 }} 
-            >
-            <Logo />
-            <Title text="Enregistrement d'équipe" size='60' color='black'/>
-        </motion.div>
-    </SideDiv>
+        <Header>
+            <SideDiv>
+                <motion.div
+                    style={{ x: -100 }} 
+                    animate={{ x: 0 }} 
+                    >
+                    <Logo />
+                    <Title text="Enregistrement d'équipe" size='60' color='black'/>
+                </motion.div>
+            </SideDiv>
 
-    <InputContainer>
+            <InputContainer>
+                <form onSubmit={formik.handleSubmit}>
+                    <p>Nom d'équipe :</p>
+                    <input
+                        name="name"
+                        type="text"
+                        className="form-control shadow" 
+                        placeholder="Name"
+                        value={formik.values.name}
+                        onChange={formik.handleChange}
+                    />
 
-        <form onSubmit={formik.handleSubmit}>
-            <p>Nom d'équipe :</p>
-            <input
-            name="name"
-            type="text"
-            className="form-control shadow" 
-            placeholder="Name"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-            />
+                    <p>Modifier votre région :</p>
+                    <SelectStyled>
+                        <Select
+                        className="form-control shadow"
+                        value={selectedRegion}
+                        options={optionsRegions} 
+                        onChange={setSelectedRegion}
+                        />
+                        {/* <MultiSelect
+                        options={optionsRegion}
+                        value={selectedRegion}
+                        onChange={setSelectedRegion}
+                        labelledBy="Select"
+                        hasSelectAll={false}
+                        /> */}
+                    </SelectStyled>
 
-            <p>Modifier votre région :</p>
-            <SelectStyled>
-                <Select
-                className="form-control shadow"
-                value={selectedRegion}
-                options={optionsRegions} 
-                onChange={setSelectedRegion}
-                />
-                {/* <MultiSelect
-                options={optionsRegion}
-                value={selectedRegion}
-                onChange={setSelectedRegion}
-                labelledBy="Select"
-                hasSelectAll={false}
-                /> */}
-            </SelectStyled>
+                    <p>Choisissez votre langue :</p>
+                    <SelectStyled>
+                        <MultiSelect
+                        className="form-control shadow"
+                        options={optionsLanguages}
+                        value={selectedLanguages}
+                        onChange={setSelectedLanguages}
+                        labelledBy="Select"
+                        hasSelectAll={false}
+                        />
+                    </SelectStyled>
 
-            <p>Choisissez votre langue :</p>
-            <SelectStyled>
-                <MultiSelect
-                className="form-control shadow"
-                options={optionsLanguages}
-                value={selectedLanguages}
-                onChange={setSelectedLanguages}
-                labelledBy="Select"
-                hasSelectAll={false}
-                />
-            </SelectStyled>
+                    <p>Indiquer vos disponiblitiés :</p>
+                    <SelectStyled>
+                        <MultiSelect
+                        className="form-control shadow"
+                        options={optionsDisponiblities}
+                        value={selectedDisponiblities}
+                        onChange={setSelectedDisponiblities}
+                        labelledBy="Select"
+                        hasSelectAll={false}
+                        />
+                    </SelectStyled>
 
-            <p>Indiquer vos disponiblitiés :</p>
-            <SelectStyled>
-                <MultiSelect
-                className="form-control shadow"
-                options={optionsDisponiblities}
-                value={selectedDisponiblities}
-                onChange={setSelectedDisponiblities}
-                labelledBy="Select"
-                hasSelectAll={false}
-                />
-            </SelectStyled>
+                    <Button type="submit" text="Inscription"/>
+                    {/* <Button2><button>Insciption</button></Button2> */}
+                </form>
 
-            <Button style={{ border: '1px solid white' }}type="submit" text="Inscription"/>
-        </form>
-        
-    </InputContainer>
-    </Header>
+                <Link to="/login">                    
+                    Vous n'avez pas de compte? Inscrivez-vous!
+                </Link>               
+            </InputContainer>
+        </Header>
     </motion.div>
     <Footer />
     </>
