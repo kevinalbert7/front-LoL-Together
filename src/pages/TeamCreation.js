@@ -3,11 +3,10 @@ import { MultiSelect } from "react-multi-select-component"
 import Select from 'react-select'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { BrowserRouter, useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { motion } from "framer-motion"
 import styled from 'styled-components'
 import { ProfileContext } from '../contexts/ProfileContent'
-import { Link } from 'react-router-dom'
 
 import { 
     getRegion, 
@@ -45,7 +44,7 @@ const SideDiv = styled.div`
     justify-content: center;
     font-size: 20px;
     margin-bottom: 100px;
-    width: 30%;
+    width: 40%;
     .p2 {
         font-size: 15px;
     }
@@ -81,15 +80,16 @@ const TeamCreation = () => {
     const [selectedDisponiblities, setSelectedDisponiblities] = useState([])
 
     useEffect( async () => {
-        setSelectedRegion([{ label: profile.region, value: profile.region }])
-        const dataRegion = await getRegion()
-        setOptionsRegion(dataRegion)
+        // setSelectedRegion([{ label: profile.region, value: profile.region }])
+        // const dataRegion = await getRegion()
+        // setOptionsRegion(dataRegion)
         const dataLanguages = await getLanguages()
         setOptionsLanguages(dataLanguages)
-        const userLanguages = getSelectedInfos(profile.languages)
-        setSelectedLanguages(userLanguages)
-        const userDisponibilities = getSelectedInfos(profile.disponibilities)
-        setSelectedDisponiblities(userDisponibilities)
+        // console.log("hhhh", dataRegion)
+        // const userLanguages = getSelectedInfos(profile.languages)
+        // setSelectedLanguages(userLanguages)
+        // const userDisponibilities = getSelectedInfos(profile.disponibilities)
+        // setSelectedDisponiblities(userDisponibilities)
     },[])
 
     const formik = useFormik({
@@ -97,7 +97,7 @@ const TeamCreation = () => {
         name: "",
         },
         onSubmit: values => {
-        signup(values)
+        // signup(values)
         },
         validateOnChange: false,
         validationSchema: Yup.object({
@@ -129,94 +129,95 @@ const TeamCreation = () => {
         navigate('/team')
     }
 
-    console.log(formik.values)
-    console.log(selectedLanguages)
+    // console.log(formik.values)
+    // console.log(selectedLanguages)
     console.log(selectedRegion)
-    console.log(selectedDisponiblities)
+    // console.log(selectedDisponiblities)
+    // console.log("languages :", optionsLanguages)
 
   return (
     <>
-    <Nav />
-    <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-    >
-        <Header>
-            <SideDiv>
-                <motion.div
-                    style={{ x: -100 }} 
-                    animate={{ x: 0 }} 
-                    >
-                    <Logo />
-                    <Title text="Enregistrement d'équipe" size='60' color='black'/>
-                </motion.div>
-            </SideDiv>
+        <Nav />
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
+            <Header>
+                <SideDiv>
+                    <motion.div
+                        style={{ x: -100 }} 
+                        animate={{ x: 0 }} 
+                        >
+                        <Logo />
+                        <Title text="Enregistrement d'équipe" size='60' color='black'/>
+                    </motion.div>
+                </SideDiv>
 
-            <InputContainer>
-                <form onSubmit={formik.handleSubmit}>
-                    <p>Nom d'équipe :</p>
-                    <input
-                        name="name"
-                        type="text"
-                        className="form-control shadow" 
-                        placeholder="Name"
-                        value={formik.values.name}
-                        onChange={formik.handleChange}
-                    />
-
-                    <p>Modifier votre région :</p>
-                    <SelectStyled>
-                        <Select
-                        className="form-control shadow"
-                        value={selectedRegion}
-                        options={optionsRegions} 
-                        onChange={setSelectedRegion}
+                <InputContainer>
+                    <form onSubmit={formik.handleSubmit}>
+                        <p>Nom d'équipe :</p>
+                        <input
+                            name="name"
+                            type="text"
+                            className="form-control shadow" 
+                            placeholder="Name"
+                            value={formik.values.name}
+                            onChange={formik.handleChange}
                         />
-                        {/* <MultiSelect
-                        options={optionsRegion}
-                        value={selectedRegion}
-                        onChange={setSelectedRegion}
-                        labelledBy="Select"
-                        hasSelectAll={false}
-                        /> */}
-                    </SelectStyled>
 
-                    <p>Choisissez votre langue :</p>
-                    <SelectStyled>
-                        <MultiSelect
-                        className="form-control shadow"
-                        options={optionsLanguages}
-                        value={selectedLanguages}
-                        onChange={setSelectedLanguages}
-                        labelledBy="Select"
-                        hasSelectAll={false}
-                        />
-                    </SelectStyled>
+                        <p>Modifier votre région :</p>
+                        <SelectStyled>
+                            <Select
+                                className="form-control shadow"
+                                // value={selectedRegion}
+                                options={optionsRegions} 
+                                onChange={setSelectedRegion}
+                            />
+                            {/* <MultiSelect
+                            options={optionsRegion}
+                            value={selectedRegion}
+                            onChange={setSelectedRegion}
+                            labelledBy="Select"
+                            hasSelectAll={false}
+                            /> */}
+                        </SelectStyled>
 
-                    <p>Indiquer vos disponiblitiés :</p>
-                    <SelectStyled>
-                        <MultiSelect
-                        className="form-control shadow"
-                        options={optionsDisponiblities}
-                        value={selectedDisponiblities}
-                        onChange={setSelectedDisponiblities}
-                        labelledBy="Select"
-                        hasSelectAll={false}
-                        />
-                    </SelectStyled>
+                        <p>Choisissez votre langue :</p>
+                        <SelectStyled>
+                                <MultiSelect
+                                className="form-control shadow"
+                                options={optionsLanguages}
+                                // value={selectedLanguages}
+                                onChange={setSelectedLanguages}
+                                labelledBy="Select"
+                                hasSelectAll={false}
+                            />
+                        </SelectStyled>
 
-                    <Button type="submit" text="Inscription"/>
-                    {/* <Button2><button>Insciption</button></Button2> */}
-                </form>
+                        <p>Indiquer vos disponiblitiés :</p>
+                        <SelectStyled>
+                            <MultiSelect
+                                className="form-control shadow"
+                                options={optionsDisponiblities}
+                                // value={selectedDisponiblities}
+                                onChange={setSelectedDisponiblities}
+                                labelledBy="Select"
+                                hasSelectAll={false}
+                            />
+                        </SelectStyled>
 
-                <Link to="/login">                    
-                    Vous n'avez pas de compte? Inscrivez-vous!
-                </Link>               
-            </InputContainer>
-        </Header>
-    </motion.div>
-    <Footer />
+                        {/* <Button type="submit" text="Inscription"/> */}
+                        {/* <Button2><button>Insciption</button></Button2> */}
+                    </form>
+
+                    {/* <Link to="/login">                    
+                        Vous n'avez pas de compte? Inscrivez-vous!
+                    </Link>                */}
+                </InputContainer>
+            </Header>
+        </motion.div>
+        <Footer />
     </>
   )
 }
