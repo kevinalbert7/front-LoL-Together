@@ -119,7 +119,7 @@ const TeamProfile = () => {
     return <h1>Chargement...</h1>
   }
   
-  // console.log("team", teamProfile)
+  console.log("team", teamProfile)
   return (
     <>
       <Nav />
