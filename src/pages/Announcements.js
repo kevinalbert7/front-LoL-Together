@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { motion } from "framer-motion"
 
 import { getAnnouncements } from '../api/announcement'
-import { getUserProfileIcon } from '../api/lolinfos' 
 
 import moment from "moment"
 import 'moment/locale/fr'
@@ -47,7 +46,7 @@ const Separator = styled.div`
 `
 const Middle = styled.div`
   background-color: black;
-  padding: 4% 25%;
+  padding: 0 20%;
 `
 const AnnouncementsDiv = styled.div`
   margin : 5% 0;
@@ -70,8 +69,6 @@ const Announcements = () => {
 
   const fetchAnnouncements = async () => {
     const response = await getAnnouncements()
-    const userProfileIcon = getUserProfileIcon(response)
-
     
     setAnnouncements (response)
   }
@@ -79,8 +76,8 @@ const Announcements = () => {
   if(!announcements ) {
     return <h1>Chargement...</h1>
   }
-
-  // console.log(announcements)
+  
+  console.log(announcements)
   // console.log(lolProfile)
   return (
     <>
@@ -105,35 +102,9 @@ const Announcements = () => {
         <Middle>
           <div className='container' >
             <AnnouncementsDiv>
-              <div className='row'>
-                {announcements.map((element, index, {length}) => (  
-                  length - 1 !== index ? (
-                    <div key={index}>
-                      <div className='row d-flex align-items-center userinfos'>
-                        <div className='col-1'>
-                          <MdOutlineAnnouncement/> 
-                        </div>
-                        <div className='col-2'>
-                          Annonces
-                        </div>
-                        <div className='col-8'>
-                          <UserInfosSeparator/>
-                        </div>
-                      </div>
-                      <div className="col-1 my-1 py-2 ">
-                        {element.user && "user"}
-                        {element.team && "team"}
-                      </div>
-                      <div
-                        key={element._id} 
-                        className='col-11 my-1 py-2 '
-                      >
-                        <DateTime>Posté le {moment(element.createdAt).format('lll')}</DateTime>
-                        {element.text}
-                      </div>
-                    </div> 
-                ) : (
-                  <div key={index}>
+              {announcements.map((element, index, {length}) => (  
+                length - 1 !== index ? (
+                  <div key={index} >
                     <div className='row d-flex align-items-center userinfos'>
                       <div className='col-1'>
                         <MdOutlineAnnouncement/> 
@@ -145,20 +116,53 @@ const Announcements = () => {
                         <UserInfosSeparator/>
                       </div>
                     </div>
-                    <div className="col-1 my-1 py-2 ">
+                    <div className='row align-items-center'> 
+                      <div className="col-2 my-1 py-2 ">
+                        {element.user && 
+                        <img 
+                          src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${element.user.summoner_infos.profileIconId}.png`} 
+                          alt="Person" 
+                          className="img-fluid rounded-circle animate__animated animate__bounce" 
+                        />}
+                        {element.team && "team"}
+                      </div>
+                      <div
+                        key={element._id} 
+                        className='col-10 my-1 py-2 announcement-text'
+                      >
+                        <DateTime>Posté le {moment(element.createdAt).format('lll')}</DateTime>
+                        {element.text}
+                      </div>
+                    </div>
+                  </div> 
+              ) : (
+                <div key={index}>
+                  <div className='row d-flex align-items-center userinfos'>
+                    <div className='col-1'>
+                      <MdOutlineAnnouncement/> 
+                    </div>
+                    <div className='col-2'>
+                      Annonces
+                    </div>
+                    <div className='col-8'>
+                      <UserInfosSeparator/>
+                    </div>
+                  </div>
+                  <div className='row'>
+                    <div className="col-2 my-1 py-2 ">
                       {element.user && "user"}
                       {element.team && "team"}
                     </div>
                     <div
                       key={element._id} 
-                      className='col-11 my-1 py-1 '
+                      className='col-10 my-1 py-1 '
                     >
                       <DateTime>Posté le {moment(element.createdAt).format('lll')}</DateTime>
                       {element.text}
                     </div>
                   </div>
-                )))}
-              </div>
+                </div>
+              )))}
             </AnnouncementsDiv>
           </div>
         </Middle>
