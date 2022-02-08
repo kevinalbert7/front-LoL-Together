@@ -56,11 +56,11 @@ const Signup = () => {
 
   const formik = useFormik({
     initialValues: {
-      username: "Test",
-      email: "Test@test.com",
-      password: "testtest",
-      passwordConfirmation: "testtest",
-      summoner_name: "test"
+      username: "",
+      email: "",
+      password: "",
+      passwordConfirmation: "",
+      summoner_name: ""
     },
     onSubmit: values => {
       signup(values)
