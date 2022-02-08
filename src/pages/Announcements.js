@@ -143,7 +143,12 @@ const Announcements = () => {
                             </SummonerName>
                           </div>
                         }
-                        {element.team && "team"}
+                        {element.team && 
+                          <div
+                            style={{ backgroundImage: `url("${element.team.logo}")` }} 
+                            className="img-fluid rounded-circle animate__animated animate__bounce" 
+                          />
+                        }
                       </div>
                       <div
                         key={element._id} 
