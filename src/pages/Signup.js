@@ -68,17 +68,17 @@ const Signup = () => {
     validateOnChange: false,
     validationSchema: Yup.object({
       username: Yup.string()
-        .required("Username is required"),
+        .required("Nom requis"),
       email: Yup.string()
-        .required("Email is required")
-        .email("Email invalid"),
+        .required("Email requis")
+        .email("Format invalide"),
       password: Yup.string()
-        .required("Password is required")
-        .min(8, "Password is too short"),
+        .required("Mot de passe requis")
+        .min(8, "Mot de passe trop court"),
       passwordConfirmation: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+        .oneOf([Yup.ref('password'), null], 'Le mot de passe doit être identique'),
       summoner_name: Yup.string()
-        .required("Nom d'summoner_name is required"),
+        .required("Nom d'invocateur requis"),
     })
   })
   
