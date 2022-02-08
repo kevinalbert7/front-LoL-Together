@@ -2,40 +2,43 @@ import React, { useState, useContext } from 'react'
 import Modal from 'react-bootstrap/Modal'
 
 import { UserContext } from '../contexts/UserContext'
-import { ProfileContext } from '../contexts/ProfileContent'
+import { AnnouncementContext } from '../contexts/AnnouncementContext'
 
-const EditDescription = ({ onHide }) => {
+import { getAnnouncementById } from '../api/announcement'
+
+const CreateAnnouncement = ({ onHide }) => {
   const { user, setUser } = useContext(UserContext)
-  const { profile, setProfile } = useContext(ProfileContext)
-  const [newDesciption, setNewDescription] = useState(profile.description)
+  const [newAnnouncement, setNewAnnouncement] = useState(null)
+  const { setAnnouncement } = useContext(AnnouncementContext)
 
   const handleTextarea = (e) => {
-    setNewDescription(e.target.value)
+    setNewAnnouncement(e.target.value)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()    
-    editInfos()
+    createAnnouncement()
   }
-  
-  const editInfos = async () => {
-    const editInfos = await fetch(`http://localhost:5000/users/${profile._id}`, {
-      method: 'put',
+
+  const createAnnouncement = async () => {
+    await fetch(`http://localhost:5000/announcements`, {
+      method: 'post',
       headers: {
         'Content-type': 'application/json'
       },
       credentials: 'include',
       body: JSON.stringify({
-        description : newDesciption
+        user : user._id,
+        text : newAnnouncement
       })
     })
-    const profileEdited = await editInfos.json()
-    setProfile(profileEdited); // mise à jour des valeurs de l'user
+    const updatedAnnouncement = await getAnnouncementById(user._id)
+    setAnnouncement(updatedAnnouncement)
   }
-  
-  // console.log(newDesciption)
+
+  // console.log(newAnnouncement)
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit}>
         <div className="form-floating">
           <textarea 
@@ -43,17 +46,16 @@ const EditDescription = ({ onHide }) => {
             placeholder="Leave a comment here" 
             id="floatingTextarea2" 
             style={{height:"200px"}}
-            defaultValue={profile.description}
             onChange={handleTextarea}
           />
-          <label htmlFor="floatingTextarea2">Description</label>
+          <label htmlFor="floatingTextarea2">Annonce</label>
         </div>
         <Modal.Footer>
           <button className="btn draw-border" onClick={() => onHide()}>Valider</button>
         </Modal.Footer>
       </form>
-    </>
+    </div>
   )
 }
 
-export default EditDescription
+export default CreateAnnouncement
