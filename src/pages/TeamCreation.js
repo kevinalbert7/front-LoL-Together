@@ -24,8 +24,6 @@ import Nav from '../components/Nav'
 import Logo from '../components/Logo'
 import Title from '../components/Title'
 import Footer from '../components/Footer'
-import Button from '../components/Button'
-
 
 const Header = styled.div`
     background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
@@ -110,7 +108,7 @@ const TeamCreation = () => {
         name: "",
         },
         onSubmit: values => {
-        // signup(values)
+        signup(values)
         },
         validateOnChange: false,
         validationSchema: Yup.object({
@@ -175,21 +173,21 @@ const TeamCreation = () => {
                             <InputContainer>
 
                                 <form onSubmit={formik.handleSubmit}>
-                                    <label className="form-label animate__animated animate__bounceInLeft">Nom d'équipe</label>
+                                    <label className="form-label">Nom d'équipe</label>
                                     <input
                                         name="name"
                                         type="text"
-                                        className="form-control shadow animate__animated animate__bounceInLeft"
+                                        className="form-control shadow"
                                         style={{ height: '52px' }}
                                         placeholder="Name"
                                         value={formik.values.name}
                                         onChange={formik.handleChange}
                                     />
 
-                                    <label className="form-label animate__animated animate__bounceInLeft">Région</label>
+                                    <label className="form-label">Région</label>
                                     <SelectStyled>
                                         <Select
-                                            className="form-control shadow animate__animated animate__bounceInLeft"
+                                            className="form-control shadow"
                                             value={selectedRegion}
                                             options={optionsRegions} 
                                             onChange={setSelectedRegion}
@@ -203,10 +201,10 @@ const TeamCreation = () => {
                                         /> */}
                                     </SelectStyled>
 
-                                    <label className="form-label animate__animated animate__bounceInLeft">Langue</label>
+                                    <label className="form-label ">Langue</label>
                                     <SelectStyled>
                                         <MultiSelect
-                                            className="form-control shadow animate__animated animate__bounceInLeft"
+                                            className="form-control shadow "
                                             options={optionsLanguages}
                                             value={selectedLanguages}
                                             onChange={setSelectedLanguages}
@@ -215,10 +213,10 @@ const TeamCreation = () => {
                                     />
                                     </SelectStyled>
 
-                                    <label className="form-label animate__animated animate__bounceInLeft">Disponiblitiés</label>
+                                    <label className="form-label">Disponiblitiés</label>
                                     <SelectStyled>
                                         <MultiSelect
-                                            className="form-control shadow animate__animated animate__bounceInLeft"
+                                            className="form-control shadow"
                                             options={optionsDisponiblities}
                                             value={selectedDisponiblities}
                                             onChange={setSelectedDisponiblities}
@@ -227,7 +225,7 @@ const TeamCreation = () => {
                                         />
                                     </SelectStyled>
                                     
-                                    <div className="btn animate__animated animate__bounceInLeft">
+                                    <div className="btn">
                                         <button type="submit" className="btnSubscribe">Inscription</button>
                                         <Link to="/login">            
                                             Vous n'avez pas de compte? Inscrivez-vous!
