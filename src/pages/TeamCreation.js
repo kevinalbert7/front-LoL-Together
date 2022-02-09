@@ -29,22 +29,14 @@ import Button from '../components/Button'
 
 const Header = styled.div`
     background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
-    height: 115vh;
-    padding: 200x;
+    height: 130vh;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 150px 200px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
 `
 const SideDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     font-size: 20px;
-    margin-bottom: 100px;
-    width: 40%;
     .p2 {
         font-size: 15px;
     }
@@ -52,23 +44,38 @@ const SideDiv = styled.div`
 const InputContainer = styled.div`
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    width: 300px;
+    width: 400px;
+    padding-top: 150px;
     font-size: 20px;
     font-weight: 800;
-    input {
-        width: 300px;
+    .form-label {
+        margin-top: 18px;
+    }
+    .btn {
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+    }
+    .btnSubscribe {
+        border: 1px solid #f1f1f1;
+        border-radius: 5px;
+        outline: none;
+        background: transparent;
+        font-size: 30px;
+        padding: 5px;
+        widt: 300px;
+        color: #f1f1f1;
+        cursor: pointer;
+        margin: 20px 0;
+    }
+    .btnSubscribe:hover {
+        transition: all 0.3s ease-in-out;
+        background: #f1f1f1;
+        color: #333;
     }
 `
 const SelectStyled = styled.div`
-    height: 60px;
-    width: 300px;
 `
-// const Button2 = styled.button`
-//     padding: 25px 80px;
-//     text-color: black;
-// `
-
 
 const TeamCreation = () => {
     const navigate = useNavigate()
@@ -143,77 +150,91 @@ const TeamCreation = () => {
             exit={{ opacity: 0 }}
         >
             <Header>
-                <SideDiv>
-                    <motion.div
-                        style={{ x: -100 }} 
-                        animate={{ x: 0 }} 
-                        >
-                        <Logo />
-                        <Title text="Enregistrement d'équipe" size='60' color='black'/>
-                    </motion.div>
-                </SideDiv>
+                <div className="container mx-0">
+                    <div className="row">
 
-                <InputContainer>
-                    <form onSubmit={formik.handleSubmit}>
-                        <p>Nom d'équipe :</p>
-                        <input
-                            name="name"
-                            type="text"
-                            className="form-control shadow" 
-                            placeholder="Name"
-                            value={formik.values.name}
-                            onChange={formik.handleChange}
-                        />
+                        <div className="col-xxl col-md-6 d-flex justify-content-center align-items-center">
+                            <SideDiv>
+                                <motion.div
+                                    style={{ x: -100 }} 
+                                    animate={{ x: 0 }} 
+                                    >
+                                    <Logo />
+                                    <Title text="Création d'équipe" size='60' color='black'/>
+                                </motion.div>
+                            </SideDiv>
+                        </div>
 
-                        <p>Modifier votre région :</p>
-                        <SelectStyled>
-                            <Select
-                                className="form-control shadow"
-                                value={selectedRegion}
-                                options={optionsRegions} 
-                                onChange={setSelectedRegion}
-                            />
-                            {/* <MultiSelect
-                            options={optionsRegion}
-                            value={selectedRegion}
-                            onChange={setSelectedRegion}
-                            labelledBy="Select"
-                            hasSelectAll={false}
-                            /> */}
-                        </SelectStyled>
+                        <div className="col-xxl col-md-6 d-flex justify-content-center align-items-center">
+                            <InputContainer>
 
-                        <p>Choisissez votre langue :</p>
-                        <SelectStyled>
-                                <MultiSelect
-                                className="form-control shadow"
-                                options={optionsLanguages}
-                                value={selectedLanguages}
-                                onChange={setSelectedLanguages}
-                                labelledBy="Select"
-                                hasSelectAll={false}
-                            />
-                        </SelectStyled>
+                                <form onSubmit={formik.handleSubmit}>
+                                    <label className="form-label animate__animated animate__bounceInLeft">Nom d'équipe</label>
+                                    <input
+                                        name="name"
+                                        type="text"
+                                        className="form-control shadow animate__animated animate__bounceInLeft"
+                                        style={{ height: '52px' }}
+                                        placeholder="Name"
+                                        value={formik.values.name}
+                                        onChange={formik.handleChange}
+                                    />
 
-                        <p>Indiquer vos disponiblitiés :</p>
-                        <SelectStyled>
-                            <MultiSelect
-                                className="form-control shadow"
-                                options={optionsDisponiblities}
-                                value={selectedDisponiblities}
-                                onChange={setSelectedDisponiblities}
-                                labelledBy="Select"
-                                hasSelectAll={false}
-                            />
-                        </SelectStyled>
+                                    <label className="form-label animate__animated animate__bounceInLeft">Région</label>
+                                    <SelectStyled>
+                                        <Select
+                                            className="form-control shadow animate__animated animate__bounceInLeft"
+                                            value={selectedRegion}
+                                            options={optionsRegions} 
+                                            onChange={setSelectedRegion}
+                                        />
+                                        {/* <MultiSelect
+                                        options={optionsRegion}
+                                        value={selectedRegion}
+                                        onChange={setSelectedRegion}
+                                        labelledBy="Select"
+                                        hasSelectAll={false}
+                                        /> */}
+                                    </SelectStyled>
 
-                        {/* <Button type="submit" text="Inscription"/> */}
-                        {/* <Button2><button>Insciption</button></Button2> */}
-                    </form>
+                                    <label className="form-label animate__animated animate__bounceInLeft">Langue</label>
+                                    <SelectStyled>
+                                        <MultiSelect
+                                            className="form-control shadow animate__animated animate__bounceInLeft"
+                                            options={optionsLanguages}
+                                            value={selectedLanguages}
+                                            onChange={setSelectedLanguages}
+                                            labelledBy="Select"
+                                            hasSelectAll={false}
+                                    />
+                                    </SelectStyled>
 
-                    {/* <Link to="/login">                    
-                        Vous n'avez pas de compte? Inscrivez-vous!
-                    </Link>                */}
-                </InputContainer>
+                                    <label className="form-label animate__animated animate__bounceInLeft">Disponiblitiés</label>
+                                    <SelectStyled>
+                                        <MultiSelect
+                                            className="form-control shadow animate__animated animate__bounceInLeft"
+                                            options={optionsDisponiblities}
+                                            value={selectedDisponiblities}
+                                            onChange={setSelectedDisponiblities}
+                                            labelledBy="Select"
+                                            hasSelectAll={false}
+                                        />
+                                    </SelectStyled>
+                                    
+                                    <div className="btn animate__animated animate__bounceInLeft">
+                                        <button type="submit" className="btnSubscribe">Inscription</button>
+                                        <Link to="/login">            
+                                            Vous n'avez pas de compte? Inscrivez-vous!
+                                        </Link>               
+                                    </div>
+
+                                </form>
+
+                            </InputContainer>
+                        </div>
+
+                    </div>
+                </div>
             </Header>
         </motion.div>
         <Footer />
