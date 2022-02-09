@@ -53,6 +53,9 @@ const Middle = styled.div`
 const AnnouncementsDiv = styled.div`
   margin : 5% 0;
 `
+const AnnouncementText = styled.div`
+  overflow-wrap: break-word;
+`
 const UserInfosSeparator = styled.div`
   border-top : 1px solid rgba(255, 229, 147, 0.253);
 `
@@ -70,7 +73,6 @@ const SummonerName = styled.div`
 
 const Announcements = () => {
   const [announcements, setAnnouncements] = useState(null)
-  const [userProfileIcon, setLolProfile] = useState(null)
 
   useEffect(() => {
     fetchAnnouncements()
@@ -144,8 +146,9 @@ const Announcements = () => {
                           </div>
                         }
                         {element.team && 
-                          <div
-                            style={{ backgroundImage: `url("${element.team.logo}")` }} 
+                          <img 
+                            src={element.team.logo} 
+                            alt="teamLogo" 
                             className="img-fluid rounded-circle animate__animated animate__bounce" 
                           />
                         }
@@ -155,7 +158,9 @@ const Announcements = () => {
                         className='col-10 my-1 py-2 announcement-text'
                       >
                         <DateTime>Posté le {moment(element.createdAt).format('lll')}</DateTime>
-                        {element.text}
+                        <AnnouncementText>
+                          {element.text}
+                        </AnnouncementText>
                       </div>
                     </div>
                   </div> 
@@ -182,7 +187,9 @@ const Announcements = () => {
                       className='col-10 my-1 py-1 '
                     >
                       <DateTime>Posté le {moment(element.createdAt).format('lll')}</DateTime>
-                      {element.text}
+                      <AnnouncementText>
+                        {element.text}
+                      </AnnouncementText>
                     </div>
                   </div>
                 </div>
