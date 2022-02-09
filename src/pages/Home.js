@@ -56,6 +56,7 @@ const Description = styled.div`
 `
 const Step = styled.div`
   border: 1px solid white;
+  text-align: center;
 `
 
 const Home = () => {  
