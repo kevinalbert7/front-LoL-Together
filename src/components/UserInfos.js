@@ -41,7 +41,7 @@ const DateTime = styled.div`
   }
 `
 const AnnouncementText = styled.div`
-  width: 100%
+  overflow-wrap: break-word;
 `
 const IconStyle = {
   color : "teal"
