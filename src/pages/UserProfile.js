@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import { getUserByID } from '../api/user'
 import { getLolProfile, getLolStats } from '../api/lolinfos' 
 import { getEmblem } from '../api/emblem'
+import { getTeams } from '../api/team'
 
 import { UserContext } from '../contexts/UserContext'
 import { ProfileContext } from '../contexts/ProfileContent'
@@ -68,7 +69,9 @@ const Middle = styled.div`
   background-color: black;
   padding: 0 5%;
 `
+const Leader = styled.div`
 
+`
 const IconStyle = {
   color: "linear-gradient(45deg, #050b3b, teal)"
 }
@@ -77,14 +80,14 @@ const UserProfile = () => {
   const { id } = useParams()
   const { user } = useContext(UserContext)
   const { profile, setProfile } = useContext(ProfileContext)
-  const navigate = useNavigate()
   const [emblem, setEmblem] = useState(null)
-  // const [userProfile, setUserProfile] = useState(null)
   const [lolProfile, setLolProfile] = useState(null)
   const [lolStats, setLolStats] = useState(null)
+  const [teamLeader, setTeamLeader] = useState(null)
 
   useEffect(() => {
     fetchUser()
+    isLeader()
   },[id, user])
 
   const fetchUser = async () => {
@@ -104,10 +107,15 @@ const UserProfile = () => {
     }
   }
 
+  const isLeader = async () => {
+    const teams = await getTeams()
+    const leader = teams.find(element => element.leader_id === id)
+    setTeamLeader(leader)
+  }
+
   if(!profile || !lolProfile || !lolStats) {
     return <h1>Chargement...</h1>
   }
-
 
   // console.log("userprofile", profile)
   // console.log("lolProfile", lolProfile)
@@ -171,6 +179,11 @@ const UserProfile = () => {
                     <a href="#"><RiInstagramLine  style={IconStyle} size="15%"/></a>
                     <a href="#"><RiGithubLine  style={IconStyle} size="15%"/></a>
                   </SocialIcons>
+                  {teamLeader &&
+                    <Leader>
+                      Leader de l'équipe : {teamLeader.name}
+                    </Leader>
+                  }
                   <button className="btn draw-border">Ajouter</button>
                   <button className="btn draw-border">Contacter</button>
                 </div>

@@ -20,7 +20,6 @@ const getUserByID = async (id) => {
   return data
 }
 
-
 export {
   getUsers,
   getUserByID
