@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import { getUserByID } from '../api/user'
 import { getLolProfile, getLolStats } from '../api/lolinfos' 
@@ -117,6 +117,7 @@ const UserProfile = () => {
     return <h1>Chargement...</h1>
   }
 
+  console.log(teamLeader)
   // console.log("userprofile", profile)
   // console.log("lolProfile", lolProfile)
   // console.log("lolStats", lolStats)
@@ -181,11 +182,18 @@ const UserProfile = () => {
                   </SocialIcons>
                   {teamLeader &&
                     <Leader>
-                      Leader de l'équipe : {teamLeader.name}
+                      Leader de l'équipe :  
+                      <Link to={`/team/${teamLeader._id}`}>
+                        <center><p>{teamLeader.name}</p></center>
+                      </Link>
                     </Leader>
                   }
-                  <button className="btn draw-border">Ajouter</button>
-                  <button className="btn draw-border">Contacter</button>
+                  {user && user._id !== id && 
+                      <button className="btn draw-border">Ajouter</button>
+                  }
+                  {user && user._id !== id && 
+                      <button className="btn draw-border">Contacter</button>
+                  }
                 </div>
               </div>
               <div className='col-9'>
