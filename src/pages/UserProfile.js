@@ -110,6 +110,7 @@ const UserProfile = () => {
   const isLeader = async () => {
     const teams = await getTeams()
     const leader = teams.find(element => element.leader_id === id)
+
     setTeamLeader(leader)
   }
 
