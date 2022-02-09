@@ -115,7 +115,7 @@ const UserProfile = () => {
     return <h1>Chargement...</h1>
   }
 
-  console.log(teamLeader)
+  // console.log(teamLeader)
   // console.log("userprofile", profile)
   // console.log("lolProfile", lolProfile)
   // console.log("lolStats", lolStats)
