@@ -91,17 +91,19 @@ const TeamCreation = () => {
     const [selectedDisponiblities, setSelectedDisponiblities] = useState([])
 
     useEffect( async () => {
-        setSelectedRegion([{ label: profile.region, value: profile.region }])
-        const dataRegion = await getRegion()
-        setOptionsRegion(dataRegion)
-        const dataLanguages = await getLanguages()
-        setOptionsLanguages(dataLanguages)
-        console.log("hhhh", dataRegion)
-        const userLanguages = getSelectedInfos(profile.languages)
-        setSelectedLanguages(userLanguages)
-        const userDisponibilities = getSelectedInfos(profile.disponibilities)
-        setSelectedDisponiblities(userDisponibilities)
-    },[])
+        if (profile) {
+            setSelectedRegion([{ label: profile.region, value: profile.region }])
+            const dataRegion = await getRegion()
+            setOptionsRegion(dataRegion)
+            const dataLanguages = await getLanguages()
+            setOptionsLanguages(dataLanguages)
+            console.log("dataLanguages", dataLanguages)
+            const userLanguages = getSelectedInfos(profile.languages)
+            setSelectedLanguages(userLanguages)
+            const userDisponibilities = getSelectedInfos(profile.disponibilities)
+            setSelectedDisponiblities(userDisponibilities)
+        }
+    },[profile])
 
     const formik = useFormik({
         initialValues: {
@@ -137,13 +139,13 @@ const TeamCreation = () => {
             return
         }
 
-        navigate('/team')
+        navigate(`/team/${id}`)
     }
 
-    console.log("value :",formik.values)
-    console.log("languages :",selectedLanguages)
-    console.log("région:",selectedRegion)
-    console.log("dispo:",selectedDisponiblities)
+    // console.log("value :",formik.values)
+    console.log("languages :",optionsLanguages)
+    // console.log("région:",selectedRegion)
+    // console.log("dispo:",selectedDisponiblities)
 
   return (
     <>
