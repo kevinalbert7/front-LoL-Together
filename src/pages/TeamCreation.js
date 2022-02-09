@@ -134,12 +134,10 @@ const TeamCreation = () => {
 
         const team = await signupResponse.json()
 
-        if (team.error) {
-            alert(team.error)
-            return
-        }
 
-        navigate(`/team/${id}`)
+            setProfile(team)
+            navigate(`/team/${team._id}`)
+
     }
 
     // console.log("value :",formik.values)
