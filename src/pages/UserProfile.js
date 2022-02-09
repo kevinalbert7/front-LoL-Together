@@ -69,9 +69,6 @@ const Middle = styled.div`
   background-color: black;
   padding: 0 5%;
 `
-const Leader = styled.div`
-
-`
 const IconStyle = {
   color: "linear-gradient(45deg, #050b3b, teal)"
 }
@@ -182,18 +179,19 @@ const UserProfile = () => {
                     <a href="#"><RiGithubLine  style={IconStyle} size="15%"/></a>
                   </SocialIcons>
                   {teamLeader &&
-                    <Leader>
+                    <div>
                       Leader de l'équipe :  
                       <Link to={`/team/${teamLeader._id}`}>
                         <center><p>{teamLeader.name}</p></center>
                       </Link>
-                    </Leader>
+                    </div>
                   }
                   {user && user._id !== id && 
                       <button className="btn draw-border">Ajouter</button>
                   }
                   {user && user._id !== id && 
-                      <button className="btn draw-border">Contacter</button>
+                      <Link to={`/conversation/${profile.username}/${id}`} className='btn draw-border'>Contacter</Link>
+                      // <button className="btn draw-border">Contacter</button>
                   }
                 </div>
               </div>

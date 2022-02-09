@@ -17,6 +17,7 @@ import { AnnouncementContextProvider } from "./contexts/AnnouncementContext"
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Announcements from "./pages/Announcements"
+import Conversation from "./pages/Conversation"
 import Signup from "./pages/Signup"
 import UserProfile from "./pages/UserProfile"
 import TeamProfile from "./pages/TeamProfile"
@@ -45,6 +46,7 @@ const App = () => {
                       <Route path="/users" element={<Users />} />
                       <Route path="/announcements" element={<Announcements />} />
                       <Route path="/teams" element={<Teams />} />
+                      <Route path="/conversation/:username/:id" element={<Conversation />} />
                       <Route path="/policy" element={<Policy />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
