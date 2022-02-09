@@ -168,6 +168,7 @@ const Conversation = () => {
               </div>
             </div>
             <ConversationDiv>
+              {/* {conversation &&  */}
               {conversation.messages.map((element, index) =>
                 <div 
                   key={index} 
@@ -218,6 +219,7 @@ const Conversation = () => {
                   }
                 </div>
               )}
+              {/* } */}
             </ConversationDiv>
             <div className='row conversationTextArea'>
               <div className='col-12'>
