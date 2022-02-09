@@ -28,6 +28,7 @@ const Separator = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   height: 280px;
+  margin-top: 390px;
 `
 const SideDiv = styled.div`
   right: 10%;
