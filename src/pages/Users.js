@@ -32,9 +32,21 @@ const LogoTitle = styled.div`
   .p2 {
     font-size: 15px;
   }
+  @media (max-width: 1000px) {
+    margin-top: 10%
+  }
+  @media (max-width: 800px) {
+    margin-top: 15%
+  }
+  @media (max-width: 800px) {
+    margin-top: 20%
+  }
 `
 const Middle = styled.div`
   background-color: black;
+  display: flex;
+  justify-content: space-between;
+  // margin: auto;
 `
 
 const Users = () => {
@@ -95,7 +107,7 @@ const Users = () => {
             style={{ x: -100 }} 
             animate={{ x: 0 }}          
           >
-            <div className='row'>
+            <div className='row d-flex justify-content-around'>
               {users.map(element => (
                 <UserCard
                   key={element._id}
@@ -108,7 +120,7 @@ const Users = () => {
                   disponibilities={element.disponibilities}
                   roles={element.roles}
                 />
-                ))}
+              ))}
             </div>
           </motion.div>
         </div>

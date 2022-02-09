@@ -41,7 +41,7 @@ const UserCard = ({ id, username, summoner_name, discord, region, languages, dis
 
   // console.log(roles.join(", "))
   return (
-    <div className='col-3 my-2'>
+    <div className='col-xl-3 my-2 col-lg-4 col-md-6 col-sm d-flex justify-content-center'>
       <motion.div
         style={{ x: -100 }} 
         animate={{ x: 0 }} 
