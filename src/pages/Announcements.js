@@ -146,11 +146,20 @@ const Announcements = () => {
                           </div>
                         }
                         {element.team && 
-                          <img 
-                            src={element.team.logo} 
-                            alt="teamLogo" 
-                            className="img-fluid rounded-circle animate__animated animate__bounce" 
-                          />
+                          <Link to={`/team/${element.team._id}`} className='my-1'>
+                            <img 
+                              src={element.team.logo} 
+                              alt="teamLogo" 
+                              className="img-fluid rounded-circle animate__animated animate__bounce" 
+                            />
+                          </Link>
+                        }
+                        {element.team && 
+                          <div className='text-center'>
+                            <SummonerName>
+                              <Link to={`/team/${element.team._id}`} className='my-1 underline'>{element.team.name}</Link>
+                            </SummonerName>
+                          </div>
                         }
                       </div>
                       <div
@@ -179,8 +188,38 @@ const Announcements = () => {
                   </div>
                   <div className='row'>
                     <div className="col-2 my-1 py-2 ">
-                      {element.user && "user"}
-                      {element.team && "team"}
+                      {element.user && 
+                        <Link to={`/user/${element.user._id}`} className='my-1 underline'>
+                          <img 
+                            src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${element.user.summoner_infos.profileIconId}.png`} 
+                            alt="Person" 
+                            className="img-fluid rounded-circle animate__animated animate__bounce" 
+                          />
+                        </Link>
+                      }
+                      {element.user && 
+                        <div className='text-center'>
+                          <SummonerName>
+                            <Link to={`/user/${element.user._id}`} className='my-1 underline'>{element.user.summoner_name}</Link>
+                          </SummonerName>
+                        </div>
+                      }
+                      {element.team && 
+                        <Link to={`/team/${element.team._id}`} className='my-1'>
+                          <img 
+                            src={element.team.logo} 
+                            alt="teamLogo" 
+                            className="img-fluid rounded-circle animate__animated animate__bounce" 
+                          />
+                        </Link>
+                      }
+                      {element.team && 
+                        <div className='text-center'>
+                          <SummonerName>
+                            <Link to={`/team/${element.team._id}`} className='my-1 underline'>{element.team.name}</Link>
+                          </SummonerName>
+                        </div>
+                      }
                     </div>
                     <div
                       key={element._id} 
