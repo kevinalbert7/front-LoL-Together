@@ -56,6 +56,7 @@ const Description = styled.div`
 `
 const Step = styled.div`
   border: 1px solid white;
+  text-align: center;
 `
 
 const Home = () => {  
@@ -84,9 +85,9 @@ const Home = () => {
         <Middle>
           <div className='container'>
           <motion.div
-              style={{ x: -100 }} 
-              animate={{ x: 0 }}          
-            >
+            style={{ x: -100 }} 
+            animate={{ x: 0 }}          
+          >
             <div className='row'>
               <div className='col-6'>
                 <HomeCard>
@@ -103,21 +104,21 @@ const Home = () => {
                     </Step>
                   </div>
                   <div className='col-4'>
-                  <Step>
+                    <Step>
                       Etape 2
                     </Step>
                   </div>
                   <div className='col-4'>
-                  <Step>
-                      Etape 3
-                  </Step>
+                    <Step>
+                        Etape 3
+                    </Step>
                   </div>
                 </div>
               </div>
               <div className='col-6'>
-                  <HomeCard>
-                    <RiTeamLine size='50%' />
-                    <p>Vous cherchez une équipe?</p>
+                <HomeCard>
+                  <RiTeamLine size='50%' />
+                  <p>Vous cherchez une équipe?</p>
                   </HomeCard>
                 <Description>
                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -129,19 +130,19 @@ const Home = () => {
                     </Step>
                   </div>
                   <div className='col-4'>
-                  <Step>
+                    <Step>
                       Etape 2
                     </Step>
                   </div>
                   <div className='col-4'>
-                  <Step>
+                    <Step>
                       Etape 3
-                  </Step>
+                    </Step>
                   </div>
                 </div>
               </div>
             </div>
-            </motion.div>
+          </motion.div>
           </div>
         </Middle>
         <Footer />
