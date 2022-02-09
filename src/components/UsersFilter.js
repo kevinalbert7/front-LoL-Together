@@ -50,7 +50,7 @@ const UsersFilter = () => {
         </SelectStyled>
       </div>
       <div className='col-3 my-2'>
-        <p>Trier par langue(s) parlée(s) :</p>
+        <p>Trier par langue(s) :</p>
         <SelectStyled>
           <MultiSelect
             options={optionsLanguages}

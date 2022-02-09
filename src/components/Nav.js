@@ -82,6 +82,11 @@ const Nav = () => {
                 <div className='underline'>Equipes</div>
                 </Link>
               </MenuItem>
+              <MenuItem>
+                <Link to="/announcements">
+                <div className='underline'>Annonces</div>
+                </Link>
+              </MenuItem>
             </MenuLeft>
             <MenuRight>
               {user ? 

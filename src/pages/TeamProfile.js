@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
+
 import moment from 'moment'
 import 'moment/locale/fr'
 
@@ -17,7 +18,7 @@ height: 50vh;
 background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
 background-repeat: no-repeat;
 background-size: cover;
-background-position: center;
+// background-position: center;
 display: flex;
 align-items: center;
 flex-direction: column;
@@ -92,8 +93,6 @@ const Card =styled.div`
   }
 `
 
-
-
 const TeamProfile = () => {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -146,8 +145,8 @@ const TeamProfile = () => {
               <div className='col gx-5 gy-5'>
                 <div className="p-3 border rounded bg-dark text-light title"><p>Membres :</p>
                   <ul>
-                    {teamProfile.users.map(user => (
-                      <li>                     
+                    {teamProfile.users.map((user, index) => (
+                      <li key={index}>                     
                         <a href={`http://localhost:3000/user/${id}`}>{user.username}</a>
                       </li>
                     ))}
@@ -171,8 +170,10 @@ const TeamProfile = () => {
               <div className='col gx-5 gy-5'>
                 <div className="p-3 border rounded bg-dark text-light"><p>Langues :</p>
                   <ul>
-                    {teamProfile.languages.map(language => (
-                      <li>{language}</li>
+                    {teamProfile.users.map((user, index) => (
+                      <li key={index}>   
+                        {user.language}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -183,8 +184,10 @@ const TeamProfile = () => {
               <div className='col gx-5 gy-5'>
                 <div className="p-3 border rounded bg-dark text-light"><p>Disponibilités :</p>
                   <ul>
-                    {teamProfile.disponibilities.map(disponibilitie => (
-                      <li>{disponibilitie}</li>
+                    {teamProfile.users.map((user, index) => (
+                      <li key={index}>   
+                        {user.disponibilitie}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -201,8 +204,11 @@ const TeamProfile = () => {
             </div>
 
             <div className='annonces'>Annonces :</div>
-            {teamProfile.announcements.map(announcement => (
-              <div className='row'>
+            {teamProfile.announcements.map((announcement, index) => (
+              <div 
+              key={index}
+                className='row'
+              >
                 <div className='col gx-5 gy-5'>
                   <div className="p-3 border rounded bg-dark text-light contenu">
                     {announcement.text}

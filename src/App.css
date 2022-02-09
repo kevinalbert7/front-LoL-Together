@@ -60,7 +60,7 @@ body {
 .userinfos .col-2 {
   width: 12% !important;
 }
-.userinfos .col-8 {
+.userinfos .col-8, .announcement-text {
   width: 80% !important;
 }
 .cursor-pointer {
