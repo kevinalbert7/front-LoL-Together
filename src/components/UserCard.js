@@ -41,12 +41,12 @@ const UserCard = ({ id, username, summoner_name, discord, region, languages, dis
 
   // console.log(roles.join(", "))
   return (
-    <div className='col-3 m-1'>
+    <div className='col-3 my-2'>
       <motion.div
         style={{ x: -100 }} 
         animate={{ x: 0 }} 
       >
-        <div className="card" style={{width: '17rem' }}>
+        <div className="card" style={{ width: '265px' }}>
           <img                 
             src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${lolProfile.profileIconId}.png`} 
             className="card-img-top" 

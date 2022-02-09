@@ -11,7 +11,6 @@ import UserFilter from '../components/UsersFilter'
 import UserCard from '../components/UserCard'
 import Footer from '../components/Footer'
 
-import blur from '../images/blur.png'
 import backgroundImage from '../images/users-background.png'
 
 import { UsersContext } from '../contexts/UsersContext'
@@ -36,7 +35,6 @@ const LogoTitle = styled.div`
 `
 const Middle = styled.div`
   background-color: black;
-  // padding: 0 10%;
 `
 
 const Users = () => {
@@ -97,7 +95,7 @@ const Users = () => {
             style={{ x: -100 }} 
             animate={{ x: 0 }}          
           >
-            <div className='row d-flex justify-content-between'>
+            <div className='row'>
               {users.map(element => (
                 <UserCard
                   key={element._id}
