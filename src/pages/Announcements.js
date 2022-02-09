@@ -53,6 +53,9 @@ const Middle = styled.div`
 const AnnouncementsDiv = styled.div`
   margin : 5% 0;
 `
+const AnnouncementText = styled.div`
+  overflow-wrap: break-word;
+`
 const UserInfosSeparator = styled.div`
   border-top : 1px solid rgba(255, 229, 147, 0.253);
 `
@@ -70,7 +73,6 @@ const SummonerName = styled.div`
 
 const Announcements = () => {
   const [announcements, setAnnouncements] = useState(null)
-  const [userProfileIcon, setLolProfile] = useState(null)
 
   useEffect(() => {
     fetchAnnouncements()
@@ -144,10 +146,20 @@ const Announcements = () => {
                           </div>
                         }
                         {element.team && 
-                          <div
-                            style={{ backgroundImage: `url("${element.team.logo}")` }} 
-                            className="img-fluid rounded-circle animate__animated animate__bounce" 
-                          />
+                          <Link to={`/team/${element.team._id}`} className='my-1'>
+                            <img 
+                              src={element.team.logo} 
+                              alt="teamLogo" 
+                              className="img-fluid rounded-circle animate__animated animate__bounce" 
+                            />
+                          </Link>
+                        }
+                        {element.team && 
+                          <div className='text-center'>
+                            <SummonerName>
+                              <Link to={`/team/${element.team._id}`} className='my-1 underline'>{element.team.name}</Link>
+                            </SummonerName>
+                          </div>
                         }
                       </div>
                       <div
@@ -155,7 +167,9 @@ const Announcements = () => {
                         className='col-10 my-1 py-2 announcement-text'
                       >
                         <DateTime>Posté le {moment(element.createdAt).format('lll')}</DateTime>
-                        {element.text}
+                        <AnnouncementText>
+                          {element.text}
+                        </AnnouncementText>
                       </div>
                     </div>
                   </div> 
@@ -174,15 +188,47 @@ const Announcements = () => {
                   </div>
                   <div className='row'>
                     <div className="col-2 my-1 py-2 ">
-                      {element.user && "user"}
-                      {element.team && "team"}
+                      {element.user && 
+                        <Link to={`/user/${element.user._id}`} className='my-1 underline'>
+                          <img 
+                            src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${element.user.summoner_infos.profileIconId}.png`} 
+                            alt="Person" 
+                            className="img-fluid rounded-circle animate__animated animate__bounce" 
+                          />
+                        </Link>
+                      }
+                      {element.user && 
+                        <div className='text-center'>
+                          <SummonerName>
+                            <Link to={`/user/${element.user._id}`} className='my-1 underline'>{element.user.summoner_name}</Link>
+                          </SummonerName>
+                        </div>
+                      }
+                      {element.team && 
+                        <Link to={`/team/${element.team._id}`} className='my-1'>
+                          <img 
+                            src={element.team.logo} 
+                            alt="teamLogo" 
+                            className="img-fluid rounded-circle animate__animated animate__bounce" 
+                          />
+                        </Link>
+                      }
+                      {element.team && 
+                        <div className='text-center'>
+                          <SummonerName>
+                            <Link to={`/team/${element.team._id}`} className='my-1 underline'>{element.team.name}</Link>
+                          </SummonerName>
+                        </div>
+                      }
                     </div>
                     <div
                       key={element._id} 
                       className='col-10 my-1 py-1 '
                     >
                       <DateTime>Posté le {moment(element.createdAt).format('lll')}</DateTime>
-                      {element.text}
+                      <AnnouncementText>
+                        {element.text}
+                      </AnnouncementText>
                     </div>
                   </div>
                 </div>

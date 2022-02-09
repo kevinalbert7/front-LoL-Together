@@ -40,6 +40,9 @@ const SideDiv = styled.div`
     .p2 {
         font-size: 15px;
     }
+    @media (max-width: 767px) {
+        padding-top: 150px;
+    }
 `
 const InputContainer = styled.div`
     display: flex;
@@ -73,6 +76,9 @@ const InputContainer = styled.div`
         background: #f1f1f1;
         color: #333;
     }
+    @media (max-width: 767px) {
+        padding-top: 50px;
+    }
 `
 const SelectStyled = styled.div`
 `
@@ -87,14 +93,14 @@ const TeamCreation = () => {
     const [selectedDisponiblities, setSelectedDisponiblities] = useState([])
 
     useEffect( async () => {
-        // setSelectedRegion([{ label: profile.region, value: profile.region }])
-        // const dataRegion = await getRegion()
-        // setOptionsRegion(dataRegion)
+        setSelectedRegion([{ label: profile.region, value: profile.region }])
+        const dataRegion = await getRegion()
+        setOptionsRegion(dataRegion)
         const dataLanguages = await getLanguages()
         setOptionsLanguages(dataLanguages)
-        // console.log("hhhh", dataRegion)
-        // const userLanguages = getSelectedInfos(profile.languages)
-        // setSelectedLanguages(userLanguages)
+        console.log("hhhh", dataRegion)
+        const userLanguages = getSelectedInfos(profile.languages)
+        setSelectedLanguages(userLanguages)
         const userDisponibilities = getSelectedInfos(profile.disponibilities)
         setSelectedDisponiblities(userDisponibilities)
     },[])
@@ -150,7 +156,7 @@ const TeamCreation = () => {
             exit={{ opacity: 0 }}
         >
             <Header>
-                <div className="container mx-0">
+                <div className="container ">
                     <div className="row">
 
                         <div className="col-xxl col-md-6 d-flex justify-content-center align-items-center">

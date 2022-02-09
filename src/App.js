@@ -10,6 +10,7 @@ import ScrollToTop from './components/ScrollToTop'
 
 import { UserContextProvider } from './contexts/UserContext'
 import { UsersContextProvider } from "./contexts/UsersContext"
+import { DeletedContextProvider } from "./contexts/DeletedContext"
 import { ProfileContextProvider } from "./contexts/ProfileContent"
 import { AnnouncementContextProvider } from "./contexts/AnnouncementContext"
 

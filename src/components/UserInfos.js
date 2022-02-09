@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import { UserContext } from '../contexts/UserContext'
+import { DeletedContext } from '../contexts/DeletedContext'
 import { ProfileContext } from '../contexts/ProfileContent'
 import { AnnouncementContext } from '../contexts/AnnouncementContext'
 
@@ -19,7 +20,7 @@ import {
   MdOutlineEventAvailable, 
   MdLanguage 
 } from 'react-icons/md'
-import { RiUserLine, RiTeamLine, RiDiscordLine, RiPencilLine } from 'react-icons/ri'
+import { RiUserLine, RiTeamLine, RiDiscordLine, RiPencilLine, RiDeleteBin5Line } from 'react-icons/ri'
 import { FaLanguage } from 'react-icons/fa'
 
 const Announcements = styled.div`
@@ -31,6 +32,16 @@ const UserInfosSeparator = styled.div`
 const DateTime = styled.div`
   font-size: 13px;
   color: gray;
+  display : flex;
+  align-items : center;
+  .delete{
+    color: red;
+    margin: 0 0 3px 10px;
+    cursor: pointer;
+  }
+`
+const AnnouncementText = styled.div`
+  overflow-wrap: break-word;
 `
 const IconStyle = {
   color : "teal"
@@ -40,13 +51,14 @@ const UserInfos = () => {
   const { id } = useParams()
   const { user } = useContext(UserContext)
   const { profile } = useContext(ProfileContext)
+  const { deleted, setDeleted } = useContext(DeletedContext)
   const { announcement, setAnnouncement } = useContext(AnnouncementContext)
   const [modalParam, setModalParam] = useState(null)
   const [modalShow, setModalShow] = useState(false)
 
   useEffect(() => {
     fetchAnnouncement()
-  },[])
+  },[deleted])
   
   const fetchAnnouncement = async () => {
     const response = await getAnnouncementById(id)
@@ -56,6 +68,21 @@ const UserInfos = () => {
   const handleModal = (param) => {
     setModalShow(true)
     setModalParam(param)
+  }
+
+  const handleDelete = async (id) => {
+    const response = await fetch(`http://localhost:5000/announcements/${id}`, {
+      method:'delete',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      credentials: "include",
+      // body: JSON.stringify({
+      //   user: user._id
+      // })
+    })
+    const data = await response.json()
+    setDeleted(data)
   }
 
   if(!announcement) {
@@ -153,16 +180,30 @@ const UserInfos = () => {
               key={element._id} 
               className='col-12 my-1 py-2 borderBottom'
             >
-              <DateTime>Posté le {moment(element.createdAt).format('lll')}</DateTime>
-              {element.text}
+              <DateTime>
+                <div>Posté le {moment(element.createdAt).format('lll')}</div>
+                {user && user._id === id && 
+                  <div className='delete' onClick={() => handleDelete(element._id)}><RiDeleteBin5Line/></div>
+                }
+              </DateTime>
+              <AnnouncementText>
+                {element.text}
+              </AnnouncementText>
             </div>
           ) : (
             <div
               key={element._id} 
               className='col-12 my-1 py-1 '
             >
-              <DateTime>Posté le {moment(element.createdAt).format('lll')}</DateTime>
-              {element.text}
+              <DateTime>
+                <div>Posté le {moment(element.createdAt).format('lll')}</div>
+                {user && user._id === id && 
+                  <div className='delete' onClick={() => handleDelete(element._id)}><RiDeleteBin5Line/></div>
+                }
+              </DateTime>
+              <AnnouncementText>
+                {element.text}
+              </AnnouncementText>
             </div>
           )))}
       </Announcements>
