@@ -7,6 +7,7 @@ import Title from './Title'
 const Grid = styled.div`
   text-align: left;
   padding: 5px 0;
+  text-align: center;
   a {
     text-decoration: none;
     color: #FFF;

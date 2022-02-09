@@ -15,9 +15,6 @@ const FooterBackgroundRow = styled.div`
   display: flex;
   justify-content: space-around;
 `
-const FooterText = styled.div`
-
-`
 const IconsList = styled.div`
 ul {
   display: flex;

@@ -7,6 +7,7 @@ const TitleDiv = styled.div`
   font-style: normal;
   font-weight: normal;
   text-align: left;
+  text-align: center;
   font-size: ${props => props.size}px;
 `
 
