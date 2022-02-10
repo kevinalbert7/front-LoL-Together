@@ -11,7 +11,6 @@ import 'moment/locale/fr'
 
 import styled from 'styled-components'
 import { motion } from "framer-motion"
-import blur from '../images/blur.png'
 import backgroundImage from '../images/conversation-background.jpg'
 import { MdOutlineAnnouncement } from 'react-icons/md'
 
@@ -21,7 +20,7 @@ import Title from '../components/Title'
 import Footer from '../components/Footer'
 
 const Header = styled.div`
-  background-image: url(${backgroundImage});
+  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
   height: 65vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -39,12 +38,6 @@ const LogoTitle = styled.div`
   .p2 {
     font-size: 15px;
   }
-`
-const Separator = styled.div`
-  background-image: url(${blur});
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 160px;
 `
 const Middle = styled.div`
   background-color: black;
@@ -165,7 +158,6 @@ const Conversation = () => {
                 <Title text="Conversation" size='64'/>
               </motion.div>
             </LogoTitle>
-          <Separator />
         </Header>
         <Middle>
           <div className='container'>

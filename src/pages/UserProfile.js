@@ -20,11 +20,10 @@ import Title from '../components/Title'
 import Footer from '../components/Footer'
 import UserInfos from '../components/UserInfos'
 
-import blur from '../images/blur.png'
 import backgroundImage from '../images/profil-background.png'
 
 const Header = styled.div`
-  background-image: url(${backgroundImage});
+  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
   height: 65vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -42,12 +41,6 @@ const LogoTitle = styled.div`
   .p2 {
     font-size: 15px;
   }
-`
-const Separator = styled.div`
-  background-image: url(${blur});
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 160px;
 `
 const Emblem = styled.div`
   text-align : center;
@@ -137,7 +130,6 @@ const UserProfile = () => {
                 <Title text={`${profile.summoner_name}`} size='64'/>
               </motion.div>
             </LogoTitle>
-          <Separator />
         </Header>
         <Middle>
           <div className='container'>
