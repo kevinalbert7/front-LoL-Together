@@ -3,7 +3,7 @@ import { RiTwitterLine, RiFacebookLine, RiInstagramLine, RiGithubLine, RiTwitchF
 
 import styled from 'styled-components'
 
-import GridFooter from './GridFooter1'
+import GridFooter from './GridFooter'
 import Title from './Title'
 
 const FooterBackground = styled.div`
