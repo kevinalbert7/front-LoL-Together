@@ -13,6 +13,7 @@ const Grid = styled.div`
     color: #FFF;
   }
   a:hover {
+    transition: all 0.5s ease-in-out;
     text-decoration: underline;
   }
   p {

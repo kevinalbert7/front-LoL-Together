@@ -66,66 +66,66 @@ const Nav = () => {
   return (
       <MenuBackground>
         <Menu>
-            <MenuLeft>
-              <MenuItem>
-                <Link to="/" >
-                  <div className='underline'>Accueil</div>
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/users">
+          <MenuLeft>
+            <MenuItem>
+              <Link to="/" >
+                <div className='underline'>Accueil</div>
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link to="/users">
                 <div className='underline'>Joueurs</div>
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/teams">
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link to="/teams">
                 <div className='underline'>Equipes</div>
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/announcements">
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link to="/announcements">
                 <div className='underline'>Annonces</div>
-                </Link>
-              </MenuItem>
-            </MenuLeft>
-            <MenuRight>
-              {user ? 
-                <>
-                  <MenuItem>
-                    <Link to={`/user/${user._id}`}>
-                      <Bonjour>
-                        Bonjour, {user.username}.
-                      </Bonjour>
-                      <Account>
+              </Link>
+            </MenuItem>
+          </MenuLeft>
+          <MenuRight>
+            {user ? 
+              <>
+                <MenuItem>
+                  <Link to={`/user/${user._id}`}>
+                    <Bonjour>
+                      Bonjour, {user.username}.
+                    </Bonjour>
+                    <Account>
                       <div className='underline'>Accéder à votre compte.</div>
-                      </Account>
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <button 
-                      type="button" 
-                      className=""
-                      onClick={handleLogoutClick}
-                    >
-                      <div className='underline'>Déconnexion</div>
-                    </button>
-                  </MenuItem>
-                </>
-              :
-                <>
-                  <MenuItem>
-                    <Link to="/login">
+                    </Account>
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <button 
+                    type="button" 
+                    className=""
+                    onClick={handleLogoutClick}
+                  >
+                    <div className='underline'>Déconnexion</div>
+                  </button>
+                </MenuItem>
+              </>
+            :
+              <>
+                <MenuItem>
+                  <Link to="/login">
                     <div className='underline'>Connexion</div>
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to="/signup">
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/signup">
                     <div className='underline'>Inscription</div>
-                    </Link>
-                  </MenuItem>
-                </>
-              }
-            </MenuRight>
+                  </Link>
+                </MenuItem>
+              </>
+            }
+          </MenuRight>
         </Menu>
       </MenuBackground>
   )
