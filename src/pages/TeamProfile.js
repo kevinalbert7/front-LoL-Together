@@ -138,7 +138,7 @@ const TeamProfile = () => {
       </Header>
 
         <Card>
-          <div className='teamLogo' style={{ backgroundImage: `url("${teamProfile.logo}")` }}/>
+          <div className='teamLogo ' style={{ backgroundImage: `url("${teamProfile.logo}")` }}/>
 
           <div className='container'>
             <div className='row '>
