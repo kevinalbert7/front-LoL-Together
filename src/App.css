@@ -51,10 +51,10 @@ body {
 .borderBottom {
   border-bottom: 1px solid rgba(255, 255, 255, 0.253);
 }
-.userinfos {
+.userinfos, .conversation {
   color: #ffe593;
 }
-.userinfos .col-1 {
+.userinfos .col-1, .conversation .col-1 {
   width: 4% !important;
 }
 .userinfos .col-2 {
@@ -68,4 +68,13 @@ body {
 }
 .cursor-pointer:hover {
   color: #eb196e;
+}
+.conversation .col-2{
+  width: 25% !important;
+}
+.conversation .col-8{
+  width: 67% !important;
+}
+.conversationTextArea .col-12{
+  width: 92% !important;
 }

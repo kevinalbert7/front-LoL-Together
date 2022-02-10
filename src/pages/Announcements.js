@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom'
 import '../UserProfile.css'
 import styled from 'styled-components'
 import { motion } from "framer-motion"
+import { MdOutlineAnnouncement } from 'react-icons/md'
 
 import { getAnnouncements } from '../api/announcement'
 
 import moment from "moment"
 import 'moment/locale/fr'
-
-import { MdOutlineAnnouncement } from 'react-icons/md'
 
 import Nav from '../components/Nav'
 import Logo from '../components/Logo'
