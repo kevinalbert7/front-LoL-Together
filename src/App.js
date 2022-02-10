@@ -22,6 +22,7 @@ import Signup from "./pages/Signup"
 import UserProfile from "./pages/UserProfile"
 import TeamProfile from "./pages/TeamProfile"
 import Users from "./pages/Users"
+import TeamCreation from "./pages/TeamCreation"
 import Teams from "./pages/Teams"
 import Policy from "./pages/Policy"
 import NotFound from './pages/NotFound'
@@ -47,6 +48,7 @@ const App = () => {
                       <Route path="/announcements" element={<Announcements />} />
                       <Route path="/teams" element={<Teams />} />
                       <Route path="/conversation/:username/:id" element={<Conversation />} />
+                      <Route path="/teamcreation" element={<TeamCreation />} />
                       <Route path="/policy" element={<Policy />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
