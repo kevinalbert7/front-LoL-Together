@@ -91,13 +91,20 @@ const Conversation = () => {
   const [sended, setIsSended] = useState(false)
 
   useEffect(() => {
-    fetchConversation()
-    setIsSended(false)
-  },[id, sended])
+    if (user) {
+      fetchConversation()
+      setIsSended(false)
+    }
+  },[id, user, sended])
 
   const fetchConversation = async () => {
-    const conversation = await getConversation(user._id, id)
-    setConversation(conversation)
+    try {
+      let conversation = await getConversation(user._id, id)
+
+      setConversation(conversation)
+    } catch (error) {
+      console.log(error)
+    }
 
     const profile = await getUserByID(id)
     setProfile(profile)
@@ -112,6 +119,15 @@ const Conversation = () => {
   }
 
   const sendMessage = async () => {
+    const values = {
+      text : newMessage,
+      sender : user._id,
+      receiver : profile._id,
+    }
+    if(conversation) {
+      values = { ...values, conversation: conversation._id }
+    }
+    console.log(values)
     await fetch(`http://localhost:5000/messages`, {
       method: 'post',
       headers: {
@@ -119,20 +135,17 @@ const Conversation = () => {
       },
       credentials: 'include',
       body: JSON.stringify({
-        text : newMessage,
-        sender : user._id,
-        receiver : profile._id,
-        conversation: conversation._id
+        ...values
       })
     })
     setIsSended(true)
   }
 
-  if(!profile || !conversation ) {
+  if(!profile ) {
     return <h1>Chargement...</h1>
   }
 
-  // console.log(newMessage)
+  console.log(conversation)
   // console.log(profile)
   return (
     <>
@@ -168,58 +181,65 @@ const Conversation = () => {
               </div>
             </div>
             <ConversationDiv>
-              {/* {conversation &&  */}
-              {conversation.messages.map((element, index) =>
-                <div 
-                  key={index} 
-                  className='row d-flex align-items-center overflow-auto'
-                >
-                  {element.sender === user._id ?
-                    <>
-                      <div className='col-1 my-1 py-2'>
-                        <Link to={`/user/${user._id}`} className='my-1'>
-                          <img 
-                            src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${user.summoner_infos.profileIconId}.png`} 
-                            alt="Person" 
-                            className="img-fluid rounded-circle animate__animated animate__bounce" 
-                          />
-                        </Link>
-                      </div>
-                      <div className='col-10 my-1 py-2'>
-                        <SummonerName>
-                          <Link to={`/user/${user._id}`} className='my-1 underline'>{user.summoner_name}</Link>
-                        </SummonerName>
-                        <MessagesTextSender>
-                          {element.text}
-                        </MessagesTextSender>
-                        <DateTime>Envoyé le {moment(element.createdAt).format('lll')}</DateTime>
-                      </div>
-                    </>
-                  :
-                    <>
-                      <div className='col-10 my-1 py-2 text-end'>
-                        <SummonerName>
-                          <Link to={`/user/${profile._id}`} className='my-1 underline'>{profile.summoner_name}</Link>
-                        </SummonerName>
-                        <MessagesTextReceiver>
-                          {element.text}
-                        </MessagesTextReceiver>
-                        <DateTime>Posté le {moment(element.createdAt).format('lll')}</DateTime>
-                      </div>
-                      <div className='col-1 my-1 py-2'>
-                        <Link to={`/user/${profile._id}`} className='my-1'>
-                        <img 
-                          src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${profile.summoner_infos.profileIconId}.png`} 
-                          alt="Person" 
-                          className="img-fluid rounded-circle animate__animated animate__bounce" 
-                        />
-                        </Link>
-                      </div>
-                    </>
-                  }
-                </div>
-              )}
-              {/* } */}
+              {conversation && 
+                <>
+                {console.log(conversation.messages)}
+                  {conversation.messages.map((element, index) =>
+                    <div 
+                      key={index} 
+                      className='row d-flex align-items-center overflow-auto'
+                    >
+                      {element.sender === user._id ?
+                        <>
+                          <div className='col-1 my-1 py-2'>
+                            <Link to={`/user/${user._id}`} className='my-1'>
+                              <img 
+                                src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${user.summoner_infos.profileIconId}.png`} 
+                                alt="Person" 
+                                className="img-fluid rounded-circle animate__animated animate__bounce" 
+                              />
+                            </Link>
+                          </div>
+                          <div className='col-10 my-1 py-2'>
+                            <SummonerName>
+                              <Link to={`/user/${user._id}`} className='my-1 underline'>{user.summoner_name}</Link>
+                            </SummonerName>
+                            <MessagesTextSender>
+                              {element.text}
+                            </MessagesTextSender>
+                            <DateTime>Envoyé le {moment(element.createdAt).format('lll')}</DateTime>
+                          </div>
+                        </>
+                      :
+                        <>
+                          <div className='col-10 my-1 py-2 text-end'>
+                            <SummonerName>
+                              <Link to={`/user/${profile._id}`} className='my-1 underline'>{profile.summoner_name}</Link>
+                            </SummonerName>
+                            <MessagesTextReceiver>
+                              {element.text}
+                            </MessagesTextReceiver>
+                            <DateTime>Posté le {moment(element.createdAt).format('lll')}</DateTime>
+                          </div>
+                          <div className='col-1 my-1 py-2'>
+                            <Link to={`/user/${profile._id}`} className='my-1'>
+                            <img 
+                              src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${profile.summoner_infos.profileIconId}.png`} 
+                              alt="Person" 
+                              className="img-fluid rounded-circle animate__animated animate__bounce" 
+                            />
+                            </Link>
+                          </div>
+                        </>
+                      }
+                    </div>
+                  )}
+                </>
+              // :
+              //  <>
+              //  yiytuy
+              //  </>
+              }
             </ConversationDiv>
             <div className='row conversationTextArea'>
               <div className='col-12'>

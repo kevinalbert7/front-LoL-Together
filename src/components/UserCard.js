@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import styled from 'styled-components'
 import { motion } from "framer-motion"
@@ -73,7 +74,11 @@ const UserCard = ({ id, username, summoner_name, discord, region, languages, dis
             <li className="list-group-item">Discord : <span className='fw-bold'>{discord}</span></li>
           </ul>
           <div className="card-body text-end">
-            <a href={`http://localhost:3000/user/${id}`} className="text-dark card-link text-decoration-none underline">Voir plus...</a>
+            <Link 
+              to={`/user/${id}`} 
+              className="text-dark card-link text-decoration-none underline">
+              Voir plus...
+            </Link>
           </div>
         </div>
       </motion.div>
