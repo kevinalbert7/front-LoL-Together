@@ -190,8 +190,13 @@ const UserProfile = () => {
                       <button className="btn draw-border">Ajouter</button>
                   }
                   {user && user._id !== id && 
+                    <>
                       <Link to={`/conversation/${profile.username}/${id}`} className='btn draw-border'>Contacter</Link>
+                    </>
                       // <button className="btn draw-border">Contacter</button>
+                    }
+                  {user &&
+                    <Link to={`/teamcreation`} className='btn draw-border'>Créer votre équipe</Link>
                   }
                 </div>
               </div>
