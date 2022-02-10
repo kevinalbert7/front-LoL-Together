@@ -11,43 +11,43 @@ import UserFilter from '../components/UsersFilter'
 import UserCard from '../components/UserCard'
 import Footer from '../components/Footer'
 
-import blur from '../images/blur.png'
 import backgroundImage from '../images/users-background.png'
 
 import { UsersContext } from '../contexts/UsersContext'
 import { getUsers } from '../api/user'
 
 const Header = styled.div`
-  background-image: url(${backgroundImage});
+  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
   height: 65vh;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-`
-const Separator = styled.div`
-  background-image: url(${blur});
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 160px;
+  align-items: center;
 `
 const LogoTitle = styled.div`
-  left: 35%;
-  top: 20%;
-  position: absolute;
-  font-size: 20px;
   width: 31%;
+  margin-top: 5%;
+  font-size: 20px;
   .p2 {
     font-size: 15px;
+  }
+  @media (max-width: 1000px) {
+    margin-top: 10%
+  }
+  @media (max-width: 800px) {
+    margin-top: 15%
+  }
+  @media (max-width: 800px) {
+    margin-top: 20%
   }
 `
 const Middle = styled.div`
   background-color: black;
-  padding: 0 20%;
+  display: flex;
+  justify-content: space-between;
+  // margin: auto;
 `
-
 
 const Users = () => {
   const navigate = useNavigate()
@@ -87,7 +87,6 @@ const Users = () => {
             <Title text="Liste des joueurs" size='64'/>
           </motion.div>
         </LogoTitle>
-        <Separator />
       </Header>
       <motion.div
         initial={{ opacity: 0 }}
@@ -96,6 +95,11 @@ const Users = () => {
       >
       <Middle>
         <div className='container'>
+          <div className='row'>
+            <div className='col mt-2 d-flex justify-content-center fs-3'>
+              Trier par :
+            </div>
+          </div>
           <div className='row my-3'>
             <UserFilter />
           </div>
@@ -103,7 +107,7 @@ const Users = () => {
             style={{ x: -100 }} 
             animate={{ x: 0 }}          
           >
-            <div className='row'>
+            <div className='row d-flex justify-content-around'>
               {users.map(element => (
                 <UserCard
                   key={element._id}
@@ -116,7 +120,7 @@ const Users = () => {
                   disponibilities={element.disponibilities}
                   roles={element.roles}
                 />
-                ))}
+              ))}
             </div>
           </motion.div>
         </div>

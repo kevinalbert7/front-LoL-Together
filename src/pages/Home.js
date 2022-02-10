@@ -1,7 +1,6 @@
 import React from 'react'
 
 import backgroundImage from '../images/home-background.png'
-import homeWaveImage from '../images/home-wave.png'
 
 import { RiUserLine, RiTeamLine } from 'react-icons/ri'
 
@@ -14,7 +13,7 @@ import Title from '../components/Title'
 import Footer from '../components/Footer'
 
 const Header = styled.div`
-  background-image: url(${backgroundImage});
+  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,12 +21,6 @@ const Header = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-`
-const Separator = styled.div`
-  background-image: url(${homeWaveImage});
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 280px;
 `
 const SideDiv = styled.div`
   right: 10%;
@@ -40,7 +33,7 @@ const SideDiv = styled.div`
   }
 `
 const Middle = styled.div`
-  background-color: #361F40;
+  background-color: #000000;
   padding: 50px;
 `
 const HomeCard = styled.div`
@@ -55,6 +48,7 @@ const Description = styled.div`
 `
 const Step = styled.div`
   border: 1px solid white;
+  text-align: center;
 `
 
 const Home = () => {  
@@ -78,14 +72,13 @@ const Home = () => {
               <Title text='Découvrir' size='72' />
             </motion.div>
           </SideDiv>
-          <Separator/>
         </Header>
         <Middle>
           <div className='container'>
           <motion.div
-              style={{ x: -100 }} 
-              animate={{ x: 0 }}          
-            >
+            style={{ x: -100 }} 
+            animate={{ x: 0 }}          
+          >
             <div className='row'>
               <div className='col-6'>
                 <HomeCard>
@@ -102,21 +95,21 @@ const Home = () => {
                     </Step>
                   </div>
                   <div className='col-4'>
-                  <Step>
+                    <Step>
                       Etape 2
                     </Step>
                   </div>
                   <div className='col-4'>
-                  <Step>
-                      Etape 3
-                  </Step>
+                    <Step>
+                        Etape 3
+                    </Step>
                   </div>
                 </div>
               </div>
               <div className='col-6'>
-                  <HomeCard>
-                    <RiTeamLine size='50%' />
-                    <p>Vous cherchez une équipe?</p>
+                <HomeCard>
+                  <RiTeamLine size='50%' />
+                  <p>Vous cherchez une équipe?</p>
                   </HomeCard>
                 <Description>
                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -128,19 +121,19 @@ const Home = () => {
                     </Step>
                   </div>
                   <div className='col-4'>
-                  <Step>
+                    <Step>
                       Etape 2
                     </Step>
                   </div>
                   <div className='col-4'>
-                  <Step>
+                    <Step>
                       Etape 3
-                  </Step>
+                    </Step>
                   </div>
                 </div>
               </div>
             </div>
-            </motion.div>
+          </motion.div>
           </div>
         </Middle>
         <Footer />

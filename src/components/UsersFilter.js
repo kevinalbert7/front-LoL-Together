@@ -12,6 +12,11 @@ import { optionsRoles } from '../api/filter'
 const SelectStyled = styled.div`
   color: black;
 `
+const FilterContainer = styled.div`
+  .filter {
+      text-align: center;
+  }
+`
 
 const UsersFilter = () => {
   const { setUsers } = useContext(UsersContext)
@@ -36,56 +41,58 @@ const UsersFilter = () => {
 
   // console.log(selectedDisponiblities)
   return (
-    <>
-      <div className='col-3 my-2'>
-        <p>Trier par région :</p>
-        <SelectStyled>
-          <MultiSelect
-            options={optionsRegion}
-            value={selectedRegion}
-            onChange={setSelectedRegion}
-            labelledBy="Select"
-            hasSelectAll={false}
-          />
-        </SelectStyled>
+    <FilterContainer className='container'>
+      <div className='row'>
+        <div className='col-3 my-2 filter'>
+          <p>région</p>
+          <SelectStyled>
+            <MultiSelect
+              options={optionsRegion}
+              value={selectedRegion}
+              onChange={setSelectedRegion}
+              labelledBy="Select"
+              hasSelectAll={false}
+            />
+          </SelectStyled>
+        </div>
+        <div className='col-3 my-2 filter'>
+          <p>langue(s)</p>
+          <SelectStyled>
+            <MultiSelect
+              options={optionsLanguages}
+              value={selectedLanguages}
+              onChange={setSelectedLanguages}
+              labelledBy="Select"
+              hasSelectAll={false}
+            />
+          </SelectStyled>
+        </div>
+        <div className='col-3 my-2 filter'>
+          <p>disponibilités</p>
+          <SelectStyled>
+            <MultiSelect
+              options={optionsDisponiblities}
+              value={selectedDisponiblities}
+              onChange={setSelectedDisponiblities}
+              labelledBy="Select"
+              hasSelectAll={false}
+            />
+          </SelectStyled>
+        </div>
+        <div className='col-3 my-2 filter'>
+          <p>rôles</p>
+          <SelectStyled>
+            <MultiSelect
+              options={optionsRoles}
+              value={selectedRoles}
+              onChange={setSelectedRoles}
+              labelledBy="Select"
+              hasSelectAll={false}
+            />
+          </SelectStyled>
+        </div>
       </div>
-      <div className='col-3 my-2'>
-        <p>Trier par langue(s) :</p>
-        <SelectStyled>
-          <MultiSelect
-            options={optionsLanguages}
-            value={selectedLanguages}
-            onChange={setSelectedLanguages}
-            labelledBy="Select"
-            hasSelectAll={false}
-          />
-        </SelectStyled>
-      </div>
-      <div className='col-3 my-2'>
-        <p>Trier selon les disponibilités :</p>
-        <SelectStyled>
-          <MultiSelect
-            options={optionsDisponiblities}
-            value={selectedDisponiblities}
-            onChange={setSelectedDisponiblities}
-            labelledBy="Select"
-            hasSelectAll={false}
-          />
-        </SelectStyled>
-      </div>
-      <div className='col-3 my-2'>
-        <p>Trier par rôles :</p>
-        <SelectStyled>
-          <MultiSelect
-            options={optionsRoles}
-            value={selectedRoles}
-            onChange={setSelectedRoles}
-            labelledBy="Select"
-            hasSelectAll={false}
-          />
-        </SelectStyled>
-      </div>
-    </>
+    </FilterContainer>
   )
 }
 

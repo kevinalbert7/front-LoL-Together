@@ -70,7 +70,7 @@ const InputContainer = styled.div`
         margin: 20px 0;
     }
     .btnSubscribe:hover {
-        transition: all 0.3s ease-in-out;
+        transition: all 0.5s ease-in-out;
         background: #f1f1f1;
         color: #333;
     }
@@ -114,8 +114,8 @@ const TeamCreation = () => {
         },
         validateOnChange: false,
         validationSchema: Yup.object({
-            name: Yup.string()
-                .required("Un nom de team est requis"),
+          name: Yup.string()
+            .required("Un nom de team est requis"),
 
         })
     })
@@ -136,6 +136,7 @@ const TeamCreation = () => {
 
             setProfile(team)
             navigate(`/team/${team._id}`)
+
     }
 
     // console.log("value :",formik.values)
@@ -215,7 +216,7 @@ const TeamCreation = () => {
                                             labelledBy="Select"
                                             hasSelectAll={false}
                                         />
-                                    </SelectStyled>                                   
+                                    </SelectStyled>                                    
                                     <div className="btn">
                                         <button type="submit" className="btnSubscribe">Inscription</button>
                                         <Link to="/login">            
