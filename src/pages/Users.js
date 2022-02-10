@@ -26,7 +26,7 @@ const Header = styled.div`
   align-items: center;
 `
 const LogoTitle = styled.div`
-  width: 31%;
+  width: 45%;
   margin-top: 5%;
   font-size: 20px;
   .p2 {

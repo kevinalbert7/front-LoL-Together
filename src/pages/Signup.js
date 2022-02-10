@@ -25,14 +25,17 @@ const Header = styled.div`
   flex-direction: column;
   // justify-content: flex-end;
   padding-left: 10%;
-  padding-top: 10%;
+  padding-top: 7%;
   padding-bottom: 10%;
 `
 const SideDiv = styled.div`
   width: 30%;
-  font-size: 20px;
+  font-size: 15px;
   .p2 {
     font-size: 15px;
+  }
+  input {
+    height: 35px;
   }
 `
 const ErrorForm = styled.div`
@@ -41,7 +44,6 @@ const ErrorForm = styled.div`
   display: block;
 `
 const FooterDiv = styled.div`
-  padding: 200px;
 `
 
 const Signup = () => {
@@ -139,7 +141,7 @@ const Signup = () => {
               animate={{ x: 0 }} 
             >
               <Logo />
-              <Title text="Inscription" size='72'/>
+              <Title text="Inscription" size='58'/>
               <ErrorForm>
                 {errorSignup && errorSignup}
               </ErrorForm>
@@ -206,7 +208,7 @@ const Signup = () => {
                     {formik.errors.passwordConfirmation}
                   </ErrorForm>
                 </div>
-                <div className="mb-5">
+                <div className="mb-4">
                   <label className="form-label">Nom d'invocateur</label>
                   <input 
                     type="text" 

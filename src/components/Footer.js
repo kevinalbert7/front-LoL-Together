@@ -9,7 +9,7 @@ import Title from './Title'
 const FooterBackground = styled.div`
   background-color: black;
   margin: 3%;
-  margin-top: 250px;
+  margin-top: 150px;
 `
 const FooterBackgroundRow = styled.div`
   display: flex;
@@ -72,7 +72,7 @@ const Footer = () => {
         />
         <GridFooter 
           title="Equipe" 
-          link1="http://localhost:3000/teamcreation" 
+          link1="/teamcreation" 
           text1="Créez votre équipe"
           link2="/users" 
           text2="Rechercher des joueurs" 

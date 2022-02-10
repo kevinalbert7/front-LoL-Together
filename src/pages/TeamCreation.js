@@ -55,7 +55,7 @@ const InputContainer = styled.div`
     .btn {
         width: 400px;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
     }
     .btnSubscribe {
         border: 1px solid #f1f1f1;
@@ -64,7 +64,7 @@ const InputContainer = styled.div`
         background: transparent;
         font-size: 30px;
         padding: 5px;
-        widt: 300px;
+        width: 250px;
         color: #f1f1f1;
         cursor: pointer;
         margin: 20px 0;
@@ -219,7 +219,6 @@ const TeamCreation = () => {
                                     </SelectStyled>                                    
                                     <div className="btn">
                                         <button type="submit" className="btnSubscribe">Inscription</button>
-
                                     </div>
                                 </form>
                             </InputContainer>

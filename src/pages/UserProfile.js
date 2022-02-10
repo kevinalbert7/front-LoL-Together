@@ -37,7 +37,7 @@ const LogoTitle = styled.div`
   top: 20%;
   position: absolute;
   font-size: 20px;
-  width: 31%;
+  width: 45%;
   .p2 {
     font-size: 15px;
   }

@@ -148,8 +148,9 @@ const Login = () => {
                 </div>
                 <div className='text-center'>
                   <Button text="Se connecter" />
+                    Vous n'avez pas de compte?<br/>
                     <Link to="/signup">            
-                      Vous n'avez pas de compte? Inscrivez-vous!
+                      Inscrivez-vous!
                    </Link>               
                 </div>
               </form>
