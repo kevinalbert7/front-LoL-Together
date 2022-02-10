@@ -128,7 +128,7 @@ const TeamProfile = () => {
       <Header>
 
         <LogoContainer>
-            <Logo/>
+            <Logo />
         </LogoContainer>
 
         <TitleContainer>

@@ -8,16 +8,21 @@ const Grid = styled.div`
   text-align: left;
   padding: 5px 0;
   text-align: center;
-  a {
-    text-decoration: none;
-    color: #FFF;
-  }
-  a:hover {
-    transition: all 0.5s ease-in-out;
-    text-decoration: underline;
-  }
   p {
     margin-top: 20px;
+  }
+  p::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #000;
+    transform: scale(0;
+    transition: transform 0.2s ease-in-out;
+  }
+  p::hover::after {
+    transform: scale(1);
   }
   .linkFooter {
     margin-top: 40px;
@@ -29,10 +34,10 @@ const GridFooter = (props) => {
   return (
     <Grid>
       <Title text={title} size='36'/>
-        <div className="linkFooter">
-          <Link to={link1}><p>{text1}</p></Link>
-          <Link to={link2}><p>{text2}</p></Link>
-        </div>
+      <div className="linkFooter">
+        <Link to={link1}><p>{text1}</p></Link>
+        <Link to={link2}><p>{text2}</p></Link>
+      </div>      
     </Grid>
   )
 }
