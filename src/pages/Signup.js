@@ -5,7 +5,6 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
 import backgroundImage from '../images/signup-background.png'
-import blur from '../images/blur.png'
 import styled from 'styled-components'
 import { motion } from "framer-motion"
 
@@ -18,27 +17,20 @@ import Button from '../components/Button'
 import { UserContext } from '../contexts/UserContext'
 
 const Header = styled.div`
-  background-image: url(${backgroundImage});
   height: 115vh;
+  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
   background-repeat: no-repeat;
   background-size: cover;
-  positive: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-`
-const Separator = styled.div`
-  background-image: url(${blur});
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 160px;
+  // justify-content: flex-end;
+  padding-left: 10%;
+  padding-top: 10%;
+  padding-bottom: 10%;
 `
 const SideDiv = styled.div`
-  left: 10%;
-  top: 10%;
-  position: absolute;
-  font-size: 20px;
   width: 30%;
+  font-size: 20px;
   .p2 {
     font-size: 15px;
   }
@@ -47,6 +39,9 @@ const ErrorForm = styled.div`
   color: red;
   font-weight: bold;
   display: block;
+`
+const FooterDiv = styled.div`
+  padding: 200px;
 `
 
 const Signup = () => {
@@ -147,7 +142,7 @@ const Signup = () => {
               <ErrorForm>
                 {errorSignup && errorSignup}
               </ErrorForm>
-              <form onSubmit={formik.handleSubmit}>
+              <form onSubmit={formik.handleSubmit} className='formulaire'>
                 <div className="mb-3">
                   <label className="form-label">Nom d'utilisateur</label>
                   <input 
@@ -231,10 +226,11 @@ const Signup = () => {
               </form>
             </motion.div>
           </SideDiv>
-          <Separator />
         </Header>
       </motion.div>
-      <Footer />
+      <Footer>
+        <FooterDiv/>
+      </Footer>
     </>
   )
 }

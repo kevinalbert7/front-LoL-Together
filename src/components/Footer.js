@@ -1,6 +1,5 @@
 import React from 'react'
 import { RiTwitterLine, RiFacebookLine, RiInstagramLine, RiGithubLine, RiTwitchFill } from 'react-icons/ri'
-import { Link } from 'react-router-dom'
 
 import styled from 'styled-components'
 
@@ -10,6 +9,7 @@ import Title from './Title'
 const FooterBackground = styled.div`
   background-color: black;
   margin: 3%;
+  margin-top: 250px;
 `
 const FooterBackgroundRow = styled.div`
   display: flex;
