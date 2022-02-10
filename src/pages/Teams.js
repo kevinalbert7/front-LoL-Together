@@ -8,11 +8,10 @@ import Logo from '../components/Logo'
 import Title from '../components/Title'
 import Footer from '../components/Footer'
 
-import blur from '../images/blur.png'
 import backgroundImage from '../images/policy-background.png'
 
 const Header = styled.div`
-  background-image: url(${backgroundImage});
+  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
   height: 65vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,7 +21,6 @@ const Header = styled.div`
   justify-content: flex-end;
 `
 const Separator = styled.div`
-  background-image: url(${blur});
   background-repeat: no-repeat;
   background-size: cover;
   height: 160px;
@@ -58,13 +56,13 @@ const Teams = () => {
     <>
       <Nav />
       <Header>
-        {/* <Logo /> */}
-        {/* <Title text="zef" size='72'/> */}
+        <Logo /> 
+          <Title text="Page en construction" size='72'/>
         <Separator />
       </Header>
       <Middle>
         <div className='container'>
-          Test
+          {/* Test */}
         </div>
       </Middle>
       <Footer />

@@ -9,6 +9,7 @@ import Title from './Title'
 const FooterBackground = styled.div`
   background-color: black;
   margin: 3%;
+  margin-top: 250px;
 `
 const FooterBackgroundRow = styled.div`
   display: flex;
@@ -19,6 +20,7 @@ ul {
   display: flex;
   align-items: center;
   margin-top: 15px;
+  margin-right: 30px;
 }
 ul li {
     display: block;
@@ -61,9 +63,27 @@ const Footer = () => {
   return (
     <FooterBackground>
       <FooterBackgroundRow>
-        <GridFooter title="Joueur" text1="Créez votre compte" text2="Rechercher des équipes" />
-        <GridFooter title="Equipe" text1="Créez votre équipe" text2="Rechercher des joueurs" />
-        <GridFooter title="Ressources" text1="Conditions d'utilisations" text2="Contact" />
+        <GridFooter 
+          title="Joueur" 
+          link1="http://localhost:3000/signup" 
+          text1="Créez votre compte"
+          link2="http://localhost:3000/teams" 
+          text2="Rechercher des équipes" 
+        />
+        <GridFooter 
+          title="Equipe" 
+          link1="http://localhost:3000/teamcreation" 
+          text1="Créez votre équipe"
+          link2="http://localhost:3000/users" 
+          text2="Rechercher des joueurs" 
+        />
+        <GridFooter 
+          title="Ressources" 
+          link1="http://localhost:3000/policy" 
+          text1="Conditions d'utilisations" 
+          link2="http://localhost:3000/contact" 
+          text2="Contact" 
+        />
       </FooterBackgroundRow>
       <div className='d-flex align-items-center my-5 flex-column'>
         <Title text='Made by LoL Together Team' size='18' />
