@@ -119,7 +119,7 @@ const Conversation = () => {
   }
 
   const sendMessage = async () => {
-    const values = {
+    let values = {
       text : newMessage,
       sender : user._id,
       receiver : profile._id,

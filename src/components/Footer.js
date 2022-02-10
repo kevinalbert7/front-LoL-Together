@@ -65,23 +65,23 @@ const Footer = () => {
       <FooterBackgroundRow>
         <GridFooter 
           title="Joueur" 
-          link1="http://localhost:3000/signup" 
+          link1="/signup" 
           text1="Créez votre compte"
-          link2="http://localhost:3000/teams" 
+          link2="/teams" 
           text2="Rechercher des équipes" 
         />
         <GridFooter 
           title="Equipe" 
           link1="http://localhost:3000/teamcreation" 
           text1="Créez votre équipe"
-          link2="http://localhost:3000/users" 
+          link2="/users" 
           text2="Rechercher des joueurs" 
         />
         <GridFooter 
           title="Ressources" 
-          link1="http://localhost:3000/policy" 
+          link1="/policy" 
           text1="Conditions d'utilisations" 
-          link2="http://localhost:3000/contact" 
+          link2="/contact" 
           text2="Contact" 
         />
       </FooterBackgroundRow>
