@@ -121,7 +121,7 @@ const Signup = () => {
     } else {
       const data = await loginResponse.json()
       setUser(data)
-      navigate('/')
+      navigate(`/user/${data._id}`)
     }
   }
 
