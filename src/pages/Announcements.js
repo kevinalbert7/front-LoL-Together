@@ -157,7 +157,7 @@ const Announcements = () => {
                         key={element._id} 
                         className='col-10 my-1 py-2 announcement-text'
                       >
-                        <DateTime>Posté le {moment(element.createdAt).format('lll')}</DateTime>
+                        <DateTime>Postée le {moment(element.createdAt).format('lll')}</DateTime>
                         <AnnouncementText>
                           {element.text}
                         </AnnouncementText>

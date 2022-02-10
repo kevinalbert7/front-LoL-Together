@@ -7,7 +7,7 @@ import styled from 'styled-components'
 const LogoDiv = styled.div`
   display: flex;
   justify-content: center;
-  img{
+  img {
     height: 130px;
   }
 `
