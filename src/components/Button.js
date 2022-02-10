@@ -5,7 +5,6 @@ const Button = (props) => {
   return (
     <div>
        <button type="submit" className="btn btn-dark">{text}</button>
-
     </div>
   )
 }

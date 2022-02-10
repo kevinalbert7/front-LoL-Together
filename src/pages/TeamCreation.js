@@ -134,7 +134,6 @@ const TeamCreation = () => {
 
         const team = await signupResponse.json()
 
-
             setProfile(team)
             navigate(`/team/${team._id}`)
 
@@ -156,7 +155,6 @@ const TeamCreation = () => {
             <Header>
                 <div className="container ">
                     <div className="row">
-
                         <div className="col-xxl col-md-6 d-flex justify-content-center align-items-center">
                             <SideDiv>
                                 <motion.div
@@ -168,10 +166,8 @@ const TeamCreation = () => {
                                 </motion.div>
                             </SideDiv>
                         </div>
-
                         <div className="col-xxl col-md-6 d-flex justify-content-center align-items-center">
                             <InputContainer>
-
                                 <form onSubmit={formik.handleSubmit}>
                                     <label className="form-label">Nom d'équipe</label>
                                     <input
@@ -183,7 +179,6 @@ const TeamCreation = () => {
                                         value={formik.values.name}
                                         onChange={formik.handleChange}
                                     />
-
                                     <label className="form-label">Région</label>
                                     <SelectStyled>
                                         <Select
@@ -200,7 +195,6 @@ const TeamCreation = () => {
                                         hasSelectAll={false}
                                         /> */}
                                     </SelectStyled>
-
                                     <label className="form-label ">Langue</label>
                                     <SelectStyled>
                                         <MultiSelect
@@ -212,7 +206,6 @@ const TeamCreation = () => {
                                             hasSelectAll={false}
                                     />
                                     </SelectStyled>
-
                                     <label className="form-label">Disponiblitiés</label>
                                     <SelectStyled>
                                         <MultiSelect
@@ -223,20 +216,16 @@ const TeamCreation = () => {
                                             labelledBy="Select"
                                             hasSelectAll={false}
                                         />
-                                    </SelectStyled>
-                                    
+                                    </SelectStyled>                                    
                                     <div className="btn">
                                         <button type="submit" className="btnSubscribe">Inscription</button>
                                         <Link to="/login">            
                                             Vous n'avez pas de compte? Inscrivez-vous!
                                         </Link>               
                                     </div>
-
                                 </form>
-
                             </InputContainer>
                         </div>
-
                     </div>
                 </div>
             </Header>
