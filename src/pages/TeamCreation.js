@@ -219,9 +219,7 @@ const TeamCreation = () => {
                                     </SelectStyled>                                    
                                     <div className="btn">
                                         <button type="submit" className="btnSubscribe">Inscription</button>
-                                        <Link to="/login">            
-                                            Vous n'avez pas de compte? Inscrivez-vous!
-                                        </Link>               
+
                                     </div>
                                 </form>
                             </InputContainer>

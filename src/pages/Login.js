@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -148,6 +148,9 @@ const Login = () => {
                 </div>
                 <div className='text-center'>
                   <Button text="Se connecter" />
+                    <Link to="/signup">            
+                      Vous n'avez pas de compte? Inscrivez-vous!
+                   </Link>               
                 </div>
               </form>
             </motion.div>
