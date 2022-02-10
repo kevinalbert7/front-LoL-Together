@@ -18,7 +18,7 @@ import {
     optionsDisponiblities 
   } from '../api/filter'
 
-import backgroundImage from '../images/teamSignup-background.jpg'
+  import backgroundImage from '../images/teamSignup-background.jpg'
 
 import Nav from '../components/Nav'
 import Logo from '../components/Logo'
