@@ -1,7 +1,6 @@
 import React from 'react'
 
 import backgroundImage from '../images/home-background.png'
-import homeWaveImage from '../images/home-wave.png'
 
 import { RiUserLine, RiTeamLine } from 'react-icons/ri'
 
@@ -14,7 +13,7 @@ import Title from '../components/Title'
 import Footer from '../components/Footer'
 
 const Header = styled.div`
-  background-image: url(${backgroundImage});
+  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,13 +21,6 @@ const Header = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-`
-const Separator = styled.div`
-  background-image: url(${homeWaveImage});
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 280px;
-  margin-top: 390px;
 `
 const SideDiv = styled.div`
   right: 10%;
@@ -41,7 +33,7 @@ const SideDiv = styled.div`
   }
 `
 const Middle = styled.div`
-  background-color: #361F40;
+  background-color: #000000;
   padding: 50px;
 `
 const HomeCard = styled.div`
@@ -80,7 +72,6 @@ const Home = () => {
               <Title text='Découvrir' size='72' />
             </motion.div>
           </SideDiv>
-          <Separator/>
         </Header>
         <Middle>
           <div className='container'>
