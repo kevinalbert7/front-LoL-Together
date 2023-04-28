@@ -1,16 +1,13 @@
 import React from "react";
-
-import backgroundImage from "../images/home-background.png";
-
-import { RiUserLine, RiTeamLine } from "react-icons/ri";
-
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
+import { RiUserLine, RiTeamLine } from "react-icons/ri";
 import Nav from "../components/Nav";
 import Logo from "../components/Logo";
-import Title from "../components/Title";
 import Footer from "../components/Footer";
+
+import backgroundImage from "../images/home-background.png";
 
 const Header = styled.div`
   background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%),
@@ -25,14 +22,21 @@ const Header = styled.div`
 
 const LeftDiv = styled.div`
   padding: 100px;
-`
+`;
 const RightDiv = styled.div`
   font-size: 36px;
   padding: 100px;
 
-  .p2 {
-    font-size: 15px;
+  p:nth-child(2) {
+    font-size: 23px;
   }
+`;
+
+const Discover = styled.a`
+  font-family: GrechenFuemen;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 72px;
 `;
 const Middle = styled.div`
   background-color: #000000;
@@ -69,19 +73,19 @@ const Home = () => {
       >
         <Header>
           <LeftDiv>
-              <Logo justifyContent="left"/>
+            <Logo justifyContent="left" />
           </LeftDiv>
           <RightDiv>
             <motion.div style={{ x: -100 }} animate={{ x: 0 }}>
               <p>Recrutes des joueurs pour ton équipe, ou fais-toi recruter.</p>
-              <p className="p2">
-                Parce que jouer ensemble c'est aussi passer de bons moments.
+              <p>
+                Parce que jouer ensemble c'est aussi passer de bons moments!
               </p>
-              <Title text="Découvrir" size="72" />
+              <Discover href="#description">Découvrir</Discover>
             </motion.div>
           </RightDiv>
         </Header>
-        <Middle>
+        <Middle id="description">
           <div className="container">
             <motion.div style={{ x: -100 }} animate={{ x: 0 }}>
               <div className="row">

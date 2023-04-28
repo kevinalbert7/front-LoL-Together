@@ -36,12 +36,8 @@ const Button = styled.button`
   color: white;
 `;
 
-const Bonjour = styled.div`
-  font-size: 42%;
-  letter-spacing: 1px;
-`;
-const Account = styled.div`
-  font-size: 58%;
+const Text = styled.div`
+  font-size: 24px;
 `;
 
 const Nav = () => {
@@ -72,7 +68,7 @@ const Nav = () => {
         <LinkStyle>
           {user ? (
             <>
-              <Bonjour>Bonjour, {user.username}!</Bonjour>
+              <Text>Bonjour, {user.username}!</Text>
               <Link to={`/user/${user._id}`}>Accéder à votre compte</Link>
               <Button onClick={handleLogoutClick}>Déconnexion</Button>
             </>
