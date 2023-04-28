@@ -1,134 +1,91 @@
-import React, { useContext } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import styled from 'styled-components'
+import styled from "styled-components";
 
-import { UserContext } from '../contexts/UserContext'
+import { UserContext } from "../contexts/UserContext";
 
-const MenuBackground = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-  position: fixed;
+const NavContainer = styled.div`
   width: 100%;
+  position: fixed;
   top: 0;
-`
-const Menu = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: space-between;
   padding: 10px;
-`
-const MenuLeft = styled.div`
-  display: flex;  
-`
-const MenuRight = styled.div`
+`;
+
+const LeftSide = styled.div``;
+
+const RightSide = styled.div``;
+
+const LinkStyle = styled.div`
   display: flex;
-`
-const MenuItem = styled.div`
-  margin: 0 20px;
-  font-size: 24px;
   a {
     text-decoration: none;
-    color: white;
-    &:hover {
-      color : teal;
-    }
+    font-size: 24px;
+    color: #ffffff;
+    padding: 0 17px;
   }
-  button {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px; 
-    border: none;
-    color: white;
-  }
-`
+`;
+
+const Button = styled.button`
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: none;
+  color: white;
+`;
+
 const Bonjour = styled.div`
-  font-size : 42%;
+  font-size: 42%;
   letter-spacing: 1px;
-`
+`;
 const Account = styled.div`
-  font-size : 58%;
-`
+  font-size: 58%;
+`;
 
 const Nav = () => {
-  const navigate = useNavigate()
-  const { user, setUser } = useContext(UserContext)
+  const navigate = useNavigate();
+  const { user, setUser } = useContext(UserContext);
 
   const handleLogoutClick = () => {
-    fetch('http://localhost:5000/auth/logout', {
-      method: 'delete',
-      credentials: 'include'
-    })
-      .then(response => {
-        setUser("")
-        navigate('/')
-      })
-  }
+    fetch("http://localhost:5000/auth/logout", {
+      method: "delete",
+      credentials: "include",
+    }).then((response) => {
+      setUser("");
+      navigate("/");
+    });
+  };
 
   return (
-      <MenuBackground>
-        <Menu>
-          <MenuLeft>
-            <MenuItem>
-              <Link to="/" >
-                <div className='underline'>Accueil</div>
-              </Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/users">
-                <div className='underline'>Joueurs</div>
-              </Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/teams">
-                <div className='underline'>Equipes</div>
-              </Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/announcements">
-                <div className='underline'>Annonces</div>
-              </Link>
-            </MenuItem>
-          </MenuLeft>
-          <MenuRight>
-            {user ? 
-              <>
-                <MenuItem>
-                  <Link to={`/user/${user._id}`}>
-                    <Bonjour>
-                      Bonjour, {user.username}.
-                    </Bonjour>
-                    <Account>
-                      <div className='underline'>Accéder à votre compte.</div>
-                    </Account>
-                  </Link>
-                </MenuItem>
-                <MenuItem>
-                  <button 
-                    type="button" 
-                    className=""
-                    onClick={handleLogoutClick}
-                  >
-                    <div className='underline'>Déconnexion</div>
-                  </button>
-                </MenuItem>
-              </>
-            :
-              <>
-                <MenuItem>
-                  <Link to="/login">
-                    <div className='underline'>Connexion</div>
-                  </Link>
-                </MenuItem>
-                <MenuItem>
-                  <Link to="/signup">
-                    <div className='underline'>Inscription</div>
-                  </Link>
-                </MenuItem>
-              </>
-            }
-          </MenuRight>
-        </Menu>
-      </MenuBackground>
-  )
-}
+    <NavContainer>
+      <LeftSide>
+        <LinkStyle>
+          <Link to="/">Accueil</Link>
+          <Link to="/users">Joueurs</Link>
+          <Link to="/teams">Equipes</Link>
+          <Link to="/announcements">Annonces</Link>
+        </LinkStyle>
+      </LeftSide>
+      <RightSide>
+        <LinkStyle>
+          {user ? (
+            <>
+              <Bonjour>Bonjour, {user.username}!</Bonjour>
+              <Link to={`/user/${user._id}`}>Accéder à votre compte</Link>
+              <Button onClick={handleLogoutClick}>Déconnexion</Button>
+            </>
+          ) : (
+            <>
+              <Link to="/login">Connexion</Link>
+              <Link to="/signup">Inscription</Link>
+            </>
+          )}
+        </LinkStyle>
+      </RightSide>
+    </NavContainer>
+  );
+};
 
-export default Nav
+export default Nav;

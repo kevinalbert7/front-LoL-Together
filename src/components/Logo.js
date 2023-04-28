@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 const LogoDiv = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: ${props => props.justifyContent};
   img {
     height: 130px;
   }
@@ -14,7 +14,7 @@ const LogoDiv = styled.div`
 
 const Logo = () => {
   return (
-    <LogoDiv className='animate__animated animate__backInDown'>
+    <LogoDiv justifyContent className='animate__animated animate__backInDown'>
       <img src={`${logo}`} alt='LoL Together' />
     </LogoDiv>
   )
