@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
@@ -6,13 +6,15 @@ import styled from "styled-components";
 import { UserContext } from "../contexts/UserContext";
 
 const NavContainer = styled.div`
+  height: ${(props) => props.height || "60px"};
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  align-items: center;
+  padding: 0 10px;
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const LeftSide = styled.div``;
@@ -20,12 +22,61 @@ const LeftSide = styled.div``;
 const RightSide = styled.div``;
 
 const LinkStyle = styled.div`
-  display: flex;
   a {
     text-decoration: none;
-    font-size: 24px;
+    font-size: clamp(1.125rem, 0.9286rem + 0.9821vw, 2.5rem);
     color: #ffffff;
     padding: 0 17px;
+  }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+`;
+
+const HamburgerMenu = styled.div`
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  display: none;
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 700px) {
+    display: flex;
+  }
+`;
+
+const Line = styled.div`
+  width: 25px;
+  height: 2px;
+  background-color: #ffffff;
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    position: absolute;
+    top: -8px;
+    left: 0;
+  }
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    position: absolute;
+    top: 8px;
+    left: 0;
   }
 `;
 
@@ -43,6 +94,12 @@ const Text = styled.div`
 const Nav = () => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    console.log(isOpen);
+  };
 
   const handleLogoutClick = () => {
     fetch("http://localhost:5000/auth/logout", {
@@ -55,7 +112,10 @@ const Nav = () => {
   };
 
   return (
-    <NavContainer>
+    <NavContainer height={isOpen && "300px"}>
+      <HamburgerMenu onClick={toggleMenu}>
+        <Line />
+      </HamburgerMenu>
       <LeftSide>
         <LinkStyle>
           <Link to="/">Accueil</Link>

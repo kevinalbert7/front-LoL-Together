@@ -10,21 +10,22 @@ import Title from "../components/Title";
 import UserFilter from "../components/UsersFilter";
 import UserCard from "../components/UserCard";
 import Footer from "../components/Footer";
+import Header from "../components/Header"
 
 import backgroundImage from "../images/users-background.png";
 
 import { UsersContext } from "../contexts/UsersContext";
 import { getUsers } from "../api/user";
 
-const Header = styled.div`
-  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%),
-    url(${backgroundImage});
-  height: 65vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: grid;
-  grid-template-columns: 30% 70%;
-`;
+// const Header = styled.div`
+//   background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%),
+//     url(${backgroundImage});
+//   height: 65vh;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   display: grid;
+//   grid-template-columns: 30% 70%;
+// `;
 
 const LeftSide = styled.div`
   padding: 100px;
@@ -75,7 +76,7 @@ const Users = () => {
     <>
       <Nav />
       <motion.div style={{ x: 100 }} animate={{ x: 0 }}>
-        <Header>
+        <Header background={`${backgroundImage}`}>
           <LeftSide>
             <Logo />
           </LeftSide>

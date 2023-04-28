@@ -6,32 +6,26 @@ import { RiUserLine, RiTeamLine } from "react-icons/ri";
 import Nav from "../components/Nav";
 import Logo from "../components/Logo";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 import backgroundImage from "../images/home-background.png";
-
-const Header = styled.div`
-  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%),
-    url(${backgroundImage});
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  positive: relative;
-  display: grid;
-  grid-template-columns: 50% 50%;
-`;
 
 const LeftDiv = styled.div`
   padding: 100px;
 `;
 const RightDiv = styled.div`
-  font-size: 36px;
-  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1.125rem, 0.9286rem + 0.9821vw, 2.5rem);
 
   p:nth-child(2) {
-    font-size: 23px;
+    font-size: clamp(0.875rem, 0.7679rem + 0.5357vw, 1.625rem);
   }
 `;
-
+const PresentationContainer = styled.div`
+  min-width: 70%;
+`
 const Discover = styled.a`
   font-family: GrechenFuemen;
   text-decoration: none;
@@ -71,18 +65,22 @@ const Home = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <Header>
+        <Header background={`${backgroundImage}`} height="100vh">
           <LeftDiv>
-            <Logo justifyContent="left" />
+            <Logo />
           </LeftDiv>
           <RightDiv>
-            <motion.div style={{ x: -100 }} animate={{ x: 0 }}>
-              <p>Recrutes des joueurs pour ton équipe, ou fais-toi recruter.</p>
-              <p>
-                Parce que jouer ensemble c'est aussi passer de bons moments!
-              </p>
-              <Discover href="#description">Découvrir</Discover>
-            </motion.div>
+            <PresentationContainer>
+              <motion.div style={{ x: -100 }} animate={{ x: 0 }}>
+                <p>
+                  Recrutes des joueurs pour ton équipe, ou fais-toi recruter.
+                </p>
+                <p>
+                  Parce que jouer ensemble c'est aussi passer de bons moments!
+                </p>
+                <Discover href="#description">Découvrir</Discover>
+              </motion.div>
+            </PresentationContainer>
           </RightDiv>
         </Header>
         <Middle id="description">
