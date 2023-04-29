@@ -21,7 +21,6 @@ const UserContextProvider = props => {
         if (!data.error) {
             setUser(data)
             // console.log(user);
-
         }
     }
 

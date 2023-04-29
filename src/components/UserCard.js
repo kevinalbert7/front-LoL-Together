@@ -14,6 +14,11 @@ const Emblem = styled.div`
   }
 `
 
+const Chargement = styled.div`
+  text-align: center;
+  font-size: clamp(16px, 16px + 0.362vw, 24px);
+`
+
 const UserCard = ({ id, username, summoner_name, discord, region, languages, disponibilities, roles }) => {
   const [notRanked, setNotRanked] = useState(null)
   const [emblem, setEmblem] = useState(null)
@@ -37,7 +42,7 @@ const UserCard = ({ id, username, summoner_name, discord, region, languages, dis
     }
   }  
   if (!lolProfile) {
-    return <h1>Chargement...</h1>
+    return <Chargement>Chargement...</Chargement>
   }
 
   // console.log(roles.join(", "))

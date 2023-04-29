@@ -10,13 +10,6 @@ import Header from "../components/Header";
 
 import backgroundImage from "../images/home-background.png";
 
-const LeftDiv = styled.div`
-  padding: 100px;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
 const RightDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -74,9 +67,6 @@ const Home = () => {
         exit={{ opacity: 0 }}
       >
         <Header background={`${backgroundImage}`} height="100vh">
-          <LeftDiv>
-            <Logo />
-          </LeftDiv>
           <RightDiv>
             <PresentationContainer>
               <motion.div style={{ x: -100 }} animate={{ x: 0 }}>

@@ -34,7 +34,6 @@ const Middle = styled.div`
   background-color: black;
   display: flex;
   justify-content: space-between;
-  // margin: auto;
 `;
 
 const Users = () => {
@@ -67,9 +66,6 @@ const Users = () => {
       <Nav />
       <motion.div style={{ x: 100 }} animate={{ x: 0 }}>
         <Header background={`${backgroundImage}`}>
-          <LeftSide>
-            <Logo />
-          </LeftSide>
           <RightSide>
             <Title text="Liste des joueurs" size="64" />
           </RightSide>
