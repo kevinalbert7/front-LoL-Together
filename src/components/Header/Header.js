@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-import Logo from "./Logo";
+import Logo from "../Logo";
 
 const Header = styled.div`
   background-image: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%),
@@ -29,12 +30,14 @@ const LeftDiv = styled.div`
 
 const HeaderTeamProfile = ({ background, children, height }) => {
   return (
-    <Header background={background} height={height}>
-      <LeftDiv>
-        <Logo />
-      </LeftDiv>
-      {children}
-    </Header>
+    <motion.div style={{ x: 100 }} animate={{ x: 0 }}>
+      <Header background={background} height={height}>
+        <LeftDiv>
+          <Logo />
+        </LeftDiv>
+        {children}
+      </Header>
+    </motion.div>
   );
 };
 

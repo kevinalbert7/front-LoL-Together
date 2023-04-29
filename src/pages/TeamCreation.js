@@ -3,7 +3,7 @@ import { MultiSelect } from "react-multi-select-component"
 import Select from 'react-select'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { motion } from "framer-motion"
 import styled from 'styled-components'
 import { ProfileContext } from '../contexts/ProfileContent'
@@ -18,12 +18,12 @@ import {
     optionsDisponiblities 
   } from '../api/filter'
 
-  import backgroundImage from '../images/teamSignup-background.jpg'
+  import backgroundImage from '../assets/images/teamSignup-background.jpg'
 
-import Nav from '../components/Nav'
+import Nav from '../components/Nav/Nav'
 import Logo from '../components/Logo'
 import Title from '../components/Title'
-import Footer from '../components/Footer'
+import Footer from '../components/Footer/Footer'
 
 const Header = styled.div`
     background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});

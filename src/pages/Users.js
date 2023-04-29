@@ -4,22 +4,17 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import Nav from "../components/Nav";
-import Logo from "../components/Logo";
+import Nav from "../components/Nav/Nav";
 import Title from "../components/Title";
 import UserFilter from "../components/UsersFilter";
 import UserCard from "../components/UserCard";
-import Footer from "../components/Footer";
-import Header from "../components/Header"
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header"
 
-import backgroundImage from "../images/users-background.png";
+import backgroundImage from "../assets/images/users-background.png";
 
 import { UsersContext } from "../contexts/UsersContext";
 import { getUsers } from "../api/user";
-
-const LeftSide = styled.div`
-  padding: 100px;
-`;
 
 const RightSide = styled.div`
   font-size: 36px;
@@ -64,13 +59,11 @@ const Users = () => {
   return (
     <>
       <Nav />
-      <motion.div style={{ x: 100 }} animate={{ x: 0 }}>
         <Header background={`${backgroundImage}`}>
-          <RightSide>
-            <Title text="Liste des joueurs" size="64" />
+        <RightSide>
+            <Title text="Liste des joueurs" />
           </RightSide>
         </Header>
-      </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

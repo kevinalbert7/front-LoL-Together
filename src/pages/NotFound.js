@@ -2,10 +2,10 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-import Nav from '../components/Nav'
+import Nav from '../components/Nav/Nav'
 import Logo from '../components/Logo'
 import Title from '../components/Title'
-import Footer from '../components/Footer'
+import Footer from '../components/Footer/Footer'
 
 const Header = styled.div`
   background-image: url();

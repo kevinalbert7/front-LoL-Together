@@ -1,14 +1,14 @@
 @font-face {
   font-family: "whitneylight";
-  src: url("./fonts/fontsWOFF/whitneylight.woff") format("woff")
+  src: url("./assets/fonts/fontsWOFF/whitneylight.woff") format("woff")
 }
 @font-face {
   font-family: "whitneybold";
-  src: url("./fonts/fontsWOFF/whitneybold.woff") format("woff")
+  src: url("./assets/fonts/fontsWOFF/whitneybold.woff") format("woff")
 }
 @font-face {
   font-family: "GrechenFuemen";
-  src: url("./fonts/fontsWOFF/GrechenFuemen-Regular.woff") format("woff")
+  src: url("./assets/fonts/fontsWOFF/GrechenFuemen-Regular.woff") format("woff")
 }
 
 *, ::before, ::after {

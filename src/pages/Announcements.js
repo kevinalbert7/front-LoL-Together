@@ -11,33 +11,22 @@ import { getAnnouncements } from '../api/announcement'
 import moment from "moment"
 import 'moment/locale/fr'
 
-import Nav from '../components/Nav'
-import Logo from '../components/Logo'
+import Nav from '../components/Nav/Nav'
+import Header from '../components/Header/Header'
 import Title from '../components/Title'
-import Footer from '../components/Footer'
+import Footer from '../components/Footer/Footer'
 
-import backgroundImage from '../images/announcements-background.jpg'
+import backgroundImage from '../assets/images/announcements-background.jpg'
 
-const Header = styled.div`
-  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});
-  height: 65vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  positive: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-`
-const LogoTitle = styled.div`
-  left: 35%;
-  top: 20%;
-  position: absolute;
-  font-size: 20px;
-  width: 31%;
+const RightSide = styled.div`
+  font-size: 36px;
+  padding: 100px;
+
   .p2 {
     font-size: 15px;
   }
-`
+`;
+
 const Middle = styled.div`
   background-color: black;
   padding: 0 20%;
@@ -76,9 +65,9 @@ const Announcements = () => {
     setAnnouncements (response)
   }
 
-  if(!announcements ) {
-    return <h1>Chargement...</h1>
-  }
+  // if(!announcements ) {
+  //   return <h1>Chargement...</h1>
+  // }
   
   console.log(announcements)
   // console.log(lolProfile)
@@ -90,16 +79,10 @@ const Announcements = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <Header>
-          <LogoTitle>
-              <motion.div
-                style={{ x: 100 }} 
-                animate={{ x: 0 }}          
-              >
-                <Logo />
-                <Title text="Annonces" size='64'/>
-              </motion.div>
-            </LogoTitle>
+        <Header background={`${backgroundImage}`}>
+        <RightSide>
+            <Title text="Annonces" />
+          </RightSide>
         </Header>
         <Middle>
           <div className='container' >

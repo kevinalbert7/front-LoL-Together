@@ -1,8 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import logo from "../../assets/images/logo.png";
 
-import Logo from "../components/Logo"
 import HamburgerMenu from "./HamburgerMenu";
+
+const Logo = styled.div`
+  padding: 0 35px;
+  img {
+    height: 50px;
+    width: 50px;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 0 17px;
+  }
+`;
 
 const NavContainer = styled.div`
   height: 60px;
@@ -17,10 +29,11 @@ const NavContainer = styled.div`
 `;
 
 const Nav = () => {
-
   return (
     <NavContainer>
-      <Logo height="50px" padding="0 35px" padding1024="0 17px"/>
+      <Logo>
+        <img src={logo} alt="logo" />
+      </Logo>
       <HamburgerMenu />
     </NavContainer>
   );

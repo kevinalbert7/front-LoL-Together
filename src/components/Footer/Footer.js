@@ -10,7 +10,7 @@ import {
 import styled from "styled-components";
 
 import GridFooter from "./GridFooter";
-import Title from "./Title";
+import Title from "../Title";
 
 const FooterBackground = styled.div`
   background-color: black;

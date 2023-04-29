@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import styled from "styled-components";
 
-import Nav from "../components/Nav";
+import Nav from "../components/Nav/Nav";
 import Logo from "../components/Logo";
 import Title from "../components/Title";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header"
 
-import backgroundImage from "../images/policy-background.png";
+import backgroundImage from "../assets/images/policy-background.png";
 
-const Header = styled.div`
-  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%),
-    url(${backgroundImage});
-  height: 65vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: grid;
-  grid-template-columns: 30% 70%;
+const RightSide = styled.div`
+  font-size: 36px;
+  padding: 100px;
+
+  .p2 {
+    font-size: 15px;
+  }
 `;
 
 const Middle = styled.div`
@@ -48,10 +49,11 @@ const Teams = () => {
   return (
     <>
       <Nav />
-      <Header>
-        <Logo />
-        <Title text="Page en construction" size="72" />
-      </Header>
+        <Header background={`${backgroundImage}`}>
+        <RightSide>
+            <Title text="Liste des Equipes" />
+          </RightSide>
+        </Header>
       <Middle>
         <div className="container">{/* Test */}</div>
       </Middle>

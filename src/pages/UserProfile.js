@@ -14,13 +14,13 @@ import styled from 'styled-components'
 import { motion } from "framer-motion"
 import { RiTwitterLine, RiFacebookLine, RiInstagramLine, RiGithubLine } from 'react-icons/ri'
 
-import Nav from '../components/Nav'
+import Nav from '../components/Nav/Nav'
 import Logo from '../components/Logo'
 import Title from '../components/Title'
-import Footer from '../components/Footer'
+import Footer from '../components/Footer/Footer'
 import UserInfos from '../components/UserInfos'
 
-import backgroundImage from '../images/profil-background.png'
+import backgroundImage from '../assets/images/profil-background.png'
 
 const Header = styled.div`
   background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});

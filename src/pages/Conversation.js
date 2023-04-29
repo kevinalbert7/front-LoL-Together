@@ -11,13 +11,13 @@ import 'moment/locale/fr'
 
 import styled from 'styled-components'
 import { motion } from "framer-motion"
-import backgroundImage from '../images/conversation-background.jpg'
+import backgroundImage from '../assets/images/conversation-background.jpg'
 import { MdOutlineAnnouncement } from 'react-icons/md'
 
-import Nav from '../components/Nav'
+import Nav from '../components/Nav/Nav'
 import Logo from '../components/Logo'
 import Title from '../components/Title'
-import Footer from '../components/Footer'
+import Footer from '../components/Footer/Footer'
 
 const Header = styled.div`
   background: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%), url(${backgroundImage});

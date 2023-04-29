@@ -6,12 +6,12 @@ import 'moment/locale/fr'
 
 import styled from 'styled-components'
 
-import Nav from '../components/Nav'
+import Nav from '../components/Nav/Nav'
 import Title from '../components/Title'
-import Footer from '../components/Footer'
+import Footer from '../components/Footer/Footer'
 import Logo from '../components/Logo'
 
-import backgroundImage from '../images/team-background.png'
+import backgroundImage from '../assets/images/team-background.png'
 
 const Header = styled.div`
 height: 50vh;

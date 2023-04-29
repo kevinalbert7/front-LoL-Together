@@ -4,15 +4,15 @@ import { useNavigate, Link } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import backgroundImage from '../images/login-background.png'
-import blur from '../images/blur.png'
+import backgroundImage from '../assets/images/login-background.png'
+import blur from '../assets/images/blur.png'
 import styled from 'styled-components'
 import { motion } from "framer-motion"
 
-import Nav from '../components/Nav'
+import Nav from '../components/Nav/Nav'
 import Logo from '../components/Logo'
 import Title from '../components/Title'
-import Footer from '../components/Footer'
+import Footer from '../components/Footer/Footer'
 import Button from '../components/Button'
 
 import { UserContext } from '../contexts/UserContext'
