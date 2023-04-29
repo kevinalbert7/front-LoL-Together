@@ -11,6 +11,12 @@
   src: url("./fonts/fontsWOFF/GrechenFuemen-Regular.woff") format("woff")
 }
 
+*, ::before, ::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: whitneylight;
   color: white;
