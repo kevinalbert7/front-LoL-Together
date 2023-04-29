@@ -189,7 +189,7 @@ const Signup = () => {
                   />
                   <ErrorForm>{formik.errors.passwordConfirmation}</ErrorForm>
                 </div>
-                <div className="mb-3">
+                <div className="mb-4">
                   <label className="form-label">Nom d'invocateur</label>
                   <input
                     type="text"

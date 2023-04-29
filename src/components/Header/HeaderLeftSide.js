@@ -8,7 +8,7 @@ const LeftSide = styled.div`
   justify-content: ${(props) => props.justifyContentLeft || "center"};
   align-items: ${(props) => props.alingItemsLeft || "center"};
   flex-direction: ${props => props.flexDirectionLeft || "row"};
-  padding: ${props => props.paddingLeft};
+  padding: ${props => props.paddingLeftSide};
 
   @media (max-width: 768px) {
     display: none;
@@ -21,7 +21,8 @@ const HeaderLeftSide = ({
   widthLeft,
   alingItemsLeft,
   justifyContentLeft,
-  flexDirectionLeft
+  flexDirectionLeft,
+  paddingLeftSide
 }) => {
   return (
     <LeftSide
@@ -30,6 +31,7 @@ const HeaderLeftSide = ({
       justifyContent={justifyContentLeft}
       alingItems={alingItemsLeft}
       flexDirectionLeft={flexDirectionLeft}
+      paddingLeftSide={paddingLeftSide}
     >
       {left}
     </LeftSide>
