@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+
 import RightNav from "./RightNav";
 
 const BurgerButton = styled.div`
   height: 50px;
   width: 50px;
   position: fixed;
-  top: 15px;
+  top: 5px;
   right: 20px;
   display: flex;
   cursor: pointer;
@@ -49,9 +50,13 @@ const BurgerButton = styled.div`
 const HamburgerMenu = () => {
   const [open, setOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setOpen(!open)
+  }
+
   return (
     <>
-      <BurgerButton open={open} onClick={() => setOpen(!open)}>
+      <BurgerButton open={open} onClick={toggleMenu}>
         <div />
         <div />
         <div />

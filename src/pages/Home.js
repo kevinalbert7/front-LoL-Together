@@ -12,6 +12,10 @@ import backgroundImage from "../images/home-background.png";
 
 const LeftDiv = styled.div`
   padding: 100px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 const RightDiv = styled.div`
   display: flex;
@@ -25,6 +29,10 @@ const RightDiv = styled.div`
 `;
 const PresentationContainer = styled.div`
   min-width: 70%;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `
 const Discover = styled.a`
   font-family: GrechenFuemen;

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -9,15 +9,27 @@ const Ul = styled.ul`
   display: flex;
   flex-flow: row nowrap;
   margin: 0;
+  transform: translateX(0%);
+
 
   li {
     padding: 0 17px;
+
+    &:nth-child(4) {
+      margin-right: 50px; 
+    }
   }
 
   a {
     text-decoration: none;
-    font-size: clamp(1.125rem, 0.9286rem + 0.9821vw, 2.5rem);
+    font-size: clamp(1rem, 0.9286rem + 0.9821vw, 2.5rem);
     color: #ffffff;
+  }
+
+  @media (max-width: 1024px) {
+    li {
+      padding: 0 8px;
+    }
   }
 
   @media (max-width: 768px) {
@@ -30,12 +42,17 @@ const Ul = styled.ul`
     justify-content: center;
     align-items: center;
     padding: 0;
-    background-color: red;
-    transform: ${({ open }) => open ? "translateX(0)" : "translateX(100%)"};
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    transform: ${({ open }) => open ? "translateX(0%)" : "translateX(100%)"};
     transition: transform 0.3s ease-in-out;
 
     li {
       padding: 10px 0;
+
+      &:nth-child(4) {
+        margin: 0 0 30px 0; 
+      }
     }
   }
 `;

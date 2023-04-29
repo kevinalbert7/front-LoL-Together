@@ -10,6 +10,10 @@ const Header = styled.div`
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 1fr;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const HeaderTeamProfile = ({ background, children, height}) => {

@@ -1,10 +1,7 @@
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
 
-import { UserContext } from "../contexts/UserContext";
 import Logo from "../components/Logo"
-import RightNav from "../components/RightNav";
 import HamburgerMenu from "./HamburgerMenu";
 
 const NavContainer = styled.div`
@@ -19,11 +16,11 @@ const NavContainer = styled.div`
   left: 0;
 `;
 
-const Nav = ({ open }) => {
+const Nav = () => {
 
   return (
     <NavContainer>
-      <Logo height="50px" padding="0 35px"/>
+      <Logo height="50px" padding="0 35px" padding1024="0 17px"/>
       <HamburgerMenu />
     </NavContainer>
   );

@@ -17,10 +17,13 @@
   box-sizing: border-box;
 }
 
+
 body {
+  height: 100vh;
   font-family: whitneylight;
   color: white;
   background-color: black;
+  overflow-x: hidden;;
 }
 
 .shadow {
