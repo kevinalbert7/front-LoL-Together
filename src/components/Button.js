@@ -1,11 +1,13 @@
 import React from 'react'
+import styled from 'styled-components'
 
-const Button = (props) => {
-  const { text } = props
+const Btn = styled.div`
+  padding: ${props => props.padding || "0"};
+`
+
+const Button = ({ text, padding }) => {
   return (
-    <div>
-       <button type="submit" className="btn btn-dark">{text}</button>
-    </div>
+       <Btn type="submit" className="btn btn-dark" padding={padding}>{text}</Btn>
   )
 }
 

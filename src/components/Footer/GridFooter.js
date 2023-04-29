@@ -12,13 +12,16 @@ const Grid = styled.div`
 
 const LinkFooter = styled.div`
   margin-top: 40px;
+
   p {
     margin-top: 20px;
   }
+
   a {
     text-decoration: none;
     color: #FFF;
   }
+  
   a:hover {
     transition: all 0.5s ease-in-out;
     text-decoration: underline;
@@ -26,10 +29,10 @@ const LinkFooter = styled.div`
 `
 
 const GridFooter = (props) => {
-  const { title, text1, text2, link1, link2 } = props
+  const { link1, link2, size, title, text1, text2 } = props
   return (
     <Grid>
-      <Title text={title} size='36'/>
+      <Title text={title} size={size} />
         <LinkFooter>
           <Link to={link1}><p>{text1}</p></Link>
           <Link to={link2}><p>{text2}</p></Link>

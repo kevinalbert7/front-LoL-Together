@@ -3,13 +3,16 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import Logo from "../Logo";
+import HeaderRightSide from "../../components/Header/HeaderRightSide";
+import HeaderLeftSide from "../../components/Header/HeaderLeftSide";
 
 const Header = styled.div`
   background-image: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 70%),
     url(${(props) => props.background});
-  height: ${(props) => props.height || "65vh"};
+  height: ${(props) => props.height || "100%"};
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: ${(props) => props.backgroundPosition || "center"};
   positive: relative;
   display: grid;
   grid-template-columns: 30% 70%;
@@ -20,25 +23,57 @@ const Header = styled.div`
   }
 `;
 
-const LeftDiv = styled.div`
-  padding: 100px;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const HeaderTeamProfile = ({ background, children, height }) => {
+const HeaderComponent = ({
+  background,
+  backgroundPosition,
+  left,
+  height,
+  text,
+  fontFamily,
+  fontSize,
+  size,
+  right,
+  paddingRight,
+  justifyContentRight,
+  alignItemsRight,
+  widthRight,
+  heightRight,
+  justifyContentLeft,
+  alignItemsLeft,
+  widthLeft,
+  heightLeft,
+  flexDirectionLeft,
+}) => {
   return (
     <motion.div style={{ x: 100 }} animate={{ x: 0 }}>
-      <Header background={background} height={height}>
-        <LeftDiv>
-          <Logo />
-        </LeftDiv>
-        {children}
+      <Header
+        background={background}
+        backgroundPosition={backgroundPosition}
+        height={height}
+      >
+        <HeaderLeftSide
+          left={left}
+          flexDirectionLeft={flexDirectionLeft}
+          heightLeft={heightLeft}
+          justifyContentLeft={justifyContentLeft}
+          alignItemsLeft={alignItemsLeft}
+          widthLeft={widthLeft}
+        />
+        <HeaderRightSide
+          text={text}
+          fontFamily={fontFamily}
+          fontSize={fontSize}
+          right={right}
+          size={size}
+          heightRight={heightRight}
+          paddingRight={paddingRight}
+          justifyContentRight={justifyContentRight}
+          alignItemsRight={alignItemsRight}
+          widthRight={widthRight}
+        />
       </Header>
     </motion.div>
   );
 };
 
-export default HeaderTeamProfile;
+export default HeaderComponent;

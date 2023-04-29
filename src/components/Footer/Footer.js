@@ -83,31 +83,34 @@ const Footer = () => {
       <FooterBackgroundRow>
         <GridFooter
           title="Joueur"
+          size="36px"
           link1="/signup"
           text1="Créez votre compte"
-          link2="/teams"
-          text2="Rechercher des équipes"
-        />
-        <GridFooter
-          title="Equipe"
-          link1="/teamcreation"
-          text1="Créez votre équipe"
           link2="/users"
           text2="Rechercher des joueurs"
         />
         <GridFooter
+          title="Equipe"
+          size="36px"
+          link1="/teamcreation"
+          text1="Créez votre équipe"
+          link2="/teams"
+          text2="Rechercher des équipes"
+        />
+        <GridFooter
           title="Ressources"
+          size="36px"
           link1="/policy"
-          text1="Conditions d'utilisations"
+          text1="Conditions d'utilisation"
           link2="/contact"
           text2="Contact"
         />
       </FooterBackgroundRow>
       <div className="d-flex align-items-center my-5 flex-column">
         <div className="row text-center">
-          <div>Made by
-
-          <Title text="LoL Together Team" size="18" />
+          <div>
+            Made by
+            <Title text="LoL Together Team" size="18" />
           </div>
         </div>
         <IconsList>

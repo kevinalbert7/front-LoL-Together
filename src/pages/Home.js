@@ -10,18 +10,12 @@ import Header from "../components/Header/Header";
 
 import backgroundImage from "../assets/images/home-background.png";
 
-const RightSide = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: clamp(1.125rem, 0.9286rem + 0.9821vw, 2.5rem);
-
-  p:nth-child(2) {
-    font-size: clamp(0.875rem, 0.7679rem + 0.5357vw, 1.625rem);
-  }
-`;
 const PresentationContainer = styled.div`
   min-width: 70%;
+
+  p:nth-child(2) {
+    font-size: 24px;
+  }
 
   @media (max-width: 768px) {
     text-align: center;
@@ -61,9 +55,17 @@ const Home = () => {
   return (
     <>
       <Nav />
-
-      <Header background={`${backgroundImage}`} height="100vh">
-        <RightSide>
+      <Header
+        height="100vh"
+        heightRight="100%"
+        background={`${backgroundImage}`}
+        backgroundPosition="top left"
+        fontFamily="Open"
+        size="36px"
+        left={
+          <Logo />
+        }
+        text={
           <PresentationContainer>
             <motion.div style={{ x: -100 }} animate={{ x: 0 }}>
               <p>Recrutes des joueurs pour ton équipe, ou fais-toi recruter.</p>
@@ -73,8 +75,8 @@ const Home = () => {
               <Discover href="#description">Découvrir</Discover>
             </motion.div>
           </PresentationContainer>
-        </RightSide>
-      </Header>
+        }
+      />
       <Middle id="description">
         <div className="container">
           <motion.div style={{ x: -100 }} animate={{ x: 0 }}>

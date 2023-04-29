@@ -3,18 +3,41 @@ import styled from "styled-components";
 import Title from "../Title";
 
 const RightSide = styled.div`
+  height: ${(props) => props.heightRight || "65vh"};
+  width: ${(props) => props.widthRight};
+  display: flex;
+  justify-content: ${(props) => props.justifyContentRight || "center"};
+  align-items: ${(props) => props.alignItemsRight || "center"};
   font-size: 36px;
-  padding: 100px;
+  padding: ${props => props.paddingRight};
 
   .p2 {
     font-size: 15px;
   }
 `;
 
-const HeaderRightSide = ({ text }) => {
+const HeaderRightSide = ({
+  alignItemsRight,
+  fontFamily,
+  fontSize,
+  heightRight,
+  paddingRight,
+  justifyContentRight,
+  right,
+  size,
+  text,
+  widthRight,
+}) => {
   return (
-    <RightSide>
-      <Title text={text} size="64" />
+    <RightSide
+      heightRight={heightRight}
+      width={widthRight}
+      justifyContent={justifyContentRight}
+      alignItemsRight={alignItemsRight}
+      paddingRight={paddingRight}
+    >
+      <Title text={text} size={size} fontFamily={fontFamily} fontSize={fontSize}/>
+      {right}
     </RightSide>
   );
 };

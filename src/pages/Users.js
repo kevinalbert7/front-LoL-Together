@@ -5,25 +5,16 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import Nav from "../components/Nav/Nav";
-import Title from "../components/Title";
 import UserFilter from "../components/UsersFilter";
 import UserCard from "../components/UserCard";
 import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header"
+import Header from "../components/Header/Header";
+import Logo from "../components/Logo";
 
 import backgroundImage from "../assets/images/users-background.png";
 
 import { UsersContext } from "../contexts/UsersContext";
 import { getUsers } from "../api/user";
-
-const RightSide = styled.div`
-  font-size: 36px;
-  padding: 100px;
-
-  .p2 {
-    font-size: 15px;
-  }
-`;
 
 const Middle = styled.div`
   background-color: black;
@@ -59,11 +50,7 @@ const Users = () => {
   return (
     <>
       <Nav />
-        <Header background={`${backgroundImage}`}>
-        <RightSide>
-            <Title text="Liste des joueurs" />
-          </RightSide>
-        </Header>
+      <Header background={`${backgroundImage}`} backgroundPosition="top right" text="Liste des Joueurs" left={<Logo />}/>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
