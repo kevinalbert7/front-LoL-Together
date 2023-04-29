@@ -8,6 +8,7 @@ const LeftSide = styled.div`
   justify-content: ${(props) => props.justifyContentLeft || "center"};
   align-items: ${(props) => props.alingItemsLeft || "center"};
   flex-direction: ${props => props.flexDirectionLeft || "row"};
+  padding: ${props => props.paddingLeft};
 
   @media (max-width: 768px) {
     display: none;

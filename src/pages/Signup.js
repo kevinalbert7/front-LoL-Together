@@ -18,7 +18,7 @@ import Header from "../components/Header/Header";
 import { UserContext } from "../contexts/UserContext";
 
 const Form = styled.div`
-  // height: 100vh;
+  // width: 100%;
 `;
 
 const ErrorForm = styled.div`
@@ -127,11 +127,14 @@ const Signup = () => {
           }
           fontSize="16px"
           heightRight="100vh"
-          alignItemsRight="end"
+          paddingRightSide="60px 0px 0px 0px"
           right={
-            <Form>
+            <>
               <ErrorForm>{errorSignup && errorSignup}</ErrorForm>
-              <form onSubmit={formik.handleSubmit} className="formulaire fs-5">
+              <form
+                onSubmit={formik.handleSubmit}
+                className="formulaire fs-5 col-8 d-flex justify-content-center flex-column"
+              >
                 <div className="mb-2">
                   <label className="form-label">Nom d'utilisateur</label>
                   <input
@@ -199,9 +202,9 @@ const Signup = () => {
                   />
                   <ErrorForm>{formik.errors.summoner_name}</ErrorForm>
                 </div>
-                  <Button text="S'inscrire" padding="0"/>
+                <Button text="S'inscrire" padding="10px 20px" />
               </form>
-            </Form>
+            </>
           }
         ></Header>
       </motion.div>

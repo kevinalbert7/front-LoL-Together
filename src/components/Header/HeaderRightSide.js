@@ -9,7 +9,7 @@ const RightSide = styled.div`
   justify-content: ${(props) => props.justifyContentRight || "center"};
   align-items: ${(props) => props.alignItemsRight || "center"};
   font-size: 36px;
-  padding: ${props => props.paddingRight};
+  padding: ${props => props.paddingRightSide};
 
   .p2 {
     font-size: 15px;
@@ -21,7 +21,7 @@ const HeaderRightSide = ({
   fontFamily,
   fontSize,
   heightRight,
-  paddingRight,
+  paddingRightSide,
   justifyContentRight,
   right,
   size,
@@ -34,7 +34,7 @@ const HeaderRightSide = ({
       width={widthRight}
       justifyContent={justifyContentRight}
       alignItemsRight={alignItemsRight}
-      paddingRight={paddingRight}
+      paddingRightSide={paddingRightSide}
     >
       <Title text={text} size={size} fontFamily={fontFamily} fontSize={fontSize}/>
       {right}

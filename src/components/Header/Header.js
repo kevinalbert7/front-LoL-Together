@@ -15,7 +15,7 @@ const Header = styled.div`
   background-position: ${(props) => props.backgroundPosition || "center"};
   positive: relative;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: ${props => props.gridTemplateCol || "30% 70%"};
   grid-template-rows: 1fr;
 
   @media (max-width: 768px) {
@@ -42,7 +42,10 @@ const HeaderComponent = ({
   alignItemsLeft,
   widthLeft,
   heightLeft,
+  paddingLeftSide,
   flexDirectionLeft,
+  gridTemplateCol,
+  paddingRightSide
 }) => {
   return (
     <motion.div style={{ x: 100 }} animate={{ x: 0 }}>
@@ -50,6 +53,7 @@ const HeaderComponent = ({
         background={background}
         backgroundPosition={backgroundPosition}
         height={height}
+        gridTemplateCol={gridTemplateCol}
       >
         <HeaderLeftSide
           left={left}
@@ -58,6 +62,7 @@ const HeaderComponent = ({
           justifyContentLeft={justifyContentLeft}
           alignItemsLeft={alignItemsLeft}
           widthLeft={widthLeft}
+          paddingLeftSide={paddingLeftSide}
         />
         <HeaderRightSide
           text={text}
@@ -70,6 +75,7 @@ const HeaderComponent = ({
           justifyContentRight={justifyContentRight}
           alignItemsRight={alignItemsRight}
           widthRight={widthRight}
+          paddingRightSide={paddingRightSide}
         />
       </Header>
     </motion.div>
