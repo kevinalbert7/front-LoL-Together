@@ -5,11 +5,12 @@ import Nav from "../components/Nav/Nav";
 import Header from "../components/Header/Header";
 import HeaderRightSide from "../components/Header/HeaderRightSide";
 import Footer from "../components/Footer/Footer";
+import Logo from "../components/Logo";
 
 import backgroundImage from "../assets/images/policy-background.png";
 
 const TextPolicy = styled.div`
-  margin: 150px 200px;
+  padding: 50px 200px;
   h3 {
     margin: 40px 0 20px;
   }
@@ -19,7 +20,7 @@ const Policy = () => {
   return (
     <>
       <Nav />
-      <Header background={backgroundImage}>
+      <Header background={backgroundImage} backgroundPosition="top right" text="Conditions d'utilisation" left={<Logo />}>
         <HeaderRightSide text="Politique de Confidentialité" />
       </Header>
       <TextPolicy>
